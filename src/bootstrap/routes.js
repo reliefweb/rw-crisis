@@ -15,7 +15,12 @@ module.exports = [
     {
         method: 'GET',
         path: '/v0/oembed',
-        config: controller.oembed.oembed_v0
+        config: controller.oembed.list
+    },
+    {
+        method: 'GET',
+        path: '/v0/oembed/{type}',
+        config: controller.oembed.widget
     },
     {
         method: 'GET',

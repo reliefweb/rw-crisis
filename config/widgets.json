@@ -1,0 +1,10 @@
+{
+	"heatmap": {
+		"title": "Heatmap",
+		"description": "A heatmap"
+	},
+	"timeline": {
+		"title": "Timeline",
+		"description": "A timeline"
+	}
+}

@@ -15,7 +15,7 @@
     "oembed",
     "reliefweb"
   ],
-  "author": "grayside@gmail.com",
+  "author": "ReliefWeb",
   "license": "proprietary",
   "private": true,
   "devDependencies": {
@@ -33,6 +33,7 @@
     "good-file": "^4.0.1",
     "hapi": "^7.5.2",
     "hapi-named-routes": "^0.2.0",
+    "joi": "^5.0.2",
     "require-directory": "^2.0.0"
   }
 }
