@@ -2,19 +2,18 @@
 module.exports = {
     index: {
         handler: function(request, reply){
-          // Render the view with the custom greeting
-          var json = {
-            _links: {
-                self: { href: request.server.info.uri }
-            },
-            data: {
-                oembed: {
-                    title: "oEmbed Services",
-                    href: request.server.info.uri + '/v0/oembed'
+            var json = {
+                _links: {
+                    self: { href: request.server.info.uri }
+                },
+                data: {
+                    oembed: {
+                        title: "oEmbed Services",
+                        href: request.server.info.uri + '/v0/oembed'
+                    }
                 }
             }
-          };
-          reply(json).type('application/hal+json');
+            reply(json).type('application/hal+json');
         },
         app: {
             name: 'index'
@@ -22,7 +21,18 @@ module.exports = {
     },
     v0: {
         handler: function(request, reply){
-            reply('v0')
+            var json = {
+                _links: {
+                    self: { href: request.server.info.uri }
+                },
+                data: {
+                    oembed: {
+                        title: "oEmbed Services",
+                        href: request.server.info.uri + '/v0/oembed'
+                    }
+                }
+            }
+            reply(json).type('application/hal+json');
         },
         app: {
             name: 'v0'
@@ -37,3 +47,4 @@ module.exports = {
         }
     }
 }
+

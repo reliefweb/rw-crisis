@@ -39,8 +39,6 @@ module.exports = {
                 maxwidth: Joi.number().integer().min(1).default(300),
                 maxheight: Joi.number().integer().min(1).default(300),
                 // Apparently no way to blanket allow parameters.
-                // This is where something like a middleware service to save
-                // queries and provide a unique ID would come in handy.
                 limit: Joi.optional(),
                 offset: Joi.optional(),
                 preset: Joi.optional(),
