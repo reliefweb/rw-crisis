@@ -1,25 +1,26 @@
-# ReliefWeb Embed Service
+# [Start Bootstrap](http://startbootstrap.com/) - [Grayscale](http://startbootstrap.com/template-overviews/grayscale/)
 
-This is a Node.js and Hapi.js based webservice that provides web widgets carrying ReliefWeb content
-in a variety of visualizations.
+[Grayscale](http://startbootstrap.com/template-overviews/grayscale/) is a multipurpose, one page HTML theme for [Bootstrap](http://getbootstrap.com/) created by [Start Bootstrap](http://startbootstrap.com/). This template features various content sections and a Google Maps section with a custom map marker.
 
-## Installation
+## Getting Started
 
-* Install node.
-* `git clone https://github.com/reliefweb/rw-crisis.git`
-* `npm install`
+To use this template, choose one of the following options to get started:
+* Download the latest release on Start Bootstrap
+* Fork this repository on GitHub
 
-## Configuration
+## Bugs and Issues
 
-There are several configuration values for this system, all injected via environment variables.
+Have a bug or an issue with this template? [Open a new issue](https://github.com/IronSummitMedia/startbootstrap-grayscale/issues) here on GitHub or leave a comment on the [template overview page at Start Bootstrap](http://startbootstrap.com/template-overviews/grayscale/).
 
-* **port:** APP_PORT
+## Creator
 
-## Start the Service
+Start Bootstrap was created by and is maintained by **David Miller**, Managing Parter at [Iron Summit Media Strategies](http://www.ironsummitmedia.com/).
 
-* `npm start`
+* https://twitter.com/davidmillerskt
+* https://github.com/davidtmiller
 
-## Exploring the Surface
+Start Bootstrap is based on the [Bootstrap](http://getbootstrap.com/) framework created by [Mark Otto](https://twitter.com/mdo) and [Jacob Thorton](https://twitter.com/fat).
 
-If you want to learn more first-hand about what the Embed Service does, start
-it up and point your browser or cURL to the root.
+## Copyright and License
+
+Copyright 2014 Iron Summit Media Strategies, LLC. Code released under the [Apache 2.0](https://github.com/IronSummitMedia/startbootstrap-grayscale/blob/gh-pages/LICENSE) license.
