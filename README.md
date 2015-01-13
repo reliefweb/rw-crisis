@@ -10,9 +10,19 @@ It is meant to be a throwaway until the crisis page design language can be estab
 
 ## Requirements
 
-- bower
-- compass
+- bower - Frontend dependencies
+- bundler - Ruby dependencies
+- compass - Compiles sass
+- npm/grunt - task runner
 
 ## Install
 
+    bundler install
+    npm install
     bower install
+
+## Prep
+
+To compile sass
+
+    grunt compass:dist
