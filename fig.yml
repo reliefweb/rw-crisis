@@ -1,0 +1,11 @@
+crisis:
+  image: unocha/nginx16
+  volumes:
+    - /code/rw-crisis/container/etc/nginx/conf.d/localhost.conf:/etc/nginx/conf.d/localhost.conf
+    - /code/rw-crisis:/var/www/html
+  environment:
+    DNSDOCK_NAME: crisis
+    DNSDOCK_IMAGE: crisis
+  hostname:
+    crisis.vm
+    
