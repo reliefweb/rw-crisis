@@ -11,9 +11,6 @@
 
   <title>{{page-title}}</title>
 
-  <!-- Bootstrap Core CSS -->
-  <link href="css/bootstrap.min.css" rel="stylesheet">
-
   <!-- Custom CSS -->
   <link href="css/grayscale.css" rel="stylesheet">
 
@@ -51,21 +48,11 @@
         <li class="hidden">
           <a href="#page-top"></a>
         </li>
-        <li>
-          <a class="page-scroll" href="#overview">Overview</a>
-        </li>
-        <li>
-          <a class="page-scroll" href="#timeline">Timelines</a>
-        </li>
-        <li>
-          <a class="page-scroll" href="#reports">Reports</a>
-        </li>
-        <li>
-          <a class="page-scroll" href="#financials">Financials</a>
-        </li>
-        <li>
-          <a class="page-scroll" href="#contact">Contact</a>
-        </li>
+        {{#each widgets}}
+          <li>
+            <a class="page-scroll" href="#{{key}}">{{title}}</a>
+          </li>
+        {{/each}}
       </ul>
     </div>
     <!-- /.navbar-collapse -->
@@ -94,84 +81,14 @@
   </div>
 </header>
 
-<!-- Overview Section -->
-<section id="overview" class="container content-section text-center">
-  <div class="row">
-    <div class="col-lg-8 col-lg-offset-2">
-      <h2>Overview</h2>
-      <p>The Emergency Response Fund (ERF) mobilizes and channels resources to humanitarian partners to respond to the current situation in Syria and initiate life-saving humanitarian activities both inside Syria and in neighbouring countries.</p>
-      <p>The ERF in Lebanon has played a crucial role in funding life-saving and urgent humanitarian needs, injecting money into prioritised but also underfunded sectors.</p>
-      <p>The first ERF project in Lebanon was signed in September 2012. Since then, the ERF has increased remarkably funding 32 new projects in 2013, in addition to 6 projects in 2012.</p>
-      <p>As of 02 January 2014, there were 807,940 registered Syrian refugees in Lebanon and 51,000 Palestinian refugees from Syria.</p>
-    </div>
-  </div>
-</section>
+{{#each widgets}}
+  <!-- {{title}} Widget -->
+  <section id="{{key}}" class="container content-section text-center">
+    {{{content}}}
+  </section>
+  <!-- end {{title}} Widget -->
 
-<!-- Timeline Section -->
-<section id="timeline" class="container content-section text-center">
-  <div class="row">
-    <div class="col-lg-8 col-lg-offset-2">
-      <h2>Timelines</h2>
-    </div>
-    <div class="col-lg-8 col-lg-offset-1">
-      <p>
-        <a href="http://reliefweb.int/map/iraq/iraq-cccm-camp-status-map-28-december-2014">
-          <img src="img/iraq_relief_map.png" />
-        </a>
-      </p>
-    </div>
-  </div>
-</section>
-
-<!-- Reports Section -->
-<section id="reports" class="content-section text-center">
-  <div class="reports-section">
-    <div class="container">
-      <div class="col-lg-8 col-lg-offset-2">
-        <h2>Reports</h2>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Financials Section -->
-<section id="financials" class="container content-section text-center">
-  <div class="row">
-    <div class="col-lg-8 col-lg-offset-2">
-      <h2>Financials</h2>
-    </div>
-    <div class="col-lg-8">
-      <p>
-        <a href="http://reliefweb.int/map/iraq/iraq-cccm-camp-status-map-28-december-2014">
-          <img src="img/financials.png" />
-        </a>
-      </p>
-    </div>
-  </div>
-</section>
-
-<!-- Contact Section -->
-<section id="contact" class="container content-section text-center">
-  <div class="row">
-    <div class="col-lg-8 col-lg-offset-2">
-      <h2>Contact</h2>
-      <p>Feel free to contact the UN with suggestions.</p>
-      <p><a href="#">feedback@reliefweb.int</a>
-      </p>
-      <ul class="list-inline banner-social-buttons">
-        <li>
-          <a href="https://twitter.com/reliefweb" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">Twitter</span></a>
-        </li>
-        <li>
-          <a href="https://github.com/reliefweb/rw-crisis" class="btn btn-default btn-lg"><i class="fa fa-github fa-fw"></i> <span class="network-name">Github</span></a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<!-- Map Section -->
-<div id="map"></div>
+{{/each}}
 
 <!-- Footer -->
 <footer>
@@ -183,14 +100,8 @@
 <!-- jQuery -->
 <script src="js/jquery.js"></script>
 
-<!-- Bootstrap Core JavaScript -->
-<script src="js/bootstrap.min.js"></script>
-
 <!-- Plugin JavaScript -->
 <script src="js/jquery.easing.min.js"></script>
-
-<!-- Google Maps API Key - Use your own API key to enable the map feature. More information on the Google Maps API can be found at https://developers.google.com/maps/ -->
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRngKslUGJTlibkQ3FkfTxj3Xss1UlZDA&sensor=false"></script>
 
 <!-- Custom Theme JavaScript -->
 <script src="js/grayscale.js"></script>

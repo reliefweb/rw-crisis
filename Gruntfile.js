@@ -19,11 +19,18 @@ module.exports = function (grunt) {
     'compile-handlebars': {
       config: {
         template: 'templates/index.handlebars',
-        templateData: 'templates/config.json',
+        templateData: 'config/config.json',
         output: 'index.html'
+      }
+    },
+    watch: {
+      config: {
+        files: ['templates/**/*.handlebars', 'config/config.json'],
+        tasks: ['compile-handlebars:config']
       }
     }
   });
 
-  grunt.registerTask('default', ['compass:dist', 'compile-handlebars:config']);
+  grunt.registerTask('build', ['compass:dist', 'compile-handlebars:config']);
+  grunt.registerTask('default', ['build', 'watch']);
 };

@@ -1,0 +1,19 @@
+{
+  "page-title": "Test Page Title",
+  "meta": [
+    {
+      "name": "description",
+      "content": "Test Meta Description"
+    }
+  ],
+  "widgets": [
+    {
+      "key": "example-widget",
+      "title": "Example Widget ",
+      "content": "I am an example widget"
+    }
+  ],
+  "api-keys": {
+    "googlemaps": "xxx-xxxxxx"
+  }
+}

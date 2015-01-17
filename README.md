@@ -26,3 +26,9 @@ It is meant to be a throwaway until the crisis page design language can be estab
 To compile sass
 
     grunt compass:dist
+    
+## Development
+
+To compile sass and watch for changes
+
+    grunt 
