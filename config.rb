@@ -10,11 +10,11 @@ require 'compass-import-once'
 
 # Set this to the root of your project when deployed:
 http_path = ""
-css_dir = "css"
-sass_dir = "scss"
-images_dir = "img"
-javascripts_dir = "js"
-fonts_dir = "fonts"
+css_dir = "src/css"
+sass_dir = "src/scss"
+images_dir = "src/img"
+javascripts_dir = "src/js"
+fonts_dir = "src/fonts"
 
 # Change to production on production environment
 environment = :development

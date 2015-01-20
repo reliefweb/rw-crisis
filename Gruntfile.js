@@ -18,19 +18,45 @@ module.exports = function (grunt) {
     },
     'compile-handlebars': {
       config: {
-        template: 'templates/index.handlebars',
+        template: 'src/templates/index.handlebars',
         templateData: 'config/config.json',
-        output: 'index.html'
+        output: 'src/index.html'
       }
     },
     watch: {
       config: {
-        files: ['templates/**/*.handlebars', 'config/config.json'],
+        files: ['src/templates/**/*.handlebars', 'config/config.json'],
         tasks: ['compile-handlebars:config']
       }
-    }
+    },
+    connect: {
+      serve: {
+        options: {
+          base: 'src',
+          port: 9001,
+          open: true,
+          keepalive: true
+        }
+      }
+    },
+    copy: {
+      base: {
+        files: [
+          {
+            expand: true,
+            src: 'bower_components/**',
+            dest: 'src'
+          },
+          {
+            src: 'config/config.json',
+            dest: 'src/config.json'
+          }
+        ]
+      }
+    },
   });
 
-  grunt.registerTask('build', ['compass:dist', 'compile-handlebars:config']);
+  grunt.registerTask('build', ['copy:base', 'compass:dist', 'compile-handlebars:config']);
   grunt.registerTask('default', ['build', 'watch']);
+  grunt.registerTask('serve', ['connect:serve']);
 };

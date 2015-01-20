@@ -15,20 +15,26 @@ It is meant to be a throwaway until the crisis page design language can be estab
 - compass - Compiles sass
 - npm/grunt - task runner
 
-## Install
+## Development Tasks
 
-    bundler install
+### Install
+
     npm install
-    bower install
 
-## Prep
+### Build
 
-To compile sass
+    grunt build
+
+### Compile SASS
 
     grunt compass:dist
     
-## Development
+### Development
 
 To compile sass and watch for changes
 
     grunt 
+
+### Serve Crisis Page
+
+    grunt serve
