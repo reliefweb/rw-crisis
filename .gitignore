@@ -8,3 +8,6 @@ node_modules
 .idea
 bower_components
 .sass-cache
+
+# Dist directory
+dist

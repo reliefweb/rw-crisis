@@ -12,7 +12,7 @@
   <title>UN Crisis Page - Syria / Iraq</title>
 
   <!-- Custom CSS -->
-  <link href="css/grayscale.css" rel="stylesheet">
+  <link href="css/styles.css" rel="stylesheet">
 
   <!-- Custom Fonts -->
   <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -51,6 +51,9 @@
           <li>
             <a class="page-scroll" href="#customWidget">I am a customWidget</a>
           </li>
+          <li>
+            <a class="page-scroll" href="#crisisOverview">Crisis Overview</a>
+          </li>
       </ul>
     </div>
     <!-- /.navbar-collapse -->
@@ -80,8 +83,12 @@
 </header>
 
   <!-- I am a customWidget Widget -->
-  <div id="customWidget" class="container content-section text-center"></div>
+  <section id="customWidget" class="container content-section text-center"></section>
   <!-- end I am a customWidget Widget -->
+
+  <!-- Crisis Overview Widget -->
+  <section id="crisisOverview" class="container content-section text-center"></section>
+  <!-- end Crisis Overview Widget -->
 
 
 <!-- Footer -->
@@ -100,13 +107,6 @@
 <!-- Custom Theme JavaScript -->
 <script src="js/grayscale.js"></script>
 
-    <!-- TODO: Is there a way to load this externally -->
-    <script id="image-template" type="text/x-handlebars-template">
-      <h1></h1>
-      <img src="" alt="" />
-      <p class="credit"></p>
-    </script>
-
 <script type="text/javascript" src="bower_components/d3/d3.js"></script>
 <script type="text/javascript" src="bower_components/moment/moment.js"></script>
 <script type="text/javascript" src="bower_components/handlebars/handlebars.js"></script>
@@ -114,6 +114,8 @@
 <script type="text/javascript" src="bower_components/superagent/superagent.js"></script>
 <script type="text/javascript" src="bower_components/reliefweb.js/lib/reliefweb.js"></script>
 <script type="text/javascript" src="js/reliefweb-widgets.js"></script>
+<script type="text/javascript" src="js/image.template.js"></script>
+<script type="text/javascript" src="js/crisis-overview.template.js"></script>
 <script type="text/javascript" src="js/browserfy.config.js"></script>
 
 

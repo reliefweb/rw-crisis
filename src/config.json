@@ -16,29 +16,67 @@
   ],
   "widgets": [
     {
-      "key": "overview",
-      "title": "Overview",
-      "content": "<div class=\"row\">\n    <div class=\"col-lg-8 col-lg-offset-2\">\n      <h2>Overview</h2>\n      <p>The Emergency Response Fund (ERF) mobilizes and channels resources to humanitarian partners to respond to the current situation in Syria and initiate life-saving humanitarian activities both inside Syria and in neighbouring countries.</p>\n      <p>The ERF in Lebanon has played a crucial role in funding life-saving and urgent humanitarian needs, injecting money into prioritised but also underfunded sectors.</p>\n      <p>The first ERF project in Lebanon was signed in September 2012. Since then, the ERF has increased remarkably funding 32 new projects in 2013, in addition to 6 projects in 2012.</p>\n      <p>As of 02 January 2014, there were 807,940 registered Syrian refugees in Lebanon and 51,000 Palestinian refugees from Syria.</p>\n    </div>\n  </div>"
+      "key": "customWidget",
+      "title": "I am a customWidget",
+      "widgetType": "image",
+      "widgetConfig": {
+        "title": "Another Image Widget",
+        "template": "image.hbs",
+        "src": "http://lorempixel.com/400/200/",
+        "credit": "Photo by LoremPixel"
+      }
     },
     {
-      "key": "timeline",
-      "title": "timeline",
-      "content": " <div class=\"row\">\n    <div class=\"col-lg-8 col-lg-offset-2\">\n      <h2>Timelines</h2>\n    </div>\n    <div class=\"col-lg-8 col-lg-offset-1\">\n      <p>\n        <a href=\"http://reliefweb.int/map/iraq/iraq-cccm-camp-status-map-28-december-2014\">\n          <img src=\"img/iraq_relief_map.png\" />\n        </a>\n      </p>\n    </div>\n  </div>"
-    },
-    {
-      "key": "reports",
-      "title": "Reports",
-      "content": "  <div class=\"reports-section\">\n    <div class=\"container\">\n      <div class=\"col-lg-8 col-lg-offset-2\">\n        <h2>Reports</h2>\n      </div>\n    </div>\n  </div>"
-    },
-    {
-      "key": "financials",
-      "title": "Financials",
-      "content": "<div class=\"row\">\n    <div class=\"col-lg-8 col-lg-offset-2\">\n      <h2>Financials</h2>\n    </div>\n    <div class=\"col-lg-8\">\n      <p>\n        <a href=\"http://reliefweb.int/map/iraq/iraq-cccm-camp-status-map-28-december-2014\">\n          <img src=\"img/financials.png\" />\n        </a>\n      </p>\n    </div>\n  </div>"
-    },
-    {
-      "key": "contact",
-      "title": "Contact",
-      "content": "<div class=\"row\">\n    <div class=\"col-lg-8 col-lg-offset-2\">\n      <h2>Contact</h2>\n      <p>Feel free to contact the UN with suggestions.</p>\n      <p><a href=\"#\">feedback@reliefweb.int</a>\n      </p>\n      <ul class=\"list-inline banner-social-buttons\">\n        <li>\n          <a href=\"https://twitter.com/reliefweb\" class=\"btn btn-default btn-lg\"><i class=\"fa fa-twitter fa-fw\"></i> <span class=\"network-name\">Twitter</span></a>\n        </li>\n        <li>\n          <a href=\"https://github.com/reliefweb/rw-crisis\" class=\"btn btn-default btn-lg\"><i class=\"fa fa-github fa-fw\"></i> <span class=\"network-name\">Github</span></a>\n        </li>\n      </ul>\n    </div>\n  </div>"
+      "key": "crisisOverview",
+      "title": "Crisis Overview",
+      "widgetType": "crisis-overview",
+      "widgetConfig": {
+        "template": "crisis-overview.hbs",
+        "title": "Crisis Overview",
+        "dataSource": "Data Source <cite><a href=\"\">UNHCR</a></cite>",
+        "map": {
+          "src": "img/overview-map.jpg",
+          "alt": "Syria/Iraq"
+        },
+        "content": {
+          "syria": {
+            "title": "Syria",
+            "content": "<p>The <b>Syrian Civil War</b>, also known as the <b>Syrian Revolution</b>, is an ongoing armed conflict taking place in Syria. The unrest began in the early spring of 2011 within the context of <a href=\"/wiki/Arab_Spring\" title=\"Arab Spring\">Arab Spring</a> protests, with nationwide protests against President Bashar al-Assad's government, whose forces responded with violent crackdowns. The conflict gradually morphed from popular protests to an armed rebellion after months of military sieges.</p><p>The armed opposition consists of various groups that were formed during the course of the conflict, primarily the Free Syrian Army, which was the first to take up arms in 2011, and the <a href=\"/wiki/Islamic_Front_(Syria)\" title=\"Islamic Front (Syria)\">Islamic Front</a> formed in 2013. In 2013, Hezbollah entered the war in support of the Syrian army. In the east, the <a href=\"/wiki/Islamic_State_of_Iraq_and_the_Levant\" title=\"Islamic State of Iraq and the Levant\">Islamic State of Iraq and the Levant</a> (ISIL), a jihadist militant group originating from Iraq, made very rapid military gains in both Syria and Iraq, eventually conflicting with the other rebels. In July 2014, ISIL controlled a third of Syria's territory and most of its oil and gas production, thus establishing itself as the major opposition force.</p>",
+            "indicator": {
+              "data": [
+                {
+                  "figure": "4",
+                  "quantifier": "million",
+                  "description": "Refugees"
+                },
+                {
+                  "figure": "7.5",
+                  "quantifier": "million",
+                  "description": "Internally Displaced"
+                }
+              ]
+            }
+          },
+          "iraq": {
+            "title": "Iraq",
+            "content": "<p>The Islamic State insurgency has compounded an already fragile political situation, leading to a level 3 humanitarian crisis and international military intervention. In 2014, four massive waves of internal displacement have taken place: Anbar in January, Mosul in June, Sinjar in August and Hit in October. Priority humanitarian needs are food, water, shelter, and fuel. Protection and the risk of disease outbreak are also concerns. Iraq now hosts one of the largest internally displaced populations in the world. Host communities are increasingly stretched.</p>",
+            "indicator": {
+              "data": [
+                {
+                  "figure": "4",
+                  "quantifier": "million",
+                  "description": "Refugees"
+                },
+                {
+                  "figure": "7.5",
+                  "quantifier": "million",
+                  "description": "Internally Displaced"
+                }
+              ]
+            }
+          }
+        }
+      }
     }
   ]
 }

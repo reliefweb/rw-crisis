@@ -17,7 +17,7 @@ module.exports = function (grunt) {
       }
     },
     'compile-handlebars': {
-      config: {
+      src: {
         template: 'src/templates/index.handlebars',
         templateData: 'config/config.json',
         output: 'src/index.html'
@@ -30,11 +30,11 @@ module.exports = function (grunt) {
           './src/templates/**/*.handlebars',
           './config/config.json'
         ],
-        tasks: ['compile-handlebars:config']
+        tasks: ['compile-handlebars:src']
       },
       browserify: {
         files: [
-          './src/js/config.js',
+          './config/config.js',
           './config/config.json'
         ],
         tasks: ['browserify:config']
@@ -47,38 +47,79 @@ module.exports = function (grunt) {
           }
       },
       config: {
-        src: './src/js/config.js',
+        src: './config/config.js',
         dest: './src/js/browserfy.config.js'
       }
     },
     connect: {
-      serve: {
+      default: {
         options: {
           base: 'src',
+          port: 9001,
+          open: true
+        }
+      },
+      dist: {
+        options: {
+          base: 'dist',
           port: 9001,
           open: true,
           keepalive: true
         }
       }
     },
+    clean: {
+      dist: [ 'dist' ]
+    },
     copy: {
       base: {
         files: [
-          {
-            expand: true,
-            src: 'bower_components/**',
-            dest: 'src'
-          },
           {
             src: 'config/config.json',
             dest: 'src/config.json'
           }
         ]
+      },
+      dist: {
+        files: [
+          {
+            expand: true,
+            src: 'bower_components/**',
+            dest: 'dist',
+            cwd: 'src'
+          },
+          {
+            src: 'config/config.json',
+            dest: 'dist/config.json'
+          },
+          {
+            expand: true,
+            src: [ 'css/**', 'js/**', 'img/**', 'fonts/**', 'font-awesome/**', 'less/**', 'index.html' ],
+            dest: 'dist',
+            cwd: 'src'
+          }
+        ]
       }
-    },
+    }
   });
 
-  grunt.registerTask('build', ['copy:base', 'compass:dist', 'compile-handlebars:config']);
-  grunt.registerTask('default', ['build', 'connect:serve', 'watch:config']);
-  grunt.registerTask('serve', ['connect:serve']);
+  grunt.registerTask('build', [
+    'copy:base',
+    'compass:dist',
+    'compile-handlebars:src',
+    'browserify'
+  ]);
+
+  grunt.registerTask('default', [
+    'build',
+    'connect:default',
+    'watch'
+  ]);
+
+  grunt.registerTask('serve', [
+    'build',
+    'clean',
+    'copy:dist',
+    'connect:dist'
+  ]);
 };
