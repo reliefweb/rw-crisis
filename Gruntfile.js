@@ -35,7 +35,16 @@ module.exports = function (grunt) {
           base: 'src',
           port: 9001,
           open: true,
-          keepalive: true
+          keepalive: true,
+          middleware: function (connect, options, middlewares) {
+            middlewares.unshift(function(req, res, next) {
+              res.setHeader('Access-Control-Allow-Origin', '*');
+              res.setHeader('Access-Control-Allow-Methods', '*');
+              next();
+            });
+
+            return middlewares;
+          }
         }
       }
     },
