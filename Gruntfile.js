@@ -25,8 +25,30 @@ module.exports = function (grunt) {
     },
     watch: {
       config: {
-        files: ['src/templates/**/*.handlebars', 'config/config.json'],
+        files: [
+          './src/templates/*.handlebars',
+          './src/templates/**/*.handlebars',
+          './config/config.json'
+        ],
         tasks: ['compile-handlebars:config']
+      },
+      browserify: {
+        files: [
+          './src/js/config.js',
+          './config/config.json'
+        ],
+        tasks: ['browserify:config']
+      }
+    },
+    browserify: {
+      options: {
+          browserifyOptions: {
+            standalone: "ReliefwebWidgets"
+          }
+      },
+      config: {
+        src: './src/js/config.js',
+        dest: './src/js/browserfy.config.js'
       }
     },
     connect: {
@@ -57,6 +79,6 @@ module.exports = function (grunt) {
   });
 
   grunt.registerTask('build', ['copy:base', 'compass:dist', 'compile-handlebars:config']);
-  grunt.registerTask('default', ['build', 'watch']);
+  grunt.registerTask('default', ['build', 'connect:serve', 'watch:config']);
   grunt.registerTask('serve', ['connect:serve']);
 };
