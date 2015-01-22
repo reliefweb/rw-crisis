@@ -19,8 +19,8 @@ module.exports={
     {
       "key": "customWidget",
       "title": "I am a customWidget",
-      "widgetType": "image",
-      "widgetConfig": {
+      "type": "image",
+      "config": {
         "title": "Another Image Widget",
         "template": "image.hbs",
         "src": "http://lorempixel.com/400/200/",
@@ -30,8 +30,8 @@ module.exports={
     {
       "key": "crisisOverview",
       "title": "Crisis Overview",
-      "widgetType": "crisis-overview",
-      "widgetConfig": {
+      "type": "crisis-overview",
+      "config": {
         "template": "crisis-overview.hbs",
         "title": "Crisis Overview",
         "dataSource": "Data Source <cite><a href=\"\">UNHCR</a></cite>",
@@ -83,16 +83,16 @@ module.exports={
 }
 
 },{}],2:[function(require,module,exports){
-  var config = require("./config.json");
-  var widgets = config.widgets;
+var config = require("./config.json");
+var widgets = config.widgets;
 
-  widgets.forEach(function(widget){
-    var widgetDiv = "#" + widget.key;
-    var widgetConfig = widget.widgetConfig;
-    widgetConfig.template = Handlebars.templates[widgetConfig.template];
-    imageWidget = ReliefwebWidgets.widget("image", widgetConfig);
-    imageWidget.render(widgetDiv);
-  });
+widgets.forEach(function(widget){
+  var widgetDiv = "#" + widget.key;
+  var widgetConfig = widget.config;
+  widgetConfig.template = Handlebars.templates[widgetConfig.template];
+  var newWidget = ReliefwebWidgets.widget(widget.type, widgetConfig);
+  newWidget.render(widgetDiv);
+});
 
 },{"./config.json":1}]},{},[2])(2)
 });

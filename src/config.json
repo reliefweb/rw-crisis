@@ -18,8 +18,8 @@
     {
       "key": "customWidget",
       "title": "I am a customWidget",
-      "widgetType": "image",
-      "widgetConfig": {
+      "type": "image",
+      "config": {
         "title": "Another Image Widget",
         "template": "image.hbs",
         "src": "http://lorempixel.com/400/200/",
@@ -29,8 +29,8 @@
     {
       "key": "crisisOverview",
       "title": "Crisis Overview",
-      "widgetType": "crisis-overview",
-      "widgetConfig": {
+      "type": "crisis-overview",
+      "config": {
         "template": "crisis-overview.hbs",
         "title": "Crisis Overview",
         "dataSource": "Data Source <cite><a href=\"\">UNHCR</a></cite>",
