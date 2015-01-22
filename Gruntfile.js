@@ -38,6 +38,18 @@ module.exports = function (grunt) {
           './config/config.json'
         ],
         tasks: ['browserify:config']
+      },
+      livereload: {
+        files: [
+          'src/index.html',
+          'src/config.json',
+          'src/**/*.css',
+          'src/**/*.js',
+          'src/img/{,*//*}*.{png,jpg,jpeg,gif,webp,svg}'
+        ],
+        options: {
+          livereload: true
+        }
       }
     },
     browserify: {
@@ -56,7 +68,8 @@ module.exports = function (grunt) {
         options: {
           base: 'src',
           port: 9001,
-          open: true
+          open: true,
+          livereload: true
         }
       },
       dist: {
@@ -83,23 +96,26 @@ module.exports = function (grunt) {
       dist: {
         files: [
           {
-            expand: true,
-            src: 'bower_components/**',
-            dest: 'dist',
-            cwd: 'src'
-          },
-          {
             src: 'config/config.json',
             dest: 'dist/config.json'
           },
           {
             expand: true,
-            src: [ 'css/**', 'js/**', 'img/**', 'fonts/**', 'font-awesome/**', 'less/**', 'index.html' ],
+            src: ['bower_components/**', 'img/**', 'fonts/**', 'font-awesome/**', 'less/**', 'index.html' ],
             dest: 'dist',
             cwd: 'src'
           }
         ]
       }
+    },
+    useminPrepare: {
+      html: 'src/index.html',
+      options: {
+        dest: 'dist'
+      }
+    },
+    usemin: {
+      html: ['dist/*.html']
     }
   });
 
@@ -117,9 +133,14 @@ module.exports = function (grunt) {
   ]);
 
   grunt.registerTask('serve', [
-    'build',
     'clean',
+    'build',
+    'useminPrepare',
+    'concat',
+    'uglify',
+    'cssmin',
     'copy:dist',
+    'usemin',
     'connect:dist'
   ]);
 };
