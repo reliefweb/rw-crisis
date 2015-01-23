@@ -24,13 +24,9 @@ module.exports = function (grunt) {
       }
     },
     watch: {
-      config: {
-        files: [
-          './src/templates/*.handlebars',
-          './src/templates/**/*.handlebars',
-          './config/config.json'
-        ],
-        tasks: ['compile-handlebars:src']
+      bower: {
+        files: ['bower.json','./src/index.html'],
+        tasks: ['wiredep']
       },
       browserify: {
         files: [
@@ -39,8 +35,21 @@ module.exports = function (grunt) {
         ],
         tasks: ['browserify:config']
       },
+      config: {
+        files: [
+          './src/templates/*.handlebars',
+          './src/templates/**/*.handlebars',
+          './config/config.json'
+        ],
+        tasks: ['compile-handlebars:src']
+      },
+      compass: {
+        files: ['src/**/*.{scss,sass}'],
+        tasks: ['compass']
+      },
       livereload: {
         files: [
+          'src/templates/index.handlebars',
           'src/index.html',
           'src/config.json',
           'src/**/*.css',
@@ -101,7 +110,7 @@ module.exports = function (grunt) {
           },
           {
             expand: true,
-            src: ['bower_components/**', 'img/**', 'fonts/**', 'font-awesome/**', 'less/**', 'index.html' ],
+            src: ['img/**', 'fonts/**', 'index.html' ],
             dest: 'dist',
             cwd: 'src'
           }
@@ -117,13 +126,22 @@ module.exports = function (grunt) {
     usemin: {
       html: ['dist/*.html']
     }
+    // TODO: Not all bower components are being installed even though the main
+    // is set inside the package.
+    /*wiredep: {
+      task: {
+        src: ['./src/index.html']
+      }
+    }*/
   });
 
   grunt.registerTask('build', [
     'copy:base',
     'compass:dist',
     'compile-handlebars:src',
-    'browserify'
+    //'wiredep',
+    'browserify',
+    'compass'
   ]);
 
   grunt.registerTask('default', [
@@ -132,7 +150,7 @@ module.exports = function (grunt) {
     'watch'
   ]);
 
-  grunt.registerTask('serve', [
+  grunt.registerTask('package', [
     'clean',
     'build',
     'useminPrepare',
