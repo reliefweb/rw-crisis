@@ -19,7 +19,7 @@ module.exports = function (grunt) {
     'compile-handlebars': {
       src: {
         template: 'src/templates/index.handlebars',
-        templateData: 'config/config.json',
+        templateData: 'src/config/config.json',
         output: 'src/index.html'
       }
     },
@@ -30,8 +30,8 @@ module.exports = function (grunt) {
       },
       browserify: {
         files: [
-          './config/config.js',
-          './config/config.json'
+          './src/config/config.js',
+          './src/config/config.json'
         ],
         tasks: ['browserify:config']
       },
@@ -39,7 +39,7 @@ module.exports = function (grunt) {
         files: [
           './src/templates/*.handlebars',
           './src/templates/**/*.handlebars',
-          './config/config.json'
+          './src/config/config.json'
         ],
         tasks: ['compile-handlebars:src']
       },
@@ -51,7 +51,7 @@ module.exports = function (grunt) {
         files: [
           'src/templates/index.handlebars',
           'src/index.html',
-          'src/config.json',
+          'src/config/config.json',
           'src/**/*.css',
           'src/**/*.js',
           'src/img/{,*//*}*.{png,jpg,jpeg,gif,webp,svg}'
@@ -68,7 +68,7 @@ module.exports = function (grunt) {
           }
       },
       config: {
-        src: './config/config.js',
+        src: './src/config/config.js',
         dest: './src/js/browserfy.config.js'
       }
     },
