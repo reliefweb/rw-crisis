@@ -37,4 +37,4 @@ To compile sass and watch for changes
 
 ### Serve Crisis Page
 
-    grunt serve
+    grunt package

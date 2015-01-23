@@ -94,20 +94,8 @@ module.exports = function (grunt) {
       dist: [ 'dist' ]
     },
     copy: {
-      base: {
-        files: [
-          {
-            src: 'config/config.json',
-            dest: 'src/config.json'
-          }
-        ]
-      },
       dist: {
         files: [
-          {
-            src: 'config/config.json',
-            dest: 'dist/config.json'
-          },
           {
             expand: true,
             src: ['img/**', 'fonts/**', 'index.html' ],
@@ -136,7 +124,6 @@ module.exports = function (grunt) {
   });
 
   grunt.registerTask('build', [
-    'copy:base',
     'compass:dist',
     'compile-handlebars:src',
     //'wiredep',
