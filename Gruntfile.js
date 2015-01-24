@@ -123,7 +123,7 @@ module.exports = function (grunt) {
     }*/
   });
 
-  grunt.registerTask('build', [
+  grunt.registerTask('default', [
     'compass:dist',
     'compile-handlebars:src',
     //'wiredep',
@@ -131,21 +131,25 @@ module.exports = function (grunt) {
     'compass'
   ]);
 
-  grunt.registerTask('default', [
-    'build',
+  grunt.registerTask('watch', [
+    'default',
     'connect:default',
     'watch'
   ]);
 
-  grunt.registerTask('package', [
+  grunt.registerTask('release', [
     'clean',
-    'build',
+    'default',
     'useminPrepare',
     'concat',
     'uglify',
     'cssmin',
     'copy:dist',
-    'usemin',
+    'usemin'
+   ]);
+
+  grunt.registerTask('serve', [
+    'release',
     'connect:dist'
   ]);
 };

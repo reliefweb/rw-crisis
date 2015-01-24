@@ -23,17 +23,15 @@ It is meant to be a throwaway until the crisis page design language can be estab
 
 ### Build
 
-    grunt build
+    grunt
 
-### Compile SASS
+### Build & Watch for Changes
 
-    grunt compass:dist
-    
-### Development
+    grunt watch
 
-To compile sass and watch for changes
+### Generate a release package in `dist/`
 
-    grunt 
+    grunt release
 
 ### Serve Crisis Page
 
