@@ -271,19 +271,19 @@
 .timeline-widget-item--category {
   @include inline-block;
   position: relative;
-  color: $color--red;
+  color: $color--yellow;
   font-size: ms(0);
   text-transform: uppercase;
 
   @include breakpoint($bp--timeline-2col) {
     margin-right: 20px;
     padding: em(6px) em(10px);
-    background: $color--red;
+    background: $color--yellow;
     color: $color--white;
   }
 
   .arrow {
-    @include arrow($color--red, right, em(12px), em(37px));
+    @include arrow($color--yellow, right, em(12px), em(37px));
     display: none;
     position: absolute;
     top: 0;
@@ -354,7 +354,7 @@
       text-shadow: none;
 
       &.timeline-widget-item--image--view-more {
-        background: $color--red;
+        background: $color--yellow;
       }
 
       &.timeline-widget-item--image--country {

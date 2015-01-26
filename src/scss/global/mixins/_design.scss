@@ -23,3 +23,9 @@
     /* font-family: #{$font-val}; */
   }
 }
+
+@mixin try-ms() {
+  @each $ms-var, $ms-val in $ms-map {
+    /* font-size: #{$ms-val}; */
+  }
+}

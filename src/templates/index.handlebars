@@ -24,72 +24,37 @@
 
 </head>
 
-<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+<body id="" data-spy=""data-target="">
 
-<!-- Navigation -->
-<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
-        <i class="fa fa-bars"></i>
-      </button>
-      <a class="navbar-brand page-scroll" href="#page-top">
-        <i class="fa fa-play-circle"></i>  <span class="light">Relief Web</span> Syria / Iraq
-      </a>
-    </div>
-
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
-      <ul class="nav navbar-nav">
-        <li class="hidden">
-          <a href="#page-top"></a>
-        </li>
-        {{#each widgets}}
-          <li>
-            <a class="page-scroll" href="#{{key}}">{{title}}</a>
-          </li>
-        {{/each}}
-      </ul>
-    </div>
-    <!-- /.navbar-collapse -->
-  </div>
-  <!-- /.container -->
-</nav>
-
-<!-- Intro Header -->
-<header class="intro">
-  <div class="intro-body">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-          <h1 class="brand-heading">The Syria/Iraq Crisis</h1>
-          <p class="intro-text">
-            Scroll below to review.
-            <br>
-            Data curated from the <a href="http://reliefweb.int/updates?advanced-search=(C226.C122)#content">ReliefWeb API</a>.
-          </p>
-          <a href="#timeline" class="btn btn-circle page-scroll">
-            <i class="fa fa-angle-double-down animated"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
+<header class="crisis-page--header">
+  <h2 class="rw--name-logo">ReliefWeb</h2>
+  <h1 class="crisis-page--title">Syria / Iraq Crisis Page</h1>
+  <label class="crisis-page--navigation--trigger-label" for="page-menu">
+    <svg id="menu-button" width="40px" height="40px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+      <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <path d="M0,0 L12,0 L12,12 L0,12 L0,0 Z M0,14 L12,14 L12,26 L0,26 L0,14 Z M0,28 L12,28 L12,40 L0,40 L0,28 Z M14,0 L26,0 L26,12 L14,12 L14,0 Z M14,14 L26,14 L26,26 L14,26 L14,14 Z M14,28 L26,28 L26,40 L14,40 L14,28 Z M28,0 L40,0 L40,12 L28,12 L28,0 Z M28,14 L40,14 L40,26 L28,26 L28,14 Z M28,28 L40,28 L40,40 L28,40 L28,28 Z" id="brady-button" class="brady-button" fill="#665695" sketch:type="MSShapeGroup"></path>
+      </g>
+    </svg>
+    <span class="text">Menu</span>
+  </label>
+  <input type="checkbox" id="page-menu" name="page-menu" class="crisis-page--navigation--trigger"/>
+  <nav class="crisis-page--navigation">
+    <ul class="crisis-page--widget-nav">
+      {{#each widgets}}
+        <li><a class="crisis-page--widget-nav--item page-scroll" href="#{{key}}">{{title}}</a></li>
+      {{/each}}
+      <li class="crisis-page--external-nav--item"><a href="http://reliefweb.int">ReliefWeb.int</a></li>
+    </ul>
+  </nav>
 </header>
 
 {{#each widgets}}
   <!-- {{title}} Widget -->
   <section id="{{key}}" class="container content-section text-center"></section>
+  <div class="clear-both"></div>
   <!-- end {{title}} Widget -->
 
 {{/each}}
-
-<!-- Footer -->
-<footer>
-  <div class="container text-center">
-    <p>Copyright &copy; Relief Web 2015</p>
-  </div>
-</footer>
 
 <!-- build:js js/app.js -->
 <script type="text/javascript" src="bower_components/jquery/dist/jquery.js"></script>
@@ -103,9 +68,14 @@
 <script type="text/javascript" src="js/reliefweb-widgets.js"></script>
 <script type="text/javascript" src="js/image.template.js"></script>
 <script type="text/javascript" src="js/crisis-overview.template.js"></script>
+<script type="text/javascript" src="js/timeline.template.js"></script>
 <script type="text/javascript" src="js/browserfy.config.js"></script>
+<script type="text/javascript" src="js/scrolling-nav.js"></script>
 <!-- endbuild -->
 
+<!-- Typekit -->
+<script src="//use.typekit.net/pqs1mrp.js"></script>
+<script>try{Typekit.load();}catch(e){}</script>
 </body>
 
 </html>

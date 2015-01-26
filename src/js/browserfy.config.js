@@ -83,6 +83,9 @@ module.exports={
 }
 
 },{}],2:[function(require,module,exports){
+// This file is used to process the config option for each widget. A grunt task
+// called browserfy is then used to "browserfy" this file and then copy it to
+// the src directory.
 var config = require("./config.json");
 var widgets = config.widgets;
 
@@ -93,6 +96,5 @@ widgets.forEach(function(widget){
   var newWidget = ReliefwebWidgets.widget(widget.type, widgetConfig);
   newWidget.render(widgetDiv);
 });
-
 },{"./config.json":1}]},{},[2])(2)
 });
