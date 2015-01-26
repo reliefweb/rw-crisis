@@ -28,5 +28,7 @@
     "mocha": "~2.1.0",
     "jquery-easing": "*"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "oembed-client-cors": "fillerwriter/oembed-client"
+  }
 }

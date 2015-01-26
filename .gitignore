@@ -10,10 +10,16 @@ bower_components
 .sass-cache
 .tmp
 
-# Dist directory
-dist
-
 # Generated fileds in src directory.
 index.html
 src/config.json
 src/css
+
+# Distribtion directory
+dist
+
+# Bundler
+.bundle
+gems
+bin
+

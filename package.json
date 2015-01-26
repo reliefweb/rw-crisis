@@ -24,7 +24,7 @@
     "wiredep": "^2.2.2"
   },
   "scripts": {
-    "postinstall": "bundle install; bower install",
-    "start": "grunt"
+    "postinstall": "bundle install --binstubs=bin --path=gems; bower install",
+    "start": "grunt serve"
   }
 }
