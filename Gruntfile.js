@@ -2,7 +2,7 @@
 
 module.exports = function (grunt) {
   // Load grunt tasks automatically.
-  require('load-grunt-tasks')(grunt, {pattern: ['grunt-*','grunt-contrib-*']});
+  require('load-grunt-tasks')(grunt, {pattern: ['grunt-*']});
 
   // Time how long tasks take. Can help when optimizing build times
   require('time-grunt')(grunt);
@@ -11,7 +11,7 @@ module.exports = function (grunt) {
     compass: {
       dist: {
         options: {
-          config: "config.rb",
+          config: "compass.rb",
           bundleExec: true
         }
       }
@@ -19,7 +19,7 @@ module.exports = function (grunt) {
     'compile-handlebars': {
       src: {
         template: 'src/templates/index.handlebars',
-        templateData: 'src/config/config.json',
+        templateData: 'config/config.json',
         output: 'src/index.html'
       }
     },
@@ -30,8 +30,8 @@ module.exports = function (grunt) {
       },
       browserify: {
         files: [
-          './src/config/config.js',
-          './src/config/config.json'
+          './config/config.js',
+          './config/config.json'
         ],
         tasks: ['browserify:config']
       },
@@ -39,7 +39,7 @@ module.exports = function (grunt) {
         files: [
           './src/templates/*.handlebars',
           './src/templates/**/*.handlebars',
-          './src/config/config.json'
+          './config/config.json'
         ],
         tasks: ['compile-handlebars:src']
       },
@@ -68,7 +68,7 @@ module.exports = function (grunt) {
           }
       },
       config: {
-        src: './src/config/config.js',
+        src: './config/config.js',
         dest: './src/js/browserfy.config.js'
       }
     },
@@ -124,11 +124,10 @@ module.exports = function (grunt) {
   });
 
   grunt.registerTask('default', [
-    'compass:dist',
+    'compass',
     'compile-handlebars:src',
     //'wiredep',
     'browserify',
-    'compass'
   ]);
 
   grunt.registerTask('watch', [
