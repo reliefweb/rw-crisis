@@ -1,0 +1,19 @@
+.accordion-set--content {
+  @include single-transition(max-height, $default-transition-duration, $default-transition-function);
+  max-height: 0;
+  overflow: hidden;
+}
+.accordion-set--check {
+  display: none;
+  &:checked {
+    + .accordion-set--label {
+      + .accordion-set--content {
+        /* @todo: this isn't working in Safari */
+        max-height: 100em;
+      }
+    }
+  }
+}
+.accordion-set--label {
+  display: block;
+}

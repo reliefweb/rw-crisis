@@ -1,0 +1,116 @@
+.crisis-page--header {
+  position: relative;
+  min-height: 68px;
+  margin-bottom: $base-line-em;
+  padding: 0 0.5rem;
+  border-bottom: 1px solid $color--gray--light--mid;
+  background-color: $color--gray--light;
+  color: $color--gray;
+  font-family: $font--futura;
+}
+
+.rw--name-logo {
+  @include fontsize-rem(ms(0));
+  display: inline-block;
+  line-height: unitless-convert(68px);
+  margin: 0;
+}
+.crisis-page--title {
+  @include fontsize-rem(ms(0));
+  display: inline-block;
+  margin: 0;
+  line-height: unitless-convert(68px);
+}
+.crisis-page--navigation--trigger-label {
+  display: block;
+  position: relative;
+  margin-top: -10px;
+  float: right;
+  color: $color--purple;
+  line-height: unitless-convert(68px);
+  text-transform: uppercase;
+  .text {
+    display: block;
+    position: relative;
+    margin-top: -9px;
+    line-height: 1;
+  }
+  svg {
+    position: relative;
+    left: 2px;
+    .brady-button {
+      fill: $color--purple;
+    }
+  }
+}
+
+
+$bp--wide-nav: 600px;
+.crisis-page--navigation--trigger {
+  display: none;
+  &:checked {
+    + .crisis-page--navigation {
+      li {
+        a {
+          height: 42px;
+        }
+        &.crisis-page--widget-nav--item {
+          ~ {
+            .crisis-page--external-nav--item {
+              a {
+                height: 42px + $base-line-px;
+                padding-top: $base-line-em;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.crisis-page--navigation {
+  width: 100vw;
+  line-height: unitless-convert(44px);
+  @include breakpoint($bp--wide-nav) {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    border-bottom: 1px solid $color--gray--light--mid;
+    border-left: 1px solid $color--gray--light--mid;
+    z-index: 100;
+    @include layout($grid--golden-left) {
+      @include grid-span(1, 2);
+    }
+  }
+  a {
+    @include unset-background-links();
+    @include transition-property(height, opacity, padding-top);
+    @include transition-duration($default-transition-duration);
+    @include transition-timing-function($default-transition-function);
+    display: block;
+    width: 100%;
+    height: 0;
+    margin: 0 -0.5rem;
+    padding: 0 0.5rem;
+    text-align: center;
+    text-transform: uppercase;
+    overflow: hidden;
+    @include breakpoint($bp--wide-nav) {
+      margin: 0;
+    }
+  }
+  li {
+    @for $i from 1 through 8 {
+      &:nth-of-type(#{$i}) {
+        a {
+          @include transition-delay(($i - 1) * 0.1s);
+          $color--bg--nav: mix($color--gray--light--mid, $color--white, $i * 5%);
+          background-color: $color--bg--nav;
+          &:hover {
+            background-color: $color--white;
+          }
+        }
+      }
+    }
+  }
+}
