@@ -24,10 +24,10 @@ module.exports = function (grunt) {
       }
     },
     watch: {
-      bower: {
+      /*bower: {
         files: ['bower.json','./src/index.html'],
         tasks: ['wiredep']
-      },
+      },*/
       browserify: {
         files: [
           './config/config.js',
