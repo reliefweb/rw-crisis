@@ -1,300 +1,260 @@
 .widget-river {
-	background: url('../../images/diagonal-pinstripes.png') repeat white;
-	
-	header {
-		background-color: #717f95;
-		padding: em(10px);
-		
-		@media screen and (min-width: 640px) {
-			padding: em(20px);
-		}
-		
-		h3 {
-			@extend %h6;
-			color: white;
-			text-transform: uppercase;
-			font-size: em(16px);
-			display: inline-block;
-			margin-right: em(20px);
-			vertical-align: top;
-			
-			@media screen and (min-width: 640px) {
-				font-size: em(18px);
-				
-			}
-		}
-		
-		select {
-			
-		}
-		
-		p.label {
-			margin-bottom: 0;
-		}
-		
-		.selectricWrapper {
-			display: inline-block;
-			background-color: white;
-			border: 1px solid #c4ced5;
-			
-				@media screen and (min-width: 768px) {
-				
-			}
-			
-			.selectric {
-				background-color: white;
-			}
-			
-			.selectricItems li {
-				font-family: $font--futura;
-			}
-			.label {
-				font-family: $font--futura;
-				color: #000;
-			}
-			
-			.button {
-				color: #717f95;
-			}
-		}
-	}
+  background: image-url('diagonal-pinstripes.png') repeat $color--white;
+  // layout
+  @include breakpoint($bp--river--two-cols) {
+    @include layout(7 3) {
+      .widget-river--results--graph {
+        @include grid-span(1, 1);
+      }
+      .widget-river--filters {
+        @include grid-span(1, 2);
+      }
+    }
+  }
 }
 
-.results {
-	@media screen and (min-width: 640px) {
-				margin: 20px;
-			}
-	
-	
-	
-	.graph {
-		background-color: #b7bec9;
-		border: 8px solid RGBA(182, 190, 200, 1);
-		margin-bottom: em(20px);
-		
-			@media screen and (min-width: 768px) {
-				float: left;
-				width: 75%;
-				margin-right: em(20px);
-
-			}
-	}
-	
-	.filters {
-		float: right;
-		background-color: white;
-		width: 22%;
-		margin-bottom: em(20px);
-		
-		@media screen and (min-width: 768px) {
-				display: block !important;
-				visibility: visible;
-			}
-		
-		
-		h5 {
-			text-transform: uppercase;
-			background-color: $color--blue--dark;
-			font-size: em(15px);
-			text-align: center;
-			font-weight: 900;
-			padding: 10px 0;
-			color: white;
-			margin-bottom: 0;
-		}
-		
-		ul {
-			border-top: 1px solid $color--gray--light;
-		}
-		
-		li {
-			
-			a {
-				@include unset-background-links();
-				padding: em(10px) em(20px);
-				font-family: $font--futura;
-				background-color: white;
-				display: block;
-				color: $color--blue--dark;
-				border-bottom: 1px solid $color--gray--light;
-				background: none;
-				
-				&:hover {
-					background-color: $color--gray--light;
-				}
-			}
-		}
-		
-	}
-}	
-
-.placeholder {
-	width: 100%;
-}			
-
-.river-tabs {
-/*
-	display: -webkit-box;
-	display: -moz-box;
-	display: -webkit-flexbox;
-	display: -ms-flexbox;
-	display: -webkit-flex;
-	display: flex;
-*/
-	
-	> li {
-		width: 100%;
-		background-color: $color--purple--dark;
-		color: white;
-		padding: em(10px);
-/*
-		-webkit-box-flex: 1;
-		-moz-box-flex: 1;
-		-webkit-flex: 1;
-		-ms-flex: 1;
-		flex: 1;
-*/
-		
-		@media screen and (min-width: 640px) {
-			float: left;
-		width: 33.3%;
-		text-align: center;
-		}
-		
-		&:nth-child(2) {
-			background-color: $color--blue--dark;
-		}
-		
-		&:nth-child(3) {
-			background-color: $color--yellow--dark;
-		}	
-			
-		.number {
-			font-weight: bold;
-			font-family: $font--futura;
-			font-size: em(30px);
-			vertical-align: middle;
-			float: left;
-			width: 33%;
-			line-height: 1.3em;
-	
-			
-			@media screen and (min-width: 640px) {
-				font-size: em(60px);
-				display: block;
-				float: none;
-				line-height: inherit;
-				width: auto;
-
-			}
-		}
-		
-		> div {
-
-			
-			@media screen and (min-width: 640px) {
-				font-size: .8em;
-				text-transform: uppercase;
-			}
-			
-			@media screen and (min-width: 768px) {
-				font-size: em(12px);
-			}
-		}
-	}
-}
-
-.river-widget--dropdown {
+.widget-river--header {
+  $color--diagonal--lighter: mix($color--gray--light, $color--blue--dark, 97%);
+  @include background-image(linear-gradient(90deg, $color--gray--light, $color--transparent--white), repeating-linear-gradient(-45deg, $color--transparent--white, $color--transparent--white 16px, $color--diagonal--lighter 16px, $color--diagonal--lighter 32px));
+  @include fontsize-rem(ms(0));
   position: relative;
-  top: auto;
-  right: auto;
-  display: inline;
-  
-  @media screen and (min-width: 640px) {
-	  display: block;
+  margin: 0;
+  border-bottom: 1px solid $color--gray--lightish;
+  background-color: $color--gray--light;
+  background-position: 50% 50%, 50% 50%;
+  .widget-river--title {
+    @include fontsize-rem(ms(0));
+    display: inline-block;
+    margin: 0 0.25em 0 0;
+    padding: 0 0.5em 0 1em;
+    background-color: $color--yellow;
+    color: $color--white;
+    font-weight: bold;
+    line-height: unitless-convert(54px);
+    text-transform: uppercase;
+    vertical-align: top;
   }
+}
 
-  .river-widget--dropdown--wrapper {
-    @include transition-property(max-height, opacity);
-    @include transition-duration($default-transition-duration);
-    @include transition-timing-function($default-transition-function);
-    position: fixed;
-    top: 0;
-    right: 0;
+.widget-river {
+  .selectricWrapper {
+    display: inline-block;
+    position: relative;
+    top: 9px;
+    border-top: 1px solid $color--gray--lightish;
+    border-bottom: 1px solid $color--gray--lightish;
+    background-color: $color--white;
+    p.label {
+      margin-bottom: 0;
+    }
+    .selectric {
+      background-color: $color--white;
+    }
+    .label {
+      color: $color--black;
+    }
+    .button {
+      color: $color--purple;
+    }
+  }
+  .selectricItems {
+    border-top: 1px solid $color--gray--lightish;
+  }
+}
+
+.widget-river--results-tabs {
+  > li {
     width: 100%;
-    height: 100vh;
-    max-height: 0;
-    opacity: 0;
-    overflow: hidden;
-    z-index: 100;
-    background-color: white;
-    &:before {
-      @include arrow($color--blue--darker, up);
-      right: 2em;
-      bottom: 100%;
+    padding: em(10px);
+    color: $color--white;
+    &:nth-child(1) {
+      background-color: $color--purple--dark;
     }
+    &:nth-child(2) {
+      background-color: $color--blue--dark;
+    }
+    &:nth-child(3) {
+      background-color: $color--yellow--mid;
+    }
+    @include breakpoint($bp--river-unstack-tabs) {
+      width: 33.3%;
+      float: left;
+      text-align: center;
+    }
+    .widget-river--results--number {
+      @include fontsize-rem(ms(4));
+      width: 33%;
+      float: left;
+      font-family: $font--futura;
+      font-weight: bold;
+      line-height: 1.3em;
+      vertical-align: middle;
 
-    &.open {
-      max-height: 100em;
-      opacity: 1;
-      overflow: visible;
+      @include breakpoint($bp--river-unstack-tabs) {
+        @include fontsize-rem(ms(9));
+        display: block;
+        width: auto;
+        float: none;
+        line-height: inherit;
+
+      }
     }
   }
+}
 
-  .river-widget--dropdown-heading {
- 			background-color: rgba(#fff, .2);
-			
-			margin: auto;
-			border-radius: 3px;
-			padding: 10px;
-			font-family: $font--futura;
-			font-size: em(12px);
-			cursor: pointer;
-			display: inline-block;
-			width: 67%;
-			
-			&:after {
-				@include arrow(#fff, right);
-				right: 10px;
-				top: 7px;
-				
-				@media screen and (min-width: 640px) {
-					top: 13px;
-				}
-			}
-			
-			@media screen and (min-width: 640px) {
-				font-size: em(16px);
-				display: block;
-				width: auto;
-			}
-			
-			@media screen and (min-width: 960px) {
-				font-size: em(18px);
-			}
+.widget-river--results--type {
+  display: inline-block;
+  position: relative;
+  width: 67%;
+  padding: 0.5rem;
+  background-color: rgba($color--white, .2);
+  cursor: pointer;
+  font-family: $font--futura;
+  white-space: nowrap;
+  &:after {
+    @include arrow($color--white, right);
+    top: 12px;
+    right: 0.5rem;
+  }
+  @include breakpoint($bp--river-unstack-tabs) {
+    display: block;
+    width: auto;
+    &:after {
+      display: none;
+    }
+  }
+}
+
+
+
+.widget-river--filters {
+//  @include transition-property(max-height, opacity);
+//  @include transition-duration($default-transition-duration);
+//  @include transition-timing-function($default-transition-function);
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100vh;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  z-index: 100;
+  background-color: $color--white;
+  &.open {
+    max-height: 100em;
+    opacity: 1;
+    overflow: visible;
+  }
+  @include breakpoint($bp--river--two-cols) {
+    position: static;
+    height: auto;
+    margin-bottom: $base-line-em;
+    max-height: 100em;
+    opacity: 1;
   }
 
-     .close {
-       @include inline-block;
+  h5 {
+    margin: 0;
+    padding: 10px 0;
+    background-color: $color--blue--dark;
+    color: $color--white;
+    font-size: em(15px);
+    font-weight: 900;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  .close {
+    display: inline-block;
+    position: absolute;
+    right: 1rem;
     width: 20px;
     height: 20px;
-    margin-top: .75em;
     float: right;
-    background: url('../../images/close.svg') no-repeat;
+    background: image-url('close.svg') no-repeat;
     cursor: pointer;
-    position: absolute;
-    right: 15px;
+    @include breakpoint($bp--river--two-cols) {
+      display: none;
     }
-      .river-widget--dropdown--container {
-    height: 100%;
-    
-    .filters {
-	    float: none;
-	    width: 100%;
+  }
+
+  ul {
+    border-top: 1px solid $color--gray--light;
+  }
+
+  li {
+
+    a {
+      @include unset-background-links();
+      display: block;
+      padding: em(10px) em(20px);
+      border-bottom: 1px solid $color--gray--light;
+      background: none;
+      background-color: $color--white;
+      color: $color--blue--dark;
+      font-family: $font--futura;
+      position: relative;
+      &:hover {
+        background-color: $color--gray--light;
+      }
+      &:after {
+        @include arrow($color--purple, right);
+        top: 16px;
+        right: 0.5rem;
+      }
     }
-
-
   }
 }
 
 
+////////////////////////////////////////////
+.widget-river--results {
+  @include breakpoint($bp--river-unstack-tabs) {
+    margin: 1rem;
+  }
+  .widget-river--results--graph {
+    background-color: $color--gray--lightish;
+    border: 0.5rem solid $color--gray--lightish;
+    margin-bottom: $base-line-em;
+  }
+
+
+}
+
+.placeholder {
+  width: 100%;
+  background: $color--white;
+
+  .graph--heading {
+    @include fontsize-rem(ms(0));
+    font-family: $font--futura;
+    color: $color--gray--dark;
+    text-transform: uppercase;
+    padding: 20px 0 0 30px;
+    margin-bottom: 0;
+  }
+
+  svg {
+    background-color: $color--white;
+    width: 100%;
+    margin-bottom: em(20px);
+
+    text {
+      font-family: $font--futura;
+      font-size: 12px;
+    }
+
+    .graph-reports {
+      stroke: $color--blue--dark;
+    }
+
+    .graph-maps {
+      stroke: $color--yellow--mid;
+    }
+
+    .graph-jobs {
+      stroke: $color--purple--dark;
+    }
+  }
+}

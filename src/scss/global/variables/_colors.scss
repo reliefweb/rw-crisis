@@ -19,6 +19,7 @@ $color--blue--dark: #375573;
 $color--blue--darker: #2E4455;
 $color--blue--light: #97dcf7;
 $color--yellow: #f5c655;
+$color--yellow--mid: #ddb049;
 $color--yellow--dark: #957128;
 $color--green: #a7da8d;
 $color--green--dark: #677f5c;
@@ -45,6 +46,7 @@ $color-map: (
   color--blue-darker: $color--blue--darker,
   color--blue-light: $color--blue--light,
   color--yellow: $color--yellow,
+  color--yellow-mid: $color--yellow--mid,
   color--yellow-dark: $color--yellow--dark,
   color--green: $color--green,
   color--green-dark: $color--green--dark,

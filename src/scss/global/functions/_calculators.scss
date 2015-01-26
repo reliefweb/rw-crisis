@@ -50,6 +50,9 @@
   @if unit($value) == 'em' {
     $value: $value / 1em;
   }
+  @if unit($value) == 'px' {
+    $value: $value / $root-typesize;
+  }
   @return $value;
 }
 
