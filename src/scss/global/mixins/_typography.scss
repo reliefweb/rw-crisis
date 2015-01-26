@@ -1,0 +1,29 @@
+/* ==========================================================================
+   Global Mixins - Typography
+   ========================================================================== */
+
+/* Mixin - Font-size rem
+   ========================================================================== */
+/*
+ * @params
+ *  $px
+ *  $root-px
+ */
+
+@mixin fontsize-rem($px, $root-px: $root-typesize) {
+  font-size: $px;
+  font-size: #{$px / $root-px}rem;
+}
+
+/* Mixin - Margin-bottom rem
+   ========================================================================== */
+/*
+ * @params
+ *  $px
+ *  $root-px
+ */
+
+@mixin margin-bottom-rem($px, $root-px: $root-typesize) {
+  margin-bottom: $px;
+  margin-bottom: #{$px / $root-px}rem;
+}

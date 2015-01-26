@@ -11,13 +11,9 @@
 
   <title>{{page-title}}</title>
 
-  <!-- Custom CSS -->
-  <link href="css/grayscale.css" rel="stylesheet">
-
-  <!-- Custom Fonts -->
-  <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-  <link href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
-  <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+  <!-- build:css css/app.css -->
+  <link href="css/styles.css" rel="stylesheet">
+  <!-- endbuild -->
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -83,9 +79,7 @@
 
 {{#each widgets}}
   <!-- {{title}} Widget -->
-  <section id="{{key}}" class="container content-section text-center">
-    {{{content}}}
-  </section>
+  <section id="{{key}}" class="container content-section text-center"></section>
   <!-- end {{title}} Widget -->
 
 {{/each}}
@@ -97,14 +91,20 @@
   </div>
 </footer>
 
-<!-- jQuery -->
-<script src="js/jquery.js"></script>
-
-<!-- Plugin JavaScript -->
-<script src="js/jquery.easing.min.js"></script>
-
-<!-- Custom Theme JavaScript -->
-<script src="js/grayscale.js"></script>
+<!-- build:js js/app.js -->
+<script type="text/javascript" src="bower_components/jquery/dist/jquery.js"></script>
+<script type="text/javascript" src="bower_components/jquery-easing/jquery.easing.js"></script>
+<script type="text/javascript" src="bower_components/d3/d3.js"></script>
+<script type="text/javascript" src="bower_components/moment/moment.js"></script>
+<script type="text/javascript" src="bower_components/handlebars/handlebars.js"></script>
+<script type="text/javascript" src="bower_components/lodash/dist/lodash.js"></script>
+<script type="text/javascript" src="bower_components/superagent/superagent.js"></script>
+<script type="text/javascript" src="bower_components/reliefweb.js/lib/reliefweb.js"></script>
+<script type="text/javascript" src="js/reliefweb-widgets.js"></script>
+<script type="text/javascript" src="js/image.template.js"></script>
+<script type="text/javascript" src="js/crisis-overview.template.js"></script>
+<script type="text/javascript" src="js/browserfy.config.js"></script>
+<!-- endbuild -->
 
 </body>
 

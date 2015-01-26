@@ -1,0 +1,300 @@
+.widget-river {
+	background: url('../../images/diagonal-pinstripes.png') repeat white;
+	
+	header {
+		background-color: #717f95;
+		padding: em(10px);
+		
+		@media screen and (min-width: 640px) {
+			padding: em(20px);
+		}
+		
+		h3 {
+			@extend %h6;
+			color: white;
+			text-transform: uppercase;
+			font-size: em(16px);
+			display: inline-block;
+			margin-right: em(20px);
+			vertical-align: top;
+			
+			@media screen and (min-width: 640px) {
+				font-size: em(18px);
+				
+			}
+		}
+		
+		select {
+			
+		}
+		
+		p.label {
+			margin-bottom: 0;
+		}
+		
+		.selectricWrapper {
+			display: inline-block;
+			background-color: white;
+			border: 1px solid #c4ced5;
+			
+				@media screen and (min-width: 768px) {
+				
+			}
+			
+			.selectric {
+				background-color: white;
+			}
+			
+			.selectricItems li {
+				font-family: $font--futura;
+			}
+			.label {
+				font-family: $font--futura;
+				color: #000;
+			}
+			
+			.button {
+				color: #717f95;
+			}
+		}
+	}
+}
+
+.results {
+	@media screen and (min-width: 640px) {
+				margin: 20px;
+			}
+	
+	
+	
+	.graph {
+		background-color: #b7bec9;
+		border: 8px solid RGBA(182, 190, 200, 1);
+		margin-bottom: em(20px);
+		
+			@media screen and (min-width: 768px) {
+				float: left;
+				width: 75%;
+				margin-right: em(20px);
+
+			}
+	}
+	
+	.filters {
+		float: right;
+		background-color: white;
+		width: 22%;
+		margin-bottom: em(20px);
+		
+		@media screen and (min-width: 768px) {
+				display: block !important;
+				visibility: visible;
+			}
+		
+		
+		h5 {
+			text-transform: uppercase;
+			background-color: $color--blue--dark;
+			font-size: em(15px);
+			text-align: center;
+			font-weight: 900;
+			padding: 10px 0;
+			color: white;
+			margin-bottom: 0;
+		}
+		
+		ul {
+			border-top: 1px solid $color--gray--light;
+		}
+		
+		li {
+			
+			a {
+				@include unset-background-links();
+				padding: em(10px) em(20px);
+				font-family: $font--futura;
+				background-color: white;
+				display: block;
+				color: $color--blue--dark;
+				border-bottom: 1px solid $color--gray--light;
+				background: none;
+				
+				&:hover {
+					background-color: $color--gray--light;
+				}
+			}
+		}
+		
+	}
+}	
+
+.placeholder {
+	width: 100%;
+}			
+
+.river-tabs {
+/*
+	display: -webkit-box;
+	display: -moz-box;
+	display: -webkit-flexbox;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+*/
+	
+	> li {
+		width: 100%;
+		background-color: $color--purple--dark;
+		color: white;
+		padding: em(10px);
+/*
+		-webkit-box-flex: 1;
+		-moz-box-flex: 1;
+		-webkit-flex: 1;
+		-ms-flex: 1;
+		flex: 1;
+*/
+		
+		@media screen and (min-width: 640px) {
+			float: left;
+		width: 33.3%;
+		text-align: center;
+		}
+		
+		&:nth-child(2) {
+			background-color: $color--blue--dark;
+		}
+		
+		&:nth-child(3) {
+			background-color: $color--yellow--dark;
+		}	
+			
+		.number {
+			font-weight: bold;
+			font-family: $font--futura;
+			font-size: em(30px);
+			vertical-align: middle;
+			float: left;
+			width: 33%;
+			line-height: 1.3em;
+	
+			
+			@media screen and (min-width: 640px) {
+				font-size: em(60px);
+				display: block;
+				float: none;
+				line-height: inherit;
+				width: auto;
+
+			}
+		}
+		
+		> div {
+
+			
+			@media screen and (min-width: 640px) {
+				font-size: .8em;
+				text-transform: uppercase;
+			}
+			
+			@media screen and (min-width: 768px) {
+				font-size: em(12px);
+			}
+		}
+	}
+}
+
+.river-widget--dropdown {
+  position: relative;
+  top: auto;
+  right: auto;
+  display: inline;
+  
+  @media screen and (min-width: 640px) {
+	  display: block;
+  }
+
+  .river-widget--dropdown--wrapper {
+    @include transition-property(max-height, opacity);
+    @include transition-duration($default-transition-duration);
+    @include transition-timing-function($default-transition-function);
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100vh;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    z-index: 100;
+    background-color: white;
+    &:before {
+      @include arrow($color--blue--darker, up);
+      right: 2em;
+      bottom: 100%;
+    }
+
+    &.open {
+      max-height: 100em;
+      opacity: 1;
+      overflow: visible;
+    }
+  }
+
+  .river-widget--dropdown-heading {
+ 			background-color: rgba(#fff, .2);
+			
+			margin: auto;
+			border-radius: 3px;
+			padding: 10px;
+			font-family: $font--futura;
+			font-size: em(12px);
+			cursor: pointer;
+			display: inline-block;
+			width: 67%;
+			
+			&:after {
+				@include arrow(#fff, right);
+				right: 10px;
+				top: 7px;
+				
+				@media screen and (min-width: 640px) {
+					top: 13px;
+				}
+			}
+			
+			@media screen and (min-width: 640px) {
+				font-size: em(16px);
+				display: block;
+				width: auto;
+			}
+			
+			@media screen and (min-width: 960px) {
+				font-size: em(18px);
+			}
+  }
+
+     .close {
+       @include inline-block;
+    width: 20px;
+    height: 20px;
+    margin-top: .75em;
+    float: right;
+    background: url('../../images/close.svg') no-repeat;
+    cursor: pointer;
+    position: absolute;
+    right: 15px;
+    }
+      .river-widget--dropdown--container {
+    height: 100%;
+    
+    .filters {
+	    float: none;
+	    width: 100%;
+    }
+
+
+  }
+}
+
+
