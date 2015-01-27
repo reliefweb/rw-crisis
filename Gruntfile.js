@@ -156,8 +156,10 @@ module.exports = function (grunt) {
     'compile-handlebars:src',
     //'wiredep',
     'jshint',
-    'browserify',
+    'browserify'
   ]);
+
+  grunt.registerTask('build', ['default']);
 
   grunt.registerTask('watchSrc', [
     'default',
