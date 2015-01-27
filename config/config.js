@@ -15,11 +15,14 @@ var oembed_server = config['oembed-server'];
 //var self_domain = window.location.host + '/';
 var self_domain = '';
 
+var pyms = [];
+
 widgets.forEach(function(widget) {
   var oembed_url = oembed_server + '/v0/oembed/' + widget.slug + '?url=' + widget.config.url;
   $.get(oembed_url, '', function(data) {
     var $markup = $(data.html);
-    $markup.attr("scrolling", "no").addClass('oembed');
-    $("#" + widget.slug).html($markup);
+    //$markup.attr("scrolling", "no").addClass('oembed');
+    //$("#" + widget.slug).html($markup);
+    pyms.push(new pym.Parent(widget.slug, $markup.attr('src'), {}));
   }, 'json');
 });
