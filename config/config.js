@@ -16,15 +16,10 @@ var oembed_server = config['oembed-server'];
 var self_domain = '';
 
 widgets.forEach(function(widget) {
-  var oembed_url = oembed_server + '/v0/oembed/' + widget.slug + '?' + $.param(widget.config);
-
-  if (widget.slug == 'timeline') {
-    $('#' + widget.slug).html('<iframe class="oembed" src="' + oembed_server + '/v0/widgets/timeline?country[]=Iraq&country[]=Syria' + '" height="800px"></iframe>');
-  } else {
-    $.get(oembed_url, '', function(data) {
-      var $markup = $(decodeURI(data.html));
-      $markup.addClass('oembed');
-      $("#" + widget.slug).html($markup);
-    }, 'json');
-  }
+  var oembed_url = oembed_server + '/v0/oembed/' + widget.slug + '?url=' + widget.config.url;
+  $.get(oembed_url, '', function(data) {
+    var $markup = $(data.html);
+    $markup.attr("scrolling", "no").addClass('oembed');
+    $("#" + widget.slug).html($markup);
+  }, 'json');
 });
