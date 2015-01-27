@@ -41,7 +41,7 @@
   <nav class="crisis-page--navigation">
     <ul class="crisis-page--widget-nav">
       {{#each widgets}}
-        <li><a class="crisis-page--widget-nav--item page-scroll" href="#{{key}}">{{title}}</a></li>
+        <li><a class="crisis-page--widget-nav--item page-scroll" href="#{{slug}}">{{title}}</a></li>
       {{/each}}
       <li class="crisis-page--external-nav--item"><a href="http://reliefweb.int">ReliefWeb.int</a></li>
     </ul>
@@ -50,7 +50,7 @@
 
 {{#each widgets}}
   <!-- {{title}} Widget -->
-  <section id="{{key}}" class="container content-section text-center"></section>
+  <section id="{{slug}}" class="crisis-page--widget-container container content-section text-center"></section>
   <div class="clear-both"></div>
   <!-- end {{title}} Widget -->
 
@@ -59,16 +59,8 @@
 <!-- build:js js/app.js -->
 <script type="text/javascript" src="bower_components/jquery/dist/jquery.js"></script>
 <script type="text/javascript" src="bower_components/jquery-easing/jquery.easing.js"></script>
-<script type="text/javascript" src="bower_components/d3/d3.js"></script>
-<script type="text/javascript" src="bower_components/moment/moment.js"></script>
-<script type="text/javascript" src="bower_components/handlebars/handlebars.js"></script>
+<script type="text/javascript" src="bower_components/oembed-client-cors/src/oembed-client-cors.js"></script>
 <script type="text/javascript" src="bower_components/lodash/dist/lodash.js"></script>
-<script type="text/javascript" src="bower_components/superagent/superagent.js"></script>
-<script type="text/javascript" src="bower_components/reliefweb.js/lib/reliefweb.js"></script>
-<script type="text/javascript" src="js/reliefweb-widgets.js"></script>
-<script type="text/javascript" src="js/image.template.js"></script>
-<script type="text/javascript" src="js/crisis-overview.template.js"></script>
-<script type="text/javascript" src="js/timeline.template.js"></script>
 <script type="text/javascript" src="js/browserfy.config.js"></script>
 <script type="text/javascript" src="js/scrolling-nav.js"></script>
 <!-- endbuild -->
