@@ -9,7 +9,7 @@ module.exports = function (grunt) {
 
   grunt.initConfig({
     compass: {
-      dist: {
+      build: {
         options: {
           config: "compass.rb",
           bundleExec: true
@@ -126,9 +126,13 @@ module.exports = function (grunt) {
         files: [
           {
             expand: true,
-            src: ['img/**', 'fonts/**', 'index.html' ],
+            src: [ 'img/**', 'fonts/**', 'index.html' ],
             dest: 'dist',
             cwd: 'src'
+          },
+          {
+            src: [ 'config/config.json' ],
+            dest: 'dist/config.json',
           }
         ]
       }
@@ -179,7 +183,11 @@ module.exports = function (grunt) {
    ]);
 
   grunt.registerTask('serve', [
-    'release',
     'connect:dist'
+  ]);
+
+  grunt.registerTask('start', [
+    'release',
+    'serve'
   ]);
 };
