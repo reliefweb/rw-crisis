@@ -9,7 +9,7 @@ module.exports = function (grunt) {
 
   grunt.initConfig({
     compass: {
-      dist: {
+      build: {
         options: {
           config: "compass.rb",
           bundleExec: true
@@ -122,13 +122,31 @@ module.exports = function (grunt) {
       dist: [ 'dist' ]
     },
     copy: {
+      build: {
+        files: [
+          {
+            expand: true,
+            src: [ 'bower_components/**' ],
+            dest: 'src'
+          }
+        ]
+      },
       dist: {
         files: [
           {
             expand: true,
-            src: ['img/**', 'fonts/**', 'index.html' ],
+            src: [ 'img/**', 'fonts/**', 'index.html' ],
             dest: 'dist',
             cwd: 'src'
+          },
+          {
+            expand: true,
+            src: [ 'bower_components/**' ],
+            dest: 'dist'
+          },
+          {
+            src: [ 'config/config.json' ],
+            dest: 'dist/config.json',
           }
         ]
       }
@@ -155,6 +173,7 @@ module.exports = function (grunt) {
     'compass',
     'compile-handlebars:src',
     //'wiredep',
+    'copy:build',
     'jshint',
     'browserify'
   ]);
