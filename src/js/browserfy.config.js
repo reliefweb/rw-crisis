@@ -15,7 +15,7 @@ module.exports={
       "content": "United Nations"
     }
   ],
-  "oembed-server": "http://embed.unrw.p2devcloud.com:3000",
+  "oembed-server": "http://embed.unrw.p2devcloud.com",
   "widgets": [
     {
       "slug": "crisis-overview",

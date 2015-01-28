@@ -122,15 +122,6 @@ module.exports = function (grunt) {
       dist: [ 'dist' ]
     },
     copy: {
-      build: {
-        files: [
-          {
-            expand: true,
-            src: [ 'bower_components/**' ],
-            dest: 'src'
-          }
-        ]
-      },
       dist: {
         files: [
           {
@@ -138,11 +129,6 @@ module.exports = function (grunt) {
             src: [ 'img/**', 'fonts/**', 'index.html' ],
             dest: 'dist',
             cwd: 'src'
-          },
-          {
-            expand: true,
-            src: [ 'bower_components/**' ],
-            dest: 'dist'
           },
           {
             src: [ 'config/config.json' ],
@@ -173,7 +159,6 @@ module.exports = function (grunt) {
     'compass',
     'compile-handlebars:src',
     //'wiredep',
-    'copy:build',
     'jshint',
     'browserify'
   ]);
@@ -198,7 +183,11 @@ module.exports = function (grunt) {
    ]);
 
   grunt.registerTask('serve', [
-    'release',
     'connect:dist'
+  ]);
+
+  grunt.registerTask('start', [
+    'release',
+    'serve'
   ]);
 };

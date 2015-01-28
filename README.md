@@ -21,6 +21,8 @@ It is meant to be a throwaway until the crisis page design language can be estab
 
     npm install
 
+This process will also run `bundle install` and `bower install`. Note that `bower_components/` is found inside the `src/` directory.
+
 ### Build
 
     grunt
