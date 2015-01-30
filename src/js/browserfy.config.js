@@ -37,6 +37,13 @@ module.exports={
       "config": {
         "url": "https://gist.githubusercontent.com/fillerwriter/b1bfe01310cccf448aea/raw/gistfile1.json"
       }
+    },
+    {
+      "slug": "river",
+      "title": "River",
+      "config": {
+        "url": "https://gist.githubusercontent.com/fillerwriter/32b1f3a9a492cbab8468/raw/river.json"
+      }
     }
   ]
 }
