@@ -21,14 +21,21 @@ module.exports={
       "slug": "crisis-overview",
       "title": "Crisis Overview",
       "config": {
-        "url": "https://gist.githubusercontent.com/fillerwriter/91db8ab49a6df8e1d328/raw/277b52f459c08b5bb2091d30da9586ce768d2496/gistfile1.js"
+        "url": "https://gist.githubusercontent.com/fillerwriter/91db8ab49a6df8e1d328/raw/gistfile1.js"
       }
     },
     {
       "slug": "timeline",
       "title": "Timeline",
       "config": {
-        "url": "https://gist.githubusercontent.com/fillerwriter/cdd51cfb738db4daca38/raw/3d31322c26d16e74de7a465a618b17e772578943/gistfile1.json"
+        "url": "https://gist.githubusercontent.com/fillerwriter/cdd51cfb738db4daca38/raw/gistfile1.json"
+      }
+    },
+    {
+      "slug": "financial",
+      "title": "Financial",
+      "config": {
+        "url": "https://gist.githubusercontent.com/fillerwriter/b1bfe01310cccf448aea/raw/gistfile1.json"
       }
     }
   ]
