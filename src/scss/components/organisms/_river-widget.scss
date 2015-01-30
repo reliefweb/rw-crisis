@@ -89,7 +89,6 @@
       font-weight: bold;
       line-height: 1.3em;
       vertical-align: middle;
-
       @include breakpoint($bp--river-unstack-tabs) {
         @include fontsize-rem(ms(9));
         display: block;
@@ -106,7 +105,7 @@
   display: inline-block;
   position: relative;
   width: 67%;
-  padding: 0.5rem;
+  padding: 0.5rem 1.5rem 0.5rem 0.5rem;
   background-color: rgba($color--white, .2);
   cursor: pointer;
   font-family: $font--futura;
@@ -119,28 +118,25 @@
   @include breakpoint($bp--river-unstack-tabs) {
     display: block;
     width: auto;
-    &:after {
-      display: none;
-    }
   }
 }
 
 
 
 .widget-river--filters {
-//  @include transition-property(max-height, opacity);
-//  @include transition-duration($default-transition-duration);
-//  @include transition-timing-function($default-transition-function);
+  //  @include transition-property(max-height, opacity);
+  //  @include transition-duration($default-transition-duration);
+  //  @include transition-timing-function($default-transition-function);
   position: fixed;
   top: 0;
   right: 0;
   width: 100%;
   height: 100vh;
   max-height: 0;
+  background-color: $color--white;
   opacity: 0;
   overflow: hidden;
   z-index: 100;
-  background-color: $color--white;
   &.open {
     max-height: 100em;
     opacity: 1;
@@ -149,25 +145,15 @@
   @include breakpoint($bp--river--two-cols) {
     position: static;
     height: auto;
-    margin-bottom: $base-line-em;
     max-height: 100em;
+    margin-bottom: $base-line-em;
     opacity: 1;
   }
-
-  h5 {
-    margin: 0;
-    padding: 10px 0;
-    background-color: $color--blue--dark;
-    color: $color--white;
-    font-size: em(15px);
-    font-weight: 900;
-    text-align: center;
-    text-transform: uppercase;
-  }
-
   .close {
+    @include transform(translateY(-50%));
     display: inline-block;
     position: absolute;
+    top: 50%;
     right: 1rem;
     width: 20px;
     height: 20px;
@@ -178,23 +164,20 @@
       display: none;
     }
   }
-
   ul {
     border-top: 1px solid $color--gray--light;
   }
-
   li {
-
     a {
       @include unset-background-links();
       display: block;
+      position: relative;
       padding: em(10px) em(20px);
       border-bottom: 1px solid $color--gray--light;
       background: none;
       background-color: $color--white;
       color: $color--blue--dark;
       font-family: $font--futura;
-      position: relative;
       &:hover {
         background-color: $color--gray--light;
       }
@@ -207,6 +190,26 @@
   }
 }
 
+.widget-river--filters--title {
+  @include fontsize-rem(ms(0));
+  position: relative;
+  margin: 0;
+  padding: 0.5em 2em;
+  background-color: $color--blue--dark;
+  color: $color--white;
+  font-weight: 900;
+  text-align: center;
+  text-transform: uppercase;
+  .results--item--reports & {
+    background-color: $color--purple--dark;
+  }
+  .results--item--maps & {
+    background-color: $color--blue--dark;
+  }
+  .results--item--jobs & {
+    background-color: $color--yellow--mid;
+  }
+}
 
 ////////////////////////////////////////////
 .widget-river--results {
@@ -214,9 +217,9 @@
     margin: 1rem;
   }
   .widget-river--results--graph {
-    background-color: $color--gray--lightish;
-    border: 0.5rem solid $color--gray--lightish;
     margin-bottom: $base-line-em;
+    border: 0.5rem solid $color--gray--lightish;
+    background-color: $color--gray--lightish;
   }
 
 
@@ -225,34 +228,39 @@
 .placeholder {
   width: 100%;
   background: $color--white;
-
   .graph--heading {
     @include fontsize-rem(ms(0));
-    font-family: $font--futura;
-    color: $color--gray--dark;
-    text-transform: uppercase;
-    padding: 20px 0 0 30px;
     margin-bottom: 0;
+    padding: 20px 0 0 30px;
+    color: $color--gray--dark;
+    font-family: $font--futura;
+    text-transform: uppercase;
+  }
+  .axis {
+    path, line {
+      stroke: $color--gray--lightish;
+    }
+  }
+  .tick{
+    text{
+      fill: $color--gray--light--mid;
+    }
   }
 
   svg {
-    background-color: $color--white;
     width: 100%;
     margin-bottom: em(20px);
-
+    background-color: $color--white;
     text {
+      @include fontsize-rem(ms(-1));
       font-family: $font--futura;
-      font-size: 12px;
     }
-
     .graph-reports {
       stroke: $color--blue--dark;
     }
-
     .graph-maps {
       stroke: $color--yellow--mid;
     }
-
     .graph-jobs {
       stroke: $color--purple--dark;
     }
