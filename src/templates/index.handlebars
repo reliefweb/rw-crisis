@@ -26,27 +26,29 @@
 
 <body id="" data-spy=""data-target="">
 
-<header class="crisis-page--header">
-  <h2 class="rw--name-logo">ReliefWeb</h2>
+<div class="crisis-page--header-nav">
+  <header class="crisis-page--header">
+    <h2 class="rw--name-logo">ReliefWeb</h2>
+    <label class="crisis-page--navigation--trigger-label" for="page-menu">
+      <svg id="menu-button" width="40px" height="40px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+        <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+          <path d="M0,0 L12,0 L12,12 L0,12 L0,0 Z M0,14 L12,14 L12,26 L0,26 L0,14 Z M0,28 L12,28 L12,40 L0,40 L0,28 Z M14,0 L26,0 L26,12 L14,12 L14,0 Z M14,14 L26,14 L26,26 L14,26 L14,14 Z M14,28 L26,28 L26,40 L14,40 L14,28 Z M28,0 L40,0 L40,12 L28,12 L28,0 Z M28,14 L40,14 L40,26 L28,26 L28,14 Z M28,28 L40,28 L40,40 L28,40 L28,28 Z" id="brady-button" class="brady-button" fill="#665695" sketch:type="MSShapeGroup"></path>
+        </g>
+      </svg>
+      <span class="text">Menu</span>
+    </label>
+    <input type="checkbox" id="page-menu" name="page-menu" class="crisis-page--navigation--trigger"/>
+    <nav class="crisis-page--navigation">
+      <ul class="crisis-page--widget-nav">
+        {{#each widgets}}
+          <li><a class="crisis-page--widget-nav--item page-scroll" href="#{{slug}}">{{title}}</a></li>
+        {{/each}}
+        <li class="crisis-page--external-nav--item"><a href="http://reliefweb.int">ReliefWeb.int</a></li>
+      </ul>
+    </nav>
+  </header>
   <h1 class="crisis-page--title">Syria / Iraq Crisis Page</h1>
-  <label class="crisis-page--navigation--trigger-label" for="page-menu">
-    <svg id="menu-button" width="40px" height="40px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
-      <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
-        <path d="M0,0 L12,0 L12,12 L0,12 L0,0 Z M0,14 L12,14 L12,26 L0,26 L0,14 Z M0,28 L12,28 L12,40 L0,40 L0,28 Z M14,0 L26,0 L26,12 L14,12 L14,0 Z M14,14 L26,14 L26,26 L14,26 L14,14 Z M14,28 L26,28 L26,40 L14,40 L14,28 Z M28,0 L40,0 L40,12 L28,12 L28,0 Z M28,14 L40,14 L40,26 L28,26 L28,14 Z M28,28 L40,28 L40,40 L28,40 L28,28 Z" id="brady-button" class="brady-button" fill="#665695" sketch:type="MSShapeGroup"></path>
-      </g>
-    </svg>
-    <span class="text">Menu</span>
-  </label>
-  <input type="checkbox" id="page-menu" name="page-menu" class="crisis-page--navigation--trigger"/>
-  <nav class="crisis-page--navigation">
-    <ul class="crisis-page--widget-nav">
-      {{#each widgets}}
-        <li><a class="crisis-page--widget-nav--item page-scroll" href="#{{slug}}">{{title}}</a></li>
-      {{/each}}
-      <li class="crisis-page--external-nav--item"><a href="http://reliefweb.int">ReliefWeb.int</a></li>
-    </ul>
-  </nav>
-</header>
+</div>
 
 {{#each widgets}}
   <!-- {{title}} Widget -->
