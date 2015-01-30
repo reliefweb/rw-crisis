@@ -1,25 +1,60 @@
-.crisis-page--header {
+.crisis-page--header-nav {
   position: relative;
   min-height: 68px;
-  margin-bottom: $base-line-em;
-  padding: 0 0.5rem;
   border-bottom: 1px solid $color--gray--light--mid;
+  margin-bottom: $base-line-em;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 200;
+  + div {
+    margin-top: 68px + 40px + $base-line-px;
+    @include breakpoint($bp--global--inline-title) {
+      margin-top: 68px + $base-line-px;
+    }
+  }
+}
+
+.crisis-page--header {
+  padding: 0 0.5rem;
   background-color: $color--gray--light;
   color: $color--gray;
   font-family: $font--futura;
+  @include breakpoint($bp--global--wide-nav) {
+    display: table;
+    width: 100%;
+  }
 }
 
 .rw--name-logo {
   @include fontsize-rem(ms(0));
+  @include replace-text('rw-logo.svg');
   display: inline-block;
+  width: 125px;
+  margin: 0 0.5rem 0 0;
+  float: left;
+  background-size: contain;
   line-height: unitless-convert(68px);
-  margin: 0;
 }
 .crisis-page--title {
   @include fontsize-rem(ms(0));
-  display: inline-block;
+//  margin: 0 0 $base-line-em;
   margin: 0;
-  line-height: unitless-convert(68px);
+  padding: 0 0.5rem;
+  background-color: $color--gray--light--mid;
+  color: $color--white;
+  font-weight: bold;
+  line-height: 2;
+  text-transform: uppercase;
+  @include fontsize-rem(ms(1));
+  @include breakpoint($bp--global--inline-title) {
+    position: absolute;
+    top: 12px;
+    left: 140px;
+    background: transparent;
+    color: $color--gray;
+    z-index: 1;
+  }
 }
 .crisis-page--navigation--trigger-label {
   display: block;
@@ -44,8 +79,6 @@
   }
 }
 
-
-$bp--wide-nav: 600px;
 .crisis-page--navigation--trigger {
   display: none;
   &:checked {
@@ -71,7 +104,7 @@ $bp--wide-nav: 600px;
 .crisis-page--navigation {
   width: 100vw;
   line-height: unitless-convert(44px);
-  @include breakpoint($bp--wide-nav) {
+  @include breakpoint($bp--global--wide-nav) {
     position: absolute;
     top: 100%;
     right: 0;
@@ -95,7 +128,7 @@ $bp--wide-nav: 600px;
     text-align: center;
     text-transform: uppercase;
     overflow: hidden;
-    @include breakpoint($bp--wide-nav) {
+    @include breakpoint($bp--global--wide-nav) {
       margin: 0;
     }
   }
@@ -103,7 +136,7 @@ $bp--wide-nav: 600px;
     @for $i from 1 through 8 {
       &:nth-of-type(#{$i}) {
         a {
-          @include transition-delay(($i - 1) * 0.1s);
+          @include transition-delay(($i - 1) * 0.025s);
           $color--bg--nav: mix($color--gray--light--mid, $color--white, $i * 5%);
           background-color: $color--bg--nav;
           &:hover {
