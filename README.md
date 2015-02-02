@@ -96,11 +96,11 @@ An array of widgets along with widget specific configuration to be embedded into
       }
     ]
 
-`slug`: The html id of the widget.
-`title`: The title of the widget to be displayed in the navigation.
-`config` & `url`: A js or json file specific to each individual widget. Please see below for samples.
+`slug`: The html id of the widget.  
+`title`: The title of the widget to be displayed in the navigation.  
+`config` & `url`: A js or json file specific to each individual widget. Please see below for samples.  
 
-Crisis Overview: https://gist.githubusercontent.com/fillerwriter/91db8ab49a6df8e1d328/raw/gistfile1.js
-Timeline: https://gist.githubusercontent.com/fillerwriter/cdd51cfb738db4daca38/raw/gistfile1.json
-Financial: https://gist.githubusercontent.com/fillerwriter/b1bfe01310cccf448aea/raw/gistfile1.json
-River: https://gist.githubusercontent.com/fillerwriter/32b1f3a9a492cbab8468/raw/river.json
+[Crisis Overview](https://gist.githubusercontent.com/fillerwriter/91db8ab49a6df8e1d328/raw/gistfile1.js)  
+[Timeline](https://gist.githubusercontent.com/fillerwriter/cdd51cfb738db4daca38/raw/gistfile1.json)  
+[Financial](https://gist.githubusercontent.com/fillerwriter/b1bfe01310cccf448aea/raw/gistfile1.json)  
+[River](https://gist.githubusercontent.com/fillerwriter/32b1f3a9a492cbab8468/raw/river.json)  
