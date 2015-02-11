@@ -5,6 +5,8 @@ $(function() {
     $('html, body').stop().animate({
       scrollTop: $($anchor.attr('href')).offset().top
     }, 1500, 'easeInOutExpo');
+
+    $('.crisis-page--navigation--trigger').prop('checked', false);
     event.preventDefault();
   });
 });
