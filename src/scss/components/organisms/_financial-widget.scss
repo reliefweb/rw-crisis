@@ -1,9 +1,11 @@
 .financial-widget {
-  padding: 0 0.5rem 0.5rem;
   background-image: image-url('diagonal-pinstripes.png');
+  display: flex;
+  flex-direction: column;
 }
 
 .financial-widget--data-source-chooser {
+  @include padding-sides();
   margin: 0 -0.5rem $base-line-px;
   @include breakpoint($bp--financial--horizontal-tabs) {
     display: flex;
@@ -63,6 +65,7 @@
     display: flex;
   }
   h1 {
+    @include padding-sides();
     @include fontsize-rem(ms(3));
     line-height: 1.1;
   }
@@ -234,7 +237,25 @@
 
 .financial-widget {
   footer {
+    @include margin-sides($amount: 1rem);
     padding: 3px 0.5rem;
     background-color: $color--white;
+    align-self: flex-end;
+    &.financial-widget--explore {
+      position: relative;
+      margin-bottom: $base-line-em * 0.5;
+      background-color: $color--purple;
+      a {
+        @include unset-background-links();
+        color: $color--white;
+      }
+      &:after {
+        @include arrow($color--purple, right, $arrow-breadth: 30px);
+        @include transform(translatey(-50%));
+        top: 50%;
+        left: 100%
+      }
+    }
   }
 }
+

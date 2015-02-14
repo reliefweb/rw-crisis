@@ -7,10 +7,10 @@
   top: 0;
   width: 100%;
   z-index: 200;
-  + div {
-    margin-top: 68px + 40px + $base-line-px;
+  + section {
+    margin-top: 68px + 40px;
     @include breakpoint($bp--global--inline-title) {
-      margin-top: 68px + $base-line-px;
+      margin-top: 68px;
     }
   }
 }
@@ -38,7 +38,6 @@
 }
 .crisis-page--title {
   @include fontsize-rem(ms(0));
-  //  margin: 0 0 $base-line-em;
   margin: 0;
   padding: 0 0.5rem;
   background-color: $color--gray--light--mid;

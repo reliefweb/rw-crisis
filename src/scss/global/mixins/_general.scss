@@ -163,3 +163,35 @@
       }
     }
 }
+
+
+
+
+@mixin padding-sides($side: both, $amount: 0.5rem) {
+  padding: {
+    @if $side == left {
+      left: $amount;
+    }
+    @else if $side == right {
+      right: $amount;
+    }
+    @else {
+      left: $amount;
+      right: $amount;
+    }
+  }
+}
+@mixin margin-sides($side: both, $amount: 0.5rem) {
+  margin: {
+    @if $side == left {
+      left: $amount;
+    }
+    @else if $side == right {
+      right: $amount;
+    }
+    @else {
+      left: $amount;
+      right: $amount;
+    }
+  }
+}

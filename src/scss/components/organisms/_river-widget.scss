@@ -14,20 +14,17 @@
 }
 
 .widget-river--header {
-  $color--diagonal--lighter: mix($color--gray--light, $color--blue--dark, 97%);
-  @include background-image(linear-gradient(90deg, $color--gray--light, $color--transparent--white), repeating-linear-gradient(-45deg, $color--transparent--white, $color--transparent--white 16px, $color--diagonal--lighter 16px, $color--diagonal--lighter 32px));
   @include fontsize-rem(ms(0));
   position: relative;
   margin: 0;
   border-bottom: 1px solid $color--gray--lightish;
   background-color: $color--gray--light;
-  background-position: 50% 50%, 50% 50%;
   .widget-river--title {
     @include fontsize-rem(ms(0));
     display: inline-block;
     margin: 0 0.25em 0 0;
     padding: 0 0.5em 0 1em;
-    background-color: $color--yellow;
+    background-color: $color--blue--dark;
     color: $color--white;
     font-weight: bold;
     line-height: unitless-convert(54px);
@@ -124,9 +121,9 @@
 
 
 .widget-river--filters {
-  //  @include transition-property(max-height, opacity);
-  //  @include transition-duration($default-transition-duration);
-  //  @include transition-timing-function($default-transition-function);
+//  @include transition-property(max-height, opacity);
+//  @include transition-duration($default-transition-duration);
+//  @include transition-timing-function($default-transition-function);
   position: fixed;
   top: 0;
   right: 0;

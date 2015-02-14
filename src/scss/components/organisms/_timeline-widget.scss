@@ -145,26 +145,19 @@
 
 .timeline-widget-frames-wrapper {
   margin: 0;
-
   @include breakpoint($bp--timeline-2col) {
     margin: 0 em(60px);
-  }
-
-  @include breakpoint($bp--timeline--navigation-buttons) {
-    margin: 0;
   }
 }
 
 .timeline-widget-frames {
   width: 100%;
-
   ul {
     height: 100%;
     margin: 0;
     padding: 0;
     list-style: none;
   }
-
   .timeline-widget-item {
     height: 100%;
     margin: 0;
@@ -175,9 +168,7 @@
 
 .timeline-widget {
   position: relative;
-  max-width: em(1175px);
   margin: 0 auto;
-  padding: 0 0.5em;
   font-family: $font--futura;
 }
 
@@ -196,6 +187,10 @@
       top: em(260px);
       width: em(50px);
       height: em(50px);
+    }
+
+    &.disabled {
+      display: none;
     }
   }
 
