@@ -1,0 +1,10 @@
+crisis:
+  image: unocha/nodejs
+  volumes:
+    - /code/rw-crisis:/var/www/html
+    - /code/rw-crisis/container/opt/:/opt/
+  environment:
+    DNSDOCK_NAME: crisis
+    DNSDOCK_IMAGE: crisis
+  hostname:
+    crisis.vm
