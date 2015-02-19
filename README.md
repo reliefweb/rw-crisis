@@ -23,7 +23,7 @@ This process will also run `bundle install` and `bower install`. Note that `bowe
 
 ### Build & Watch for Changes
 
-    grunt watch
+    grunt watchSrc
 
 ### Generate a release package in `dist/`
 

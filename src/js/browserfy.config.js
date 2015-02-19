@@ -35,7 +35,7 @@ module.exports={
       "slug": "financial",
       "title": "Financial",
       "config": {
-        "url": "https://gist.githubusercontent.com/fillerwriter/b1bfe01310cccf448aea/raw/gistfile1.json"
+        "url": "https://gist.githubusercontent.com/jonnadams/e762cdae22986b8c0ea0/raw/financial.json"
       }
     },
     {
