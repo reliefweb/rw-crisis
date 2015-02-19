@@ -3,3 +3,10 @@
  *
  * For misc styles that don't belong anywhere else or need to appear last in source order
  */
+
+iframe.oembed {
+  border: none;
+}
+
+.crisis-page--widget-container iframe {
+}
