@@ -27,3 +27,7 @@ npm install
 
 echo "==> Build embed assets and run tests"
 grunt release
+
+# This functions to keep the container alive as well as rebuilding assets.
+echo "==> Running grunt watch"
+grunt watch
