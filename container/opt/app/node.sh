@@ -23,7 +23,7 @@ echo "==> Installing bower"
 npm install bower -g
 
 echo "==> Installing npm dependencies"
-npm install
+npm install --unsafe-perm
 
 echo "==> Build embed assets and run tests"
 grunt release
