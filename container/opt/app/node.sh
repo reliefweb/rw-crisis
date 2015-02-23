@@ -2,6 +2,8 @@
 
 cd /var/www/html
 
+nginx -t
+
 echo "==> Install Ruby >= 1.9.2 and RubyGems"
 rpm -ev ruby
 gpg2 --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
@@ -23,7 +25,11 @@ echo "==> Installing bower"
 npm install bower -g
 
 echo "==> Installing npm dependencies"
-npm install
+npm install --unsafe-perm
 
 echo "==> Build embed assets and run tests"
 grunt release
+
+# This functions to keep the container alive as well as rebuilding assets.
+echo "==> Running grunt watch"
+grunt watch
