@@ -13,6 +13,17 @@
       margin-top: 68px;
     }
   }
+  // Prevent FOUT(Flash of unstyled text)
+  .wf-loading {
+    h1, .text {
+      visibility: hidden;
+    }
+  }
+  .wf-active{
+    h1, .text {
+      visibility: visible;
+    }
+  }
 }
 
 .crisis-page--header {
