@@ -129,7 +129,6 @@
   flex-wrap: wrap;
   @include breakpoint($bp--overview-2col) {
     margin-top: 0;
-    background-color: $color--gray--light;
   }
   label {
     @include transition-property(background-color, color);
