@@ -28,7 +28,7 @@
 
 .crisis-page--header {
   padding: 0 0.5rem;
-  background-color: $color--gray--light;
+  background: $color--gray--light image-url('diagonal-pinstripes.png') repeat;
   color: $color--gray;
   font-family: $font--futura;
   @include breakpoint($bp--global--wide-nav) {
@@ -48,7 +48,7 @@
   line-height: unitless-convert(68px);
 }
 .crisis-page--title {
-  @include fontsize-rem(ms(0));
+  @include fontsize-rem(ms(1));
   margin: 0;
   padding: 0 0.5rem;
   background-color: $color--gray--light--mid;
@@ -56,7 +56,6 @@
   font-weight: bold;
   line-height: 2;
   text-transform: uppercase;
-  @include fontsize-rem(ms(1));
   @include breakpoint($bp--global--inline-title) {
     position: absolute;
     top: 12px;
@@ -87,12 +86,24 @@
       fill: $color--purple;
     }
   }
+  #menu-button-close {
+    display: none;
+    height: 68px;
+  }
 }
 
 .crisis-page--navigation--trigger {
   display: none;
   &:checked {
-    + .crisis-page--navigation {
+    ~ .crisis-page--navigation--trigger-label {
+      #menu-button {
+        display: none;
+      }
+      #menu-button-close {
+        display: block;
+      }
+    }
+    ~ .crisis-page--navigation {
       li {
         a {
           height: 42px;
@@ -111,6 +122,20 @@
     }
   }
 }
+
+.crisis-page--external-nav--item {
+  a {
+    position: relative;
+    &:after {
+      @include arrow($color--blue, right);
+      display: inline-block;
+      position: relative;
+      top: 21px;
+      right: -0.5em;
+    }
+  }
+}
+
 .crisis-page--navigation {
   width: 100vw;
   line-height: unitless-convert(44px);
