@@ -21,7 +21,7 @@ module.exports={
       "slug": "crisis-overview",
       "title": "Crisis Overview",
       "config": {
-        "url": "https://gist.githubusercontent.com/fillerwriter/91db8ab49a6df8e1d328/raw/gistfile1.js"
+        "url": "https://gist.githubusercontent.com/jonnadams/70c297bc102eda23820d/raw/028272009344c8c28fa87cb98920c16ceb8f09e0/crisis-overview.json"
       }
     },
     {
