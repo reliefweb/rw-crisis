@@ -1,19 +1,49 @@
 {
-  "page-title": "Test Page Title",
+  "page-title": "Crisis Page Title",
   "meta": [
+    {
+      "name": "viewport",
+      "content": "width=device-width, initial-scale=1"
+    },
     {
       "name": "description",
       "content": "Test Meta Description"
+    },
+    {
+      "name": "author",
+      "content": "UNOCHA ReliefWeb"
     }
   ],
+  "oembed-server": "http://embed.rwdev.org",
   "widgets": [
     {
-      "key": "example-widget",
-      "title": "Example Widget ",
-      "content": "I am an example widget"
+      "slug": "crisis-overview",
+      "title": "Crisis Overview",
+      "config": {
+        "url": "https://gist.githubusercontent.com/jonnadams/70c297bc102eda23820d/raw/028272009344c8c28fa87cb98920c16ceb8f09e0/crisis-overview.json"
+      }
+    },
+    {
+      "slug": "timeline",
+      "title": "Timeline",
+      "config": {
+        "url": "https://gist.githubusercontent.com/fillerwriter/cdd51cfb738db4daca38/raw/gistfile1.json"
+      }
+    },
+    {
+      "slug": "financial",
+      "title": "Financial",
+      "config": {
+        "url": "https://gist.githubusercontent.com/jonnadams/e762cdae22986b8c0ea0/raw/financial.json"
+      }
+    },
+    {
+      "slug": "river",
+      "title": "River",
+      "config": {
+        "url": "https://gist.githubusercontent.com/fillerwriter/32b1f3a9a492cbab8468/raw/river.json"
+      }
     }
   ],
-  "api-keys": {
-    "googlemaps": "xxx-xxxxxx"
-  }
+  "version": "1.0"
 }

@@ -7,11 +7,11 @@
     },
     {
       "name": "description",
-      "content": "Test Meta Description"
+      "content": "Orientation on the Syria Crisis."
     },
     {
       "name": "author",
-      "content": "United Nations"
+      "content": "UNOCHA ReliefWeb"
     }
   ],
   "oembed-server": "http://embed.rwdev.org",
@@ -44,5 +44,6 @@
         "url": "https://gist.githubusercontent.com/fillerwriter/32b1f3a9a492cbab8468/raw/river.json"
       }
     }
-  ]
+  ],
+  "version": "1.0"
 }
