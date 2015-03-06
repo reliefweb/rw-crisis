@@ -5,6 +5,7 @@
     "type": "git",
     "url": "http://github.com/reliefweb/rw-crisis.git"
   },
+  "private": true,
   "devDependencies": {
     "browserify": "^8.1.1",
     "connect-livereload": "^0.5.2",
