@@ -2,14 +2,18 @@
 
 This is static site for the Syria/Iraq ReliefWeb Crisis page.
 
-## Requirements
+## Dependencies
 
 - bower - Frontend dependencies
 - bundler - Ruby dependencies
 - compass - Compiles sass
 - npm/grunt - task runner
 
-## Development Tasks
+## System Requirements
+
+Apache or nginx. Should serve configuration files (at least) with CORS support.
+
+## Operations Tasks
 
 ### Install
 
@@ -17,90 +21,91 @@ This is static site for the Syria/Iraq ReliefWeb Crisis page.
 
 This process will also run `bundle install` and `bower install`. Note that `bower_components/` is found inside the `src/` directory.
 
-### Build
+### Generate Docroot
 
-    grunt
+Generate a release package in `dist/` that can be served by a webserver.
 
-### Build & Watch for Changes
+       grunt release
 
-    grunt watchSrc
+## Developer Tasks
 
-### Generate a release package in `dist/`
-
-    grunt release
-
-### Serve Crisis Page
-
-    grunt package
+* **Build**: `grunt`
+* **Watch for Changes**: `grunt watchSrc`
+* **Serve Crisis Page from `dist/`**: `grunt serve`
 
 ## Configuration
 
-This Crisis page is populated and configured by the config.json file located in the config directory.
+The Crisis Page is baked from configuration the build process expects to find in repo:config/config.json.
+Check out the [example.config.json](https://github.com/reliefweb/rw-crisis/blob/master/config/example.config.json) for details.
 
-    {
-      "page-title": "UN Crisis Page - Syria / Iraq",
-      "meta": [
-        {
-          "name": "author",
-          "content": "United Nations"
-        }
-      ],
-      "oembed-server": "http://embed.unrw.p2devcloud.com",
-      "widgets": [
-          {
-            "slug": "crisis-overview",
-            "title": "Crisis Overview",
-            "config": {
-            "url": "https://gist.githubusercontent.com/fillerwriter/91db8ab49a6df8e1d328/raw/gistfile1.js"
-          }
-        }
-      ]
-    }
+The configuration files are downloaded for use client-side, and are also retrieved to render the widgets
+provided by the Embed Service.
 
-### Options
-
-#### Page Tile
+### Page Tile
 
 The actual title of the Crisis Page
 
-    "page-title": "UN Crisis Page - Syria / Iraq"
+```js
+{
+  "page-title": "UN Crisis - Syria / Iraq"
+}
+```
 
-#### Meta
+### Meta
 
-An array of meta data to be included in the header of the Crisis Page
+An array of meta tags to be included in the header of the Crisis Page.
 
-    "meta": [
-      {
-        "name": "author",
-        "content": "United Nations"
-      }
-    ],
+```js
+{
+  "meta": [
+    {
+      "name": "author",
+      "content": "United Nations"
+    }
+  ],
+}
+```
 
-#### Oembed Server
+### Environment
 
-Url pointing to the embed service.
+The Environment configuration allows you to specific anything environment-specific in the running of the Crisis Page.
+This especially includes the absolute path to the Crisis Page and any APIs it will rely on.
 
-      "oembed-server": "http://embed.unrw.p2devcloud.com"
+```js
+{
+  "environment": {
+    "baseUrl": "http://crisis.rwlabs.org/crisis-short-id/",
+    "sources": {
+      "hdx": "http://data.hdx.rwlabs.org/api",
+      "fts": "http://fts.unocha.org/api",
+      "reliefweb": "http://api.rwlabs.org",
+      "reliefweb-embed": "http://embed.rwdev.org"
+    }
+  },
+}
+```
 
-#### Widgets
+### Widgets
 
 An array of widgets along with widget specific configuration to be embedded into the crisis page. This section is also used to generate the navigation for the Crisis PAge
 
+```js
+{
     "widgets": [
       {
-        "slug": "crisis-overview",
-         "title": "Crisis Overview",
+        "slug": "Machine ID of the widget. Should be usable as an HTML id attribute value.",
+         "title": "Title of the widget to be displayed in navigation.",
          "config": {
+           // This URL will be used for the build process, actual config content is saved locally and hosted at the Crisis Page URL.
            "url": "https://gist.githubusercontent.com/fillerwriter/91db8ab49a6df8e1d328/raw/gistfile1.js"
         }
       }
     ]
+}
+```
 
-`slug`: The html id of the widget.  
-`title`: The title of the widget to be displayed in the navigation.  
-`config` & `url`: A js or json file specific to each individual widget. Please see below for samples.  
-
-[Crisis Overview](https://gist.githubusercontent.com/fillerwriter/91db8ab49a6df8e1d328/raw/gistfile1.js)  
-[Timeline](https://gist.githubusercontent.com/fillerwriter/cdd51cfb738db4daca38/raw/gistfile1.json)  
-[Financial](https://gist.githubusercontent.com/fillerwriter/b1bfe01310cccf448aea/raw/gistfile1.json)  
-[River](https://gist.githubusercontent.com/fillerwriter/32b1f3a9a492cbab8468/raw/river.json)  
+#### Example Widget Configuration
+* [Crisis Overview](https://gist.githubusercontent.com/fillerwriter/91db8ab49a6df8e1d328/raw/gistfile1.js)
+* [Timeline](https://gist.githubusercontent.com/fillerwriter/cdd51cfb738db4daca38/raw/gistfile1.json)
+* [Financial](https://gist.githubusercontent.com/fillerwriter/b1bfe01310cccf448aea/raw/gistfile1.json)
+* [River](https://gist.githubusercontent.com/fillerwriter/32b1f3a9a492cbab8468/raw/river.json)
