@@ -31,5 +31,10 @@
   "scripts": {
     "postinstall": "bundle install --binstubs=gems/bin --path=gems; bower install --allow-root",
     "start": "grunt serve"
+  },
+  "dependencies": {
+    "fs-extra": "^0.16.5",
+    "nomnom": "^1.8.1",
+    "superagent": "^0.21.0"
   }
 }
