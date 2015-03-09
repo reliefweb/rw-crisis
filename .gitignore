@@ -23,3 +23,5 @@ dist
 gems
 bin
 
+# Environment Support
+container/etc/nginx/private/htpasswd
