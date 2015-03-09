@@ -1,6 +1,11 @@
 {
   "name": "rw-crisis",
-  "version": "0.0.0",
+  "version": "0.2.0",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/reliefweb/rw-crisis.git"
+  },
+  "private": true,
   "devDependencies": {
     "browserify": "^8.1.1",
     "connect-livereload": "^0.5.2",
@@ -24,7 +29,7 @@
     "wiredep": "^2.2.2"
   },
   "scripts": {
-    "postinstall": "bundle install --binstubs=bin --path=gems; bower install --allow-root",
+    "postinstall": "bundle install --binstubs=gems/bin --path=gems; bower install --allow-root",
     "start": "grunt serve"
   }
 }
