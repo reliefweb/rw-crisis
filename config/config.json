@@ -14,6 +14,9 @@
       "content": "UNOCHA ReliefWeb"
     }
   ],
+  "environment": {
+    "baseUrl": "http://crisis.rwlabs.org/syria/"
+  },
   "oembed-server": "http://embed.rwdev.org",
   "widgets": [
     {

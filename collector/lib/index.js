@@ -13,6 +13,10 @@ var opts = require('nomnom')
     flag: true,
     help: 'In dev mode the configuration is pulled and written to src/ instead of dev/.'
   })
+  .option('widget-config-path', {
+    help: 'Specify the directory path within the docroot where widget config should be saved. [Variation Untested].',
+    default: 'config'
+  })
   .parse();
 
 var fs = require('fs');

@@ -63,6 +63,9 @@ module.exports = function() {
 
   module.purgeUnknown = function(dir, list) {
     fs.readdir(dir, function(err, found) {
+      if (!found) {
+        return console.log('First-time initialization of widget-configuration.');
+      }
       found.forEach(function(item) {
         if (list.indexOf(item) == -1) {
           var deprecated = path.join(dir, item);
@@ -75,6 +78,8 @@ module.exports = function() {
           });
         }
       });
+
+      return true;
     });
   };
 
