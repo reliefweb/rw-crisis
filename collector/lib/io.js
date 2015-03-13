@@ -2,7 +2,6 @@ var fs = require('fs-extra');
 var path = require('path');
 var agent = require('superagent');
 
-
 module.exports = function() {
   var module = {};
 
@@ -27,6 +26,11 @@ module.exports = function() {
   };
 
   module.writeJSON = function(data, filePath) {
+    // Something is injecting a copy of remotely pulled content. Hacky clean-up.
+    if (data[""]) {
+      delete data[""];
+    }
+
     fs.outputJson(filePath, data, function(err) {
       if (err) {
         return console.error(err);
@@ -35,30 +39,6 @@ module.exports = function() {
         return console.log('JSON saved to ' + filePath);
       }
     });
-  };
-
-  module.download = function(url, dest, transformer) {
-    var request = agent.get(url).end(function(err, response) {
-      if (err) {
-        return false;
-      }
-      else if (response.error) {
-        return console.error('HTTP ' + response.status + ': ' + response.error.message);
-      }
-
-      try {
-        var json = JSON.parse(response.text);
-      }
-      catch(e) {
-        return console.error('Data retrieved from "' + url + '" is not valid JSON.');
-      }
-
-      module.writeJSON(transformer(json), dest);
-
-      return true;
-    });
-
-    return true;
   };
 
   module.purgeUnknown = function(dir, list) {

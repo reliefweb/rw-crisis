@@ -37,8 +37,8 @@ if (!io.fileExists(opts.config)) {
 }
 
 var config = io.readJSON(opts.config);
-var gather = require('./gather')(config, opts);
-gather.verifyDownloadedConfig();
-gather.saveRemoteConfig();
-gather.updatePrimaryConfig();
+var collect = require('./collect')(config, opts);
+collect.verifyDownloadedConfig();
+collect.saveRemoteConfig();
+collect.updatePrimaryConfig();
 
