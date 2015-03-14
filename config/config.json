@@ -34,12 +34,6 @@
     {
       "slug": "timeline",
       "title": "Timeline",
-      "content": {
-         "source": "reliefweb",
-         "fallback": "foolish mortal!",
-         "path": "v1",
-         "type": "request"
-      },
       "config": {
         "url": "https://gist.githubusercontent.com/fillerwriter/cdd51cfb738db4daca38/raw/gistfile1.json"
       }
@@ -47,11 +41,6 @@
     {
       "slug": "financial",
       "title": "Financial",
-      "content": {
-         "source": "reliefweb",
-         "path": "v1/reports",
-         "type": "request"
-      },
       "config": {
         "url": "https://gist.githubusercontent.com/jonnadams/e762cdae22986b8c0ea0/raw/financial.json"
       }
