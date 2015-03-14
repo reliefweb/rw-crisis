@@ -1,5 +1,6 @@
 var agent = require('superagent');
 var async = require('async');
+var jsonpath = require('jsonpath');
 var obj = require('getobject');
 var traverse = require('traverse');
 
@@ -84,10 +85,11 @@ module.exports = function(sources) {
         updated = true;
       }
 
-      // @todo here is where we will add the XPath-like selector.
+      // Apply JSONPath selector.
+      if (definition.selector === undefined) definition.content = content;
+      else definition.content = jsonpath.query(content, definition.selector);
 
-
-      definition.content = content;
+      // Add processing metadata
       if (definition.date === undefined) definition.date = {};
       var now = new Date().toISOString();
       definition.date.checked = now;
