@@ -1,6 +1,5 @@
 var fs = require('fs-extra');
 var path = require('path');
-var agent = require('superagent');
 
 module.exports = function() {
   var module = {};
@@ -23,22 +22,6 @@ module.exports = function() {
     }
 
     return json;
-  };
-
-  module.writeJSON = function(data, filePath) {
-    // Something is injecting a copy of remotely pulled content. Hacky clean-up.
-    if (data[""]) {
-      delete data[""];
-    }
-
-    fs.outputJson(filePath, data, function(err) {
-      if (err) {
-        return console.error(err);
-      }
-      else {
-        return console.log('JSON saved to ' + filePath);
-      }
-    });
   };
 
   module.purgeUnknown = function(dir, list) {

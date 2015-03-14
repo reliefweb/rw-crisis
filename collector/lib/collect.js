@@ -27,18 +27,27 @@ module.exports = function(config, opts) {
     data.processed = {
       generator: 'collector',
       version: version,
-      date: {}
+      date: {
+        updated: now
+      }
     };
 
     return data;
   };
 
   module.updatePrimaryConfig = function() {
-    Config = module.signature(Config);
-    Config.processed.date.processed = now;
-    Config = skymap.process(Config, function(err, data) {
-      if (err) console.error('Could not process configuration file. [Reason: ' + err.message + ']');
-      else io.writeJSON(data, Opts.config);
+    var collectMainConfig = async.seq(signConfig, inlineRequestData, saveConfig);
+
+    collectMainConfig({
+      filePath: Opts.config,
+      name: 'Main Config',
+      content: Config
+    }, function(result, err) {
+      // WARNING: result, err is the OPPOSITE order expected. This seems likely to be "fixed" at some point.
+      if (err)
+        console.error('[' + result.name + '] Could not process configuration file.');
+      else
+        console.log('[' + result.name + '] Configuration has completed processing.');
     });
   };
 
@@ -103,14 +112,13 @@ module.exports = function(config, opts) {
         callback(true, item);
       }
 
-      console.log('[' + item.name + '] retrieved data from: ' + item.url);
+      console.log('[' + item.name + '] retrieved data from "' + item.url + '"');
       callback(null, item);
     });
   }
 
   function signConfig(item, callback) {
     item.content = module.signature(item.content);
-    item.content.processed.date.downloaded = now;
     console.log('[' + item.name + '] added basic processing metadata');
     callback(null, item);
   }
@@ -128,7 +136,7 @@ module.exports = function(config, opts) {
 
     fs.outputJson(item.filePath, item.content, function(err) {
       if (err) console.error(err);
-      else console.log('[' + item.name + '] JSON saved to ' + item.filePath);
+      else console.log('[' + item.name + '] data saved to "' + item.filePath + '"');
       callback(item);
     });
   }

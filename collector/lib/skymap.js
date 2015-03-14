@@ -12,8 +12,15 @@ module.exports = function(sources) {
 
   // Traverse a JSON object looking for any object with the type: 'request' property.
   // When one is found pass the object to be converted into an API request.
-  module.process = function(rawData, handler, key) {
-    Data = key ? rawData[key] : rawData;
+  // rawData is an object of the form:
+  // {
+  //   name: 'machine name',
+  //   url: 'optional url if canonically hosted elsewhere.',
+  //   filePath: 'Spot on disk it is intended to go',
+  //   content: {data: 'content to be processed by skymap' }
+  // }
+  module.process = function(rawData, handler) {
+    Data = rawData['content'];
     // Set up a worker queue to manage HTTP requests.
     var queue = async.queue(module.request,
       Math.max((require('os').cpus().length || 1) * 2, 2));
@@ -22,14 +29,8 @@ module.exports = function(sources) {
     // pause()/resume() rather than implement a more complex token-counting mechanism.
     queue.pause();
     queue.drain = function() {
-      var prefix = 'Main Config';
-      if (key) {
-        rawData[key] = Data;
-        prefix = rawData.name;
-      }
-      else rawData = Data;
-      console.log('[' + prefix + '] Data processing completed');
-
+      rawData['content'] = Data;
+      console.log('[' + rawData.name + '] skymap processing completed');
       handler(null, rawData);
     };
 
