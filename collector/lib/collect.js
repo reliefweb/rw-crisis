@@ -5,22 +5,18 @@ var path = require('path');
 var io = require('./io')();
 
 module.exports = function(config, opts) {
-  var Config = config;
-  var Opts = opts;
-
   var module = {};
-
-  var skymap = require('./skymap')(Config.environment.sources);
+  var skymap = require('./skymap')(config.environment.sources);
   var version = require('../../package.json').version;
   var now = new Date().toISOString();
 
   module.dest = function(slug) {
-    return path.join(Opts.dest, Opts['widget-config-path'], slug + '.json');
+    return path.join(opts.dest, opts['widget-config-path'], slug + '.json');
   };
 
   module.url = function(slug) {
     // baseUrl is expected to have a trailing slash.
-    return Config.environment.baseUrl + Opts['widget-config-path'] + '/' + slug + '.json';
+    return config.environment.baseUrl + opts['widget-config-path'] + '/' + slug + '.json';
   };
 
   module.signature = function(data) {
@@ -39,9 +35,9 @@ module.exports = function(config, opts) {
     var collectMainConfig = async.seq(signConfig, inlineRequestData, saveConfig);
 
     collectMainConfig({
-      filePath: Opts.config,
+      filePath: opts.config,
       name: 'Main Config',
-      content: Config
+      content: config
     }, function(result, err) {
       // WARNING: result, err is the OPPOSITE order expected. This seems likely to be "fixed" at some point.
       if (err)
@@ -54,7 +50,7 @@ module.exports = function(config, opts) {
   // Warn about any configuration files that are no longer mentioned.
   module.verifyDownloadedConfig = function() {
     io.purgeUnknown(path.dirname(module.dest('')),
-      Config.widgets.map(function(item) {
+      config.widgets.map(function(item) {
         return item.slug + '.json';
       })
     );
@@ -64,7 +60,7 @@ module.exports = function(config, opts) {
   module.saveRemoteConfig = function() {
     var collectRemoteConfig = async.seq(downloadRemoteConfig, signConfig, inlineRequestData, saveConfig);
 
-    Config.widgets.map(function(widget) {
+    config.widgets.map(function(widget) {
       // If there is not a URL, assume there is no remote configuration.
       if (widget.config.url) {
         var url = widget.config.sourceUrl || widget.config.url;
