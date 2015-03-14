@@ -115,21 +115,17 @@ module.exports = function(config, opts) {
 
   function signConfig(item, callback) {
     item.content = module.signature(item.content);
+    item.content.processed.name = item.name;
     console.log('[' + item.name + '] added basic processing metadata');
     callback(null, item);
   }
 
   function inlineRequestData(item, callback) {
     console.log('[' + item.name + '] about to begin skymap');
-    skymap.process(item, callback, 'content');
+    skymap.process(item, callback);
   }
 
   function saveConfig(item, callback) {
-    // Something is injecting a copy of remotely pulled content. Hacky clean-up.
-    if (item.content[""]) {
-      delete item.content[""];
-    }
-
     fs.outputJson(item.filePath, item.content, function(err) {
       if (err) console.error(err);
       else console.log('[' + item.name + '] data saved to "' + item.filePath + '"');

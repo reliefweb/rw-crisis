@@ -1,14 +1,10 @@
-var async = require('async');
 var agent = require('superagent');
+var async = require('async');
 var obj = require('getobject');
 var traverse = require('traverse');
-var extend = require('util')._extend;
-
-var io = require('./io')();
 
 module.exports = function(sources) {
   var module = {};
-  var Data;
 
   // Traverse a JSON object looking for any object with the type: 'request' property.
   // When one is found pass the object to be converted into an API request.
@@ -19,8 +15,7 @@ module.exports = function(sources) {
   //   filePath: 'Spot on disk it is intended to go',
   //   content: {data: 'content to be processed by skymap' }
   // }
-  module.process = function(rawData, handler) {
-    Data = rawData['content'];
+  module.process = function(data, handler) {
     // Set up a worker queue to manage HTTP requests.
     var queue = async.queue(module.request,
       Math.max((require('os').cpus().length || 1) * 2, 2));
@@ -29,17 +24,21 @@ module.exports = function(sources) {
     // pause()/resume() rather than implement a more complex token-counting mechanism.
     queue.pause();
     queue.drain = function() {
-      rawData['content'] = Data;
-      console.log('[' + rawData.name + '] skymap processing completed');
-      handler(null, rawData);
+//      if (rawData.name == 'Main Config') console.log(Data);
+
+      // Something is injecting a copy of remotely pulled content. Hacky clean-up.
+      if (data.content[""]) delete data.content[""];
+      console.log('[' + data.name + '] skymap processing completed');
+      handler(null, data);
     };
 
     // Enqueue jobs based on any child object of the data that is of the 'request' type.
     // Children of said type do not need to be traversed, but it's not clear the best way
     // to kick back the traversal mechanism in that case, will revisit later.
-    traverse(Data).forEach(function(item) {
+    traverse(data.content).forEach(function(item) {
       if (item.hasOwnProperty('type') && item.type == 'request') {
-        queue.push([this.path]);
+        data.path = this.path;
+        queue.push([data]);
         // Used to block unnecessary processing of child elements.
         // Request objects are a "leaf" for our purposes.
         this.update(item, true)
@@ -57,7 +56,12 @@ module.exports = function(sources) {
 
   // Issues the API request and adds some timestamp information.
   module.request = function(item, done) {
-    var definition = obj.get(Data, item);
+    // Sometimes this function receives no path from the queue worker. How this
+    // happens is unclear, but processing the null path results in breaks.
+    if (item.path.length === 0) { done(); return; }
+
+    var definition = obj.get(item.content, item.path);
+
     var uri = sources[definition['source']] + '/' + definition.path;
     var method = definition.method || 'GET';
     var content = definition.fallback || 'No content retrieved';
@@ -81,13 +85,15 @@ module.exports = function(sources) {
       }
 
       // @todo here is where we will add the XPath-like selector.
+
+
       definition.content = content;
       if (definition.date === undefined) definition.date = {};
       var now = new Date().toISOString();
       definition.date.checked = now;
       if (updated) definition.date.updated = now;
 
-      obj.set(Data, item.join('.'), definition);
+      obj.set(item.content, item.path.join('.'), definition);
       done();
     });
 
