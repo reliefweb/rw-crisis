@@ -27,7 +27,7 @@ module.exports = function() {
   module.purgeUnknown = function(dir, list) {
     fs.readdir(dir, function(err, found) {
       if (!found) {
-        return console.log('First-time initialization of widget-configuration.');
+        return console.log('Directory is empty, nothing to purge.');
       }
       found.forEach(function(item) {
         if (list.indexOf(item) == -1) {
