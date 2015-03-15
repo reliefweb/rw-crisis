@@ -38,8 +38,9 @@ module.exports = function(sources) {
     // to kick back the traversal mechanism in that case, will revisit later.
     traverse(data.content).forEach(function(item) {
       if (item.hasOwnProperty('type') && item.type == 'request') {
-        data.path = this.path;
-        queue.push([data]);
+        var segment = { path: this.path.join('.'), data: data };
+        console.log('[' + data.name + '] found item for processing at "' + segment.path + '"');
+        queue.push([segment]);
         // Used to block unnecessary processing of child elements.
         // Request objects are a "leaf" for our purposes.
         this.update(item, true)
@@ -61,7 +62,7 @@ module.exports = function(sources) {
     // happens is unclear, but processing the null path results in breaks.
     if (item.path.length === 0) { done(); return; }
 
-    var definition = obj.get(item.content, item.path);
+    var definition = obj.get(item.data.content, item.path);
 
     var uri = sources[definition['source']] + '/' + definition.path;
     var method = definition.method || 'GET';
@@ -95,7 +96,7 @@ module.exports = function(sources) {
       definition.date.checked = now;
       if (updated) definition.date.updated = now;
 
-      obj.set(item.content, item.path.join('.'), definition);
+      obj.set(item.data.content, item.path, definition);
       done();
     });
 
