@@ -23,3 +23,6 @@ dist
 # Bundler
 .bundle
 gems
+
+# Environment Support
+container/etc/nginx/private/htpasswd
