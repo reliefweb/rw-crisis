@@ -3,6 +3,7 @@ var async = require('async');
 var fs = require('fs-extra');
 var path = require('path');
 var io = require('./io')();
+var log = require('./log');
 
 module.exports = function(config, opts) {
   var module = {};
@@ -41,9 +42,19 @@ module.exports = function(config, opts) {
     }, function(result, err) {
       // WARNING: result, err is the OPPOSITE order expected. This seems likely to be "fixed" at some point.
       if (err)
-        console.error('[' + result.name + '] Could not process configuration file.');
+        log.error({
+          type: 'Process',
+          widget: result.name,
+          destination: result.filePath,
+          message: 'Could not process configuration file.'
+        });
       else
-        console.log('[' + result.name + '] Configuration has completed processing.');
+        log.info({
+          type: 'Process',
+          widget: result.name,
+          destination: result.filePath,
+          message: 'Configuration has completed processing.'
+        });
     });
   };
 
@@ -74,9 +85,21 @@ module.exports = function(config, opts) {
         }, function(result, err) {
           // WARNING: result, err is the OPPOSITE order expected. This seems likely to be "fixed" at some point.
           if (err)
-            console.error('[' + result.name + '] Failed to download config for widget "' + widget.title + '" to "' + filePath + '"');
+            log.error({
+              type: 'Process',
+              url: result.url,
+              widget: result.name,
+              destination: result.filePath,
+              message: 'Failed to download config for widget "' + widget.title + '" to "' + filePath + '"'
+            });
           else
-            console.log('[' + result.name + '] Configuration for "' + widget.title + '" has completed processing.');
+            log.info({
+              type: 'Process',
+              url: result.url,
+              widget: result.name,
+              destination: result.filePath,
+              message: 'Configuration for "' + widget.title + '" has completed processing.'
+            });
         });
 
         if (!widget.config.sourceUrl) {
@@ -92,11 +115,26 @@ module.exports = function(config, opts) {
   function downloadRemoteConfig(item, callback) {
     var request = agent.get(item.url).end(function(err, response) {
       if (err) {
-        console.error(err);
+        log.error({
+          type: 'Process',
+          url: item.url,
+          destination: item.filePath,
+          widget: item.name,
+          message: 'Widget retrieval failed without reaching remote server.',
+          err: err
+        });
         callback(err, item);
       }
       else if (response.error) {
-        console.error('HTTP ' + response.status + ': ' + response.error.message);
+        log.error({
+          type: 'Process',
+          url: item.url,
+          destination: item.filePath,
+          widget: item.name,
+          'error-message': response.error.message,
+          'error-code': response.status,
+          message: 'Widget retrieval failed.'
+        });
         callback(true, item);
       }
 
@@ -104,11 +142,23 @@ module.exports = function(config, opts) {
         item.content = JSON.parse(response.text);
       }
       catch(e) {
-        console.error('Data retrieved from "' + item.url + '" is not valid JSON.');
+        log.error({
+          type: 'Process',
+          url: item.url,
+          destination: item.filePath,
+          widget: item.name,
+          message: 'Content was empty or produced no valid JSON.'
+        });
         callback(true, item);
       }
 
-      console.log('[' + item.name + '] retrieved data from "' + item.url + '"');
+      log.info({
+        type: 'Process',
+        url: item.url,
+        destination: item.filePath,
+        widget: item.name,
+        message: 'successfully retrieved data'
+      });
       callback(null, item);
     });
   }
@@ -116,19 +166,47 @@ module.exports = function(config, opts) {
   function signConfig(item, callback) {
     item.content = module.signature(item.content);
     item.content.processed.name = item.name;
-    console.log('[' + item.name + '] added basic processing metadata');
+    log.info({
+      type: 'Process',
+      url: item.url,
+      destination: item.filePath,
+      widget: item.name,
+      message: 'added basic processing metadata'
+    });
     callback(null, item);
   }
 
   function inlineRequestData(item, callback) {
-    console.log('[' + item.name + '] about to begin skymap');
+    log.debug({
+      type: 'Process',
+      url: item.url,
+      destination: item.filePath,
+      widget: item.name,
+      message: 'about to begin skymap'
+    });
     skymap.process(item, callback);
   }
 
   function saveConfig(item, callback) {
     fs.outputJson(item.filePath, item.content, function(err) {
-      if (err) console.error(err);
-      else console.log('[' + item.name + '] data saved to "' + item.filePath + '"');
+      if (err)
+        log.error({
+          type: 'Process',
+          url: item.url,
+          destination: item.filePath,
+          widget: item.name,
+          message: 'Could not save configuration to destination file.',
+          err: err
+        });
+      else
+        log.info({
+          type: 'Process',
+          url: item.url,
+          destination: item.filePath,
+          widget: item.name,
+          message: 'Successfully saved data',
+          err: err
+        });
       callback(item);
     });
   }
