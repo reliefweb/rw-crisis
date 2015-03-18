@@ -3,6 +3,7 @@ var async = require('async');
 var jsonpath = require('jsonpath');
 var obj = require('getobject');
 var traverse = require('traverse');
+var log = require('./log');
 
 module.exports = function(sources) {
   var module = {};
@@ -28,8 +29,21 @@ module.exports = function(sources) {
 //      if (rawData.name == 'Main Config') console.log(Data);
 
       // Something is injecting a copy of remotely pulled content. Hacky clean-up.
-      if (data.content[""]) delete data.content[""];
-      console.log('[' + data.name + '] skymap processing completed');
+      if (data.content[""]) {
+        delete data.content[""];
+        log.debug({
+          type: 'Skymap',
+          widget: data.name,
+          message: 'Remote data found assigned to empty key in content payload.'
+        });
+      }
+
+      log.info({
+        type: 'Skymap',
+        widget: data.name,
+        message: 'data-inlining process has been completed for all configured requests.'
+      });
+
       handler(null, data);
     };
 
@@ -39,7 +53,12 @@ module.exports = function(sources) {
     traverse(data.content).forEach(function(item) {
       if (item.hasOwnProperty('type') && item.type == 'request') {
         var segment = { path: this.path.join('.'), data: data };
-        console.log('[' + data.name + '] found item for processing at "' + segment.path + '"');
+        log.info({
+          type: 'Skymap',
+          widget: data.name,
+          traverse: segment.path,
+          message: 'found item for processing at specified traversal path'
+        });
         queue.push([segment]);
         // Used to block unnecessary processing of child elements.
         // Request objects are a "leaf" for our purposes.
@@ -53,6 +72,11 @@ module.exports = function(sources) {
       queue.drain();
     }
 
+    log.debug({
+      type: 'Skymap',
+      widget: data.name,
+      message: 'About to unpause queue. This will open it up to asynchronous processing.'
+    });
     queue.resume();
   };
 
@@ -71,17 +95,44 @@ module.exports = function(sources) {
     var request = new agent(method, uri).end(function(err, response) {
       var updated = false;
       if (err) {
-        console.error(err);
+        log.error({
+          type: 'Skymap',
+          widget: item.data.name,
+          source: definition.source,
+          url: uri,
+          traverse: item.path,
+          method: method,
+          message: 'Request failed without reaching remote server.',
+          err: err
+        });
       }
       else if (response.error) {
-        console.error('HTTP ' + response.status + ': ' + response.error.message);
+        log.error({
+          type: 'Skymap',
+          widget: item.data.name,
+          source: definition.source,
+          url: uri,
+          traverse: item.path,
+          'error-message': response.error.message,
+          'error-code': response.status,
+          message: 'Data retrieval failed.'
+        });
       }
       else {
         try {
-          content = JSON.parse(response.text);
+          var content = JSON.parse(response.text);
         }
         catch (e) {
-          return console.error('Invalid JSON retrieved from ' + uri);
+          log.error({
+            type: 'Skymap',
+            widget: item.data.name,
+            source: definition.source,
+            url: uri,
+            traverse: item.path,
+            message: 'Content was empty or produced no valid JSON.'
+          });
+
+          content = {};
         }
         updated = true;
       }
