@@ -25,21 +25,21 @@
     },
     {
       "slug": "timeline",
-      "title": "Timeline",
+      "title": "Crisis Timeline",
       "config": {
         "url": "https://gist.githubusercontent.com/fillerwriter/597ef7e4d843225c2132/raw/90c7dc0571b31bdd126b4c0d87627323bbd4a281/timeline.json"
       }
     },
     {
       "slug": "financial",
-      "title": "Financial",
+      "title": "Financial Support",
       "config": {
         "url": "https://gist.githubusercontent.com/fillerwriter/47cacdcd76e8e35dc2ca/raw/financial.json"
       }
     },
     {
       "slug": "river",
-      "title": "River",
+      "title": "More From Reliefweb",
       "config": {
         "url": "https://gist.githubusercontent.com/fillerwriter/32b1f3a9a492cbab8468/raw/river.json"
       }
