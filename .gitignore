@@ -13,6 +13,7 @@ bower_components
 # Generated files in src directory.
 index.html
 src/config.json
+src/config
 src/css
 src/js/browserfy.config.js
 

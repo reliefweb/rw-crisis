@@ -14,7 +14,15 @@
       "content": "UNOCHA ReliefWeb"
     }
   ],
-  "oembed-server": "http://embed.rwdev.org",
+  "environment": {
+    "baseUrl": "http://crisis.rwlabs.org/syria/",
+    "sources": {
+      "hdx": "http://data.hdx.rwlabs.org/api",
+      "fts": "http://fts.unocha.org/api",
+      "reliefweb": "http://api.rwlabs.org",
+      "reliefweb-embed": "http://embed.rwdev.org"
+    }
+  },
   "widgets": [
     {
       "slug": "crisis-overview",
@@ -34,7 +42,7 @@
       "slug": "financial",
       "title": "Financial",
       "config": {
-        "url": "https://gist.githubusercontent.com/fillerwriter/47cacdcd76e8e35dc2ca/raw/financial.json"
+        "url": "https://gist.githubusercontent.com/grayside/df8948e4a3e719be987f/raw/cd237bcd374ba0d8b2a4691ed2a24ea6fb5707fd/financial.json"
       }
     },
     {

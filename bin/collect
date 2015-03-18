@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+CALLPATH=`dirname $0`
+ABS_CALLPATH=`cd $CALLPATH; pwd`
+
+node "$ABS_CALLPATH/../collector/index.js" $@

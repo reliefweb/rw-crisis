@@ -6,19 +6,14 @@
 var config = require("./config.json");
 var widgets = config.widgets;
 
-// var $ = jQuery;
-// var _ = lodash;
-
-var oembed_server = config['oembed-server'];
-//var oembed_server = "http://localhost:3000";
-
+var embed_server = config.environment.sources['reliefweb-embed'];
 //var self_domain = window.location.host + '/';
 var self_domain = '';
 
 var pyms = [];
 
 widgets.forEach(function(widget) {
-  var oembed_url = oembed_server + '/v0/oembed/' + widget.slug + '?url=' + widget.config.url;
+  var oembed_url = embed_server + '/v0/oembed/' + widget.slug + '?url=' + widget.config.url;
   $.get(oembed_url, '', function(data) {
     var $markup = $(data.html);
     //$markup.attr("scrolling", "no").addClass('oembed');
