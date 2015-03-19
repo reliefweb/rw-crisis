@@ -17,7 +17,7 @@
   "environment": {
     "baseUrl": "http://crisis.rwlabs.org/syria/",
     "sources": {
-      "hdx": "http://data.hdx.rwlabs.org/api",
+      "hdx": "https://data.hdx.rwlabs.org/api",
       "fts": "http://fts.unocha.org/api",
       "reliefweb": "http://api.rwlabs.org",
       "reliefweb-embed": "http://embed.rwdev.org"
@@ -28,7 +28,7 @@
       "slug": "crisis-overview",
       "title": "Crisis Overview",
       "config": {
-        "url": "https://gist.githubusercontent.com/fillerwriter/7fd144c2f4160c3c8004/raw/crisis-overview.json"
+        "url": "https://gist.githubusercontent.com/grayside/6ffb57b9979575f013c2/raw/crisis-overview.json"
       }
     },
     {
