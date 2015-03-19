@@ -23,11 +23,11 @@ var fs = require('fs');
 var io = require('./io')();
 
 if (opts.dev) {
-  opts.src = path.normalize(__dirname + '../../../src');
+  opts.src = path.normalize(__dirname + '../../../config');
   opts.dest = path.normalize(__dirname + '../../../src');
 }
 else {
-  opts.src = path.normalize(__dirname + '../../../dist');
+  opts.src = path.normalize(__dirname + '../../../config');
   opts.dest = path.normalize(__dirname + '../../../dist');
 }
 
