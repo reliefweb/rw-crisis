@@ -118,6 +118,11 @@ module.exports = function (grunt) {
         }
       }
     },
+    shell: {
+      collect: {
+        command: 'bin/collect | node_modules/.bin/bunyan'
+      }
+    },
     clean: {
       dist: [ 'dist' ]
     },
@@ -129,10 +134,20 @@ module.exports = function (grunt) {
             src: [ 'img/**', 'fonts/**', 'index.html' ],
             dest: 'dist',
             cwd: 'src'
-          },
+          }
+        ]
+      },
+      config: {
+        files: [
           {
             src: [ 'config/config.json' ],
-            dest: 'dist/config.json',
+            dest: 'dist/config.json'
+          },
+          {
+            expand: true,
+            src: [ '*' ],
+            dest: 'dist/config',
+            cwd: 'config/config'
           }
         ]
       }
@@ -146,19 +161,12 @@ module.exports = function (grunt) {
     usemin: {
       html: ['dist/*.html']
     }
-    // TODO: Not all bower components are being installed even though the main
-    // is set inside the package.
-    /*wiredep: {
-      task: {
-        src: ['./src/index.html']
-      }
-    }*/
   });
 
   grunt.registerTask('default', [
     'compass',
+    'shell:collect',
     'compile-handlebars:src',
-    //'wiredep',
     'jshint',
     'browserify'
   ]);
@@ -179,6 +187,7 @@ module.exports = function (grunt) {
     'uglify',
     'cssmin',
     'copy:dist',
+    'copy:config',
     'usemin'
    ]);
 
