@@ -2,13 +2,16 @@
   @include single-transition(max-height, $default-transition-duration, $default-transition-function);
   max-height: 0;
   overflow: hidden;
+  @include transform3d( translateX(0));
+  &.is-active {
+    max-height: 100em;
+  }
 }
 .accordion-set--check {
   display: none;
   &:checked {
     + .accordion-set--label {
       + .accordion-set--content {
-        /* @todo: this isn't working in Safari */
         max-height: 100em;
       }
     }
@@ -16,4 +19,21 @@
 }
 .accordion-set--label {
   display: block;
+}
+
+// Visual styles
+.accordion-set--label {
+  position: relative;
+  &:before {
+    @include single-transition(transform, $default-transition-duration, $default-transition-function);
+    @include transform(rotate(0deg));
+    @include arrow($color--purple);
+    top: 1em;
+    left: 0.5em;
+  }
+  &.is-active {
+    &:before {
+      @include transform(rotate(90deg));
+    }
+  }
 }

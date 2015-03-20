@@ -12,9 +12,9 @@
   @include antialiased;
   font-size: 15px;
   text-align: center;
-  padding: 0 20px;
-  height: 40px;
-  line-height: 44px;
+  padding: 0.7em 1.25em;
+  min-height: 40px;
+  line-height: 1.2;
   border-style: solid;
   border-color: $color--white;
   border-width: 0; // need `.btn--border` or `.btn--clear-bg` to invoke border; other classes determine color

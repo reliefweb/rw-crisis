@@ -1,25 +1,25 @@
-.widget-river {
+.widget-river-graph {
   background: image-url('diagonal-pinstripes.png') repeat $color--white;
   // layout
   @include breakpoint($bp--river--two-cols) {
     @include layout(7 3) {
-      .widget-river--results--graph {
+      .widget-river-graph--results--graph {
         @include grid-span(1, 1);
       }
-      .widget-river--filters {
+      .widget-river-graph--filters {
         @include grid-span(1, 2);
       }
     }
   }
 }
 
-.widget-river--header {
+.widget-river-graph--header {
   @include fontsize-rem(ms(0));
   position: relative;
   margin: 0;
   border-bottom: 1px solid $color--gray--lightish;
   background-color: $color--gray--light;
-  .widget-river--title {
+  .widget-river-graph--title {
     @include fontsize-rem(ms(0));
     display: inline-block;
     margin: 0 0.25em 0 0;
@@ -33,7 +33,7 @@
   }
 }
 
-.widget-river {
+.widget-river-graph {
   .selectricWrapper {
     display: inline-block;
     position: relative;
@@ -59,7 +59,7 @@
   }
 }
 
-.widget-river--results-tabs {
+.widget-river-graph--results-tabs {
   > li {
     width: 100%;
     padding: em(10px);
@@ -78,7 +78,7 @@
       float: left;
       text-align: center;
     }
-    .widget-river--results--number {
+    .widget-river-graph--results--number {
       @include fontsize-rem(ms(4));
       width: 33%;
       float: left;
@@ -98,7 +98,7 @@
   }
 }
 
-.widget-river--results--type {
+.widget-river-graph--results--type {
   display: inline-block;
   position: relative;
   width: 67%;
@@ -120,7 +120,7 @@
 
 
 
-.widget-river--filters {
+.widget-river-graph--filters {
 //  @include transition-property(max-height, opacity);
 //  @include transition-duration($default-transition-duration);
 //  @include transition-timing-function($default-transition-function);
@@ -187,7 +187,7 @@
   }
 }
 
-.widget-river--filters--title {
+.widget-river-graph--filters--title {
   @include fontsize-rem(ms(0));
   position: relative;
   margin: 0;
@@ -209,11 +209,11 @@
 }
 
 ////////////////////////////////////////////
-.widget-river--results {
+.widget-river-graph--results {
   @include breakpoint($bp--river-unstack-tabs) {
     margin: 1rem;
   }
-  .widget-river--results--graph {
+  .widget-river-graph--results--graph {
     margin-bottom: $base-line-em;
     border: 0.5rem solid $color--gray--lightish;
     background-color: $color--gray--lightish;

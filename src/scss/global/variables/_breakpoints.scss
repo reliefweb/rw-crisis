@@ -18,13 +18,18 @@ $breakpoint-no-query-fallbacks: true; // Breakpoint will output fallback selecto
 $breakpoint-to-ems: true; // Breakpoint will convert all media queries to use EMs rather than PX
 
 // Breakpoints
+$bp--global--inline-title: 480px;
+$bp--global--wide-nav: 600px;
 $bp--overview-2col: 600px;
+$bp--overview-2col-wide: 880px;
 $bp--timeline-2col: 700px;
+$bp--timeline-2col-wide: 860px;
 $bp--timeline--navigation-buttons: 1360px;
 $bp--financial--wide-chart: 680px;
 $bp--financial--horizontal-tabs: 620px;
 $bp--financial--inline-date: 620px;
 $bp--river-unstack-tabs: 640px;
 $bp--river--two-cols: 912px;
-$bp--global--wide-nav: 600px;
-$bp--global--inline-title: 480px;
+$bp--river-2col: 640px;
+$bp--river-2col-wide: 800px;
+
