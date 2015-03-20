@@ -45,16 +45,14 @@ module.exports = function(config, opts) {
         log.error({
           type: 'Process',
           widget: result.name,
-          destination: result.filePath,
-          message: 'Could not process configuration file.'
-        });
+          destination: result.filePath
+        }, 'Could not process configuration file.');
       else
         log.info({
           type: 'Process',
           widget: result.name,
-          destination: result.filePath,
-          message: 'Configuration has completed processing.'
-        });
+          destination: result.filePath
+        }, 'Configuration has completed processing.');
     });
   };
 
@@ -89,17 +87,15 @@ module.exports = function(config, opts) {
               type: 'Process',
               url: result.url,
               widget: result.name,
-              destination: result.filePath,
-              message: 'Failed to download config for widget "' + widget.title + '" to "' + filePath + '"'
-            });
+              destination: result.filePath
+            }, 'Processing of remote configuration failed.');
           else
             log.info({
               type: 'Process',
               url: result.url,
               widget: result.name,
-              destination: result.filePath,
-              message: 'Configuration for "' + widget.title + '" has completed processing.'
-            });
+              destination: result.filePath
+            }, 'Widget configuration completed processing.');
         });
 
         if (!widget.config.sourceUrl) {
@@ -120,9 +116,8 @@ module.exports = function(config, opts) {
           url: item.url,
           destination: item.filePath,
           widget: item.name,
-          message: 'Widget retrieval failed without reaching remote server.',
           err: err
-        });
+        }, 'Widget retrieval failed without reaching remote server.');
         callback(err, item);
       }
       else if (response.error) {
@@ -132,9 +127,8 @@ module.exports = function(config, opts) {
           destination: item.filePath,
           widget: item.name,
           'error-message': response.error.message,
-          'error-code': response.status,
-          message: 'Widget retrieval failed.'
-        });
+          'error-code': response.status
+        }, 'Widget retrieval failed.');
         callback(true, item);
       }
 
@@ -146,9 +140,8 @@ module.exports = function(config, opts) {
           type: 'Process',
           url: item.url,
           destination: item.filePath,
-          widget: item.name,
-          message: 'Content was empty or produced no valid JSON.'
-        });
+          widget: item.name
+        }, 'Content was empty or produced no valid JSON.');
         callback(true, item);
       }
 
@@ -156,9 +149,8 @@ module.exports = function(config, opts) {
         type: 'Process',
         url: item.url,
         destination: item.filePath,
-        widget: item.name,
-        message: 'successfully retrieved data'
-      });
+        widget: item.name
+      }, 'Successfully retrieved data.');
       callback(null, item);
     });
   }
@@ -166,13 +158,12 @@ module.exports = function(config, opts) {
   function signConfig(item, callback) {
     item.content = module.signature(item.content);
     item.content.processed.name = item.name;
-    log.info({
+    log.debug({
       type: 'Process',
       url: item.url,
       destination: item.filePath,
-      widget: item.name,
-      message: 'added basic processing metadata'
-    });
+      widget: item.name
+    }, 'Added basic processing metadata.');
     callback(null, item);
   }
 
@@ -181,9 +172,8 @@ module.exports = function(config, opts) {
       type: 'Process',
       url: item.url,
       destination: item.filePath,
-      widget: item.name,
-      message: 'about to begin skymap'
-    });
+      widget: item.name
+    }, 'About to begin skymap.');
     skymap.process(item, callback);
   }
 
@@ -195,18 +185,16 @@ module.exports = function(config, opts) {
           url: item.url,
           destination: item.filePath,
           widget: item.name,
-          message: 'Could not save configuration to destination file.',
           err: err
-        });
+        }, 'Could not save configuration to destination file.');
       else
         log.info({
           type: 'Process',
           url: item.url,
           destination: item.filePath,
           widget: item.name,
-          message: 'Successfully saved data',
           err: err
-        });
+        }, 'Successfully saved data.');
       callback(item);
     });
   }
