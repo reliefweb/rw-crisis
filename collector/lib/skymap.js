@@ -33,16 +33,14 @@ module.exports = function(sources) {
         delete data.content[""];
         log.debug({
           type: 'Skymap',
-          widget: data.name,
-          message: 'Remote data found assigned to empty key in content payload.'
-        });
+          widget: data.name
+        }, 'Remote data found assigned to empty key in content payload.');
       }
 
       log.info({
         type: 'Skymap',
-        widget: data.name,
-        message: 'data-inlining process has been completed for all configured requests.'
-      });
+        widget: data.name
+      }, 'Data-inlining process has been completed for all configured requests.');
 
       handler(null, data);
     };
@@ -53,12 +51,11 @@ module.exports = function(sources) {
     traverse(data.content).forEach(function(item) {
       if (item.hasOwnProperty('type') && item.type == 'request') {
         var segment = { path: this.path.join('.'), data: data };
-        log.info({
+        log.debug({
           type: 'Skymap',
           widget: data.name,
-          traverse: segment.path,
-          message: 'found item for processing at specified traversal path'
-        });
+          traverse: segment.path
+        }, 'Found item for processing at specified traversal path');
         queue.push([segment]);
         // Used to block unnecessary processing of child elements.
         // Request objects are a "leaf" for our purposes.
@@ -74,9 +71,8 @@ module.exports = function(sources) {
 
     log.debug({
       type: 'Skymap',
-      widget: data.name,
-      message: 'About to unpause queue. This will open it up to asynchronous processing.'
-    });
+      widget: data.name
+    }, 'About to unpause queue. This will open it up to asynchronous processing.');
     queue.resume();
   };
 
@@ -102,9 +98,8 @@ module.exports = function(sources) {
           url: uri,
           traverse: item.path,
           method: method,
-          message: 'Request failed without reaching remote server.',
           err: err
-        });
+        }, 'Request failed without reaching remote server.');
       }
       else if (response.error) {
         log.error({
@@ -114,9 +109,8 @@ module.exports = function(sources) {
           url: uri,
           traverse: item.path,
           'error-message': response.error.message,
-          'error-code': response.status,
-          message: 'Data retrieval failed.'
-        });
+          'error-code': response.status
+        }, 'Data retrieval failed.');
       }
       else {
         try {
@@ -128,9 +122,8 @@ module.exports = function(sources) {
             widget: item.data.name,
             source: definition.source,
             url: uri,
-            traverse: item.path,
-            message: 'Content was empty or produced no valid JSON.'
-          });
+            traverse: item.path
+          }, 'Content was empty or produced no valid JSON.');
 
           content = {};
         }
