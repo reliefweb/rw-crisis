@@ -145,8 +145,9 @@ module.exports = function (grunt) {
           },
           {
             expand: true,
-            src: [ 'config/config/*' ],
-            dest: 'dist/config'
+            src: [ '*' ],
+            dest: 'dist/config',
+            cwd: 'config/config'
           }
         ]
       }
