@@ -130,9 +130,10 @@
     &:after {
       @include arrow($color--blue, right);
       display: inline-block;
-      position: relative;
-      top: 21px;
-      right: -0.5em;
+      position: absolute;
+      top: 36px;
+      left: 50%;
+      margin-left: 70px;
     }
   }
 }
