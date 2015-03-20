@@ -24,11 +24,11 @@ var io = require('./io')();
 
 if (opts.dev) {
   opts.src = path.normalize(__dirname + '../../../config');
-  opts.dest = path.normalize(__dirname + '../../../src');
+  opts.dest = path.normalize(__dirname + '../../../config');
 }
 else {
   opts.src = path.normalize(__dirname + '../../../config');
-  opts.dest = path.normalize(__dirname + '../../../dist');
+  opts.dest = path.normalize(__dirname + '../../../config');
 }
 
 opts.config = path.join(opts.src, 'config.json');
