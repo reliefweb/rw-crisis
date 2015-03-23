@@ -26,3 +26,4 @@ gems
 
 # Environment Support
 container/etc/nginx/private/htpasswd
+.log
