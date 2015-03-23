@@ -80,31 +80,28 @@
  *  $border-color,
  *  $direction: up
  */
-@mixin arrow-box(
-  $size,
+@mixin arrow-box($size,
   $color,
   $border-width,
   $border-color,
-  $direction: up
-) {
-    position: relative;
-    background: $color;
-    border: 1px solid $border-color;
+  $direction: up,
+  $arrow: true) {
+  position: relative;
+  background: $color;
+  border: 1px solid $border-color;
 
+  @if $arrow {
     &:after, &:before {
       @if $direction == 'left' {
         right: 100%;
         top: 50%;
-      }
-      @else if $direction == 'right' {
+      } @else if $direction == 'right' {
         left: 100%;
         top: 50%;
-      }
-      @else if $direction == 'down' {
+      } @else if $direction == 'down' {
         top: 100%;
         left: 50%;
-      }
-      @else {
+      } @else {
         bottom: 100%;
         left: 50%;
       }
@@ -122,18 +119,15 @@
         border-right-color: $color;
         border-width: $size;
         margin-top: -1 * $size;
-      }
-      @else if $direction == 'right' {
+      } @else if $direction == 'right' {
         border-left-color: $color;
         border-width: $size;
         margin-top: -10px;
-      }
-      @else if $direction == 'down' {
+      } @else if $direction == 'down' {
         border-top-color: $color;
         border-width: $size;
         margin-left: -1 * $size;
-      }
-      @else {
+      } @else {
         border-bottom-color: $color;
         border-width: $size;
         margin-left: -1 * $size;
@@ -145,23 +139,21 @@
         border-right-color: $border-color;
         border-width: $size + em(1px);
         margin-top: -1 * ($size + em(1px));
-      }
-      @else if $direction == 'right' {
+      } @else if $direction == 'right' {
         border-left-color: $border-color;
         border-width: $size + em(1px);
         margin-top: -1 * ($size + em(1px));
-      }
-      @else if $direction == 'down' {
+      } @else if $direction == 'down' {
         border-top-color: $border-color;
         border-width: $size + em(1px);
         margin-left: -1 * ($size + em(1px));
-      }
-      @else {
+      } @else {
         border-bottom-color: $border-color;
         border-width: $size + em(1px);
         margin-left: -1 * ($size + em(1px));
       }
     }
+  }
 }
 
 

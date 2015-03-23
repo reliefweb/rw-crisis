@@ -8,7 +8,12 @@
   @include padding-sides();
   margin: 0 -0.5rem $base-line-px;
   @include breakpoint($bp--financial--horizontal-tabs) {
+    // Note: The flex mixin provided by compass does not provide all of the necessary vendor prefixes.
     display: flex;
+    display: -webkit-box;
+    display: -moz-box-flex;
+    display: -webkit-flex;
+    display: -ms-flexbox;
   }
 }
 .financial-widget--data-source {
@@ -23,7 +28,13 @@
   @include breakpoint($bp--financial--horizontal-tabs) {
     padding: 0.5rem 1.5em;
     border-bottom: 1px solid $color--blue--pale;
+    // Note: The flex mixin provided by compass does not provide all of the necessary vendor prefixes.
     flex-grow: 1;
+    -webkit-box-flex:1;
+    -moz-flex-grow: 1;
+    -webkit-flex-grow: 1;
+    -ms-flex-grow:1;
+    -ms-flex: 1;
     &:before {
 //      @include single-transition(transform, $default-transition-duration, $default-transition-function);
       @include transition-property(border-color, transform);
@@ -132,10 +143,11 @@
   &.covered {
     $color--diagonal--lighter: mix($color--gray--light, $color--yellow, 25%);
     @include background-image(linear-gradient(-90deg, $color--yellow, $color--transparent--white), repeating-linear-gradient(-45deg, $color--transparent--white, $color--transparent--white 16px, $color--diagonal--lighter 16px, $color--diagonal--lighter 32px));
-    width: 55%;
+    @include single-transition($property: width);
+    width: 0;
     float: left;
     border-right: 4px solid $color--purple;
-    background: $color--yellow;
+    background-color: $color--yellow;
     background-position: 50% 50%, 50% 50%;
     color: $color--yellow--dark;
   }
@@ -192,6 +204,20 @@
   margin-bottom: $base-line-px;
   padding: 1em 0 1em 0.5em;
   background-color: $color--white;
+  .axis {
+    .domain {
+      fill: none;
+      stroke: $color--gray--lightish;
+    }
+    line {
+      stroke: $color--gray--lightish;
+    }
+  }
+  .grid {
+    line {
+      stroke: $color--gray--lightish;
+    }
+  }
   text {
     font-family: $font--futura;
     font-size: ms(0);
@@ -219,6 +245,9 @@
     display: none;
     .detail--block {
       fill: rgba($color--white, 0.8);
+    }
+    .detail--icon {
+      fill: $color--white;
     }
     .detail--info {
       fill: $color--purple;
