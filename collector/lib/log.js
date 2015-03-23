@@ -1,5 +1,11 @@
-var bunyan = require('bunyan'),
-  log = bunyan.createLogger({
+var bunyan = require('bunyan');
+var path = require('path');
+
+var logFile = process.env.CRISIS_COLLECTOR_LOGS !== undefined
+  ? path.join(process.env.CRISIS_COLLECTOR_LOGS, 'rw-crisis-collector.log')
+  : 'rw-crisis-collector.log';
+
+var log = bunyan.createLogger({
     name: require('../../package.json').name + '/collector',
     streams: [
       {
@@ -8,7 +14,7 @@ var bunyan = require('bunyan'),
       },
       {
         level: 'info',
-        path: '/var/log/rw-crisis-collector.log'
+        path: logFile
       }
     ]
   });
