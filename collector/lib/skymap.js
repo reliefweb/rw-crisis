@@ -26,8 +26,6 @@ module.exports = function(sources) {
     // pause()/resume() rather than implement a more complex token-counting mechanism.
     queue.pause();
     queue.drain = function() {
-//      if (rawData.name == 'Main Config') console.log(Data);
-
       // Something is injecting a copy of remotely pulled content. Hacky clean-up.
       if (data.content[""]) {
         delete data.content[""];
@@ -88,7 +86,9 @@ module.exports = function(sources) {
     var method = definition.method || 'GET';
     var content = definition.fallback || 'No content retrieved';
 
-    var request = new agent(method, uri).end(function(err, response) {
+    var request = new agent(method, uri)
+    if (definition.payload) request = request.send(definition.payload);
+    request.end(function(err, response) {
       var updated = false;
       if (err) {
         log.error({
@@ -141,7 +141,7 @@ module.exports = function(sources) {
       if (updated) definition.date.updated = now;
 
       obj.set(item.data.content, item.path, definition);
-      done();
+      setTimeout(done, 2000);
     });
 
   };
