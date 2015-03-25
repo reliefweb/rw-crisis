@@ -24,30 +24,28 @@ module.exports = function (grunt) {
       }
     },
     watch: {
-      config: {
+      html: {
         files: [
-          './src/templates/*.handlebars',
-          './src/templates/**/*.handlebars',
-          './config/config.json'
+          'src/templates/index.handlebars'
         ],
-        tasks: ['compile-handlebars:src']
+        tasks: [ 'compile-handlebars', 'useminPrepare', 'usemin' ]
       },
-      compass: {
-        files: ['src/**/*.{scss,sass}'],
-        tasks: ['compass']
+      css: {
+        files: [ 'src/scss/**' ],
+        tasks: [
+          'compass',
+          'copy:css'
+        ]
       },
-      jshint: {
-        files: ['js/**'],
-        tasks: ['jshint']
+      js: {
+        files: [ 'src/js/**' ],
+        tasks: [
+          'copy:js'
+        ]
       },
       livereload: {
         files: [
-          'src/templates/index.handlebars',
-          'src/index.html',
-          'src/config/config.json',
-          'src/**/*.css',
-          'src/**/*.js',
-          'src/img/{,*//*}*.{png,jpg,jpeg,gif,webp,svg}'
+          'dist/**', 'dist/**/*'
         ],
         options: {
           livereload: true
@@ -76,6 +74,22 @@ module.exports = function (grunt) {
             return middlewares;
           }
         }
+      },
+      develop: {
+        options: {
+          base: 'dist',
+          port: 9001,
+          open: true,
+          middleware: function (connect, options, middlewares) {
+            middlewares.unshift(function(req, res, next) {
+              res.setHeader('Access-Control-Allow-Origin', '*');
+              res.setHeader('Access-Control-Allow-Methods', '*');
+              next();
+            });
+
+            return middlewares;
+          }
+        }
       }
     },
     shell: {
@@ -92,6 +106,16 @@ module.exports = function (grunt) {
           {
             expand: true,
             src: [ 'bower_components/**', 'img/**', 'fonts/**', 'js/**' ],
+            dest: 'dist',
+            cwd: 'src'
+          }
+        ]
+      },
+      js: {
+        files: [
+          {
+            expand: true,
+            src: [ 'js/**' ],
             dest: 'dist',
             cwd: 'src'
           }
@@ -146,7 +170,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('watchSrc', [
     'build',
-    'connect:dist',
+    'connect:develop',
     'watch'
   ]);
 
