@@ -1,14 +1,34 @@
+// LAYOUT
+.timeline-widget--frames {
+  width: 100%;
+}
+
+@include breakpoint($bp--timeline-2col) {
+  @include layout($grid--2) {
+    .timeline-widget--dropdown {
+      @include grid-span(1, 2);
+    }
+    .timeline-widget--frames {
+      @include grid-span(1, 1);
+    }
+  }
+}
+@include breakpoint($bp--timeline-2col-wide) {
+  @include layout($grid--2-3) {
+    .timeline-widget--dropdown {
+      @include grid-span(1, 2);
+    }
+    .timeline-widget--frames {
+      @include grid-span(1, 1);
+    }
+  }
+}
+// LAYOUT END
+
 .timeline-widget--dropdown {
   position: relative;
   top: auto;
   right: auto;
-
-  @include breakpoint($bp--timeline-2col) {
-    position: absolute;
-    top: 0.5em;
-    right: 0.5em;
-    z-index: 10;
-  }
 }
 
 .timeline-widget--dropdown--wrapper {
@@ -28,13 +48,16 @@
     @include arrow($color--blue--darker, up);
     right: 2em;
     bottom: 100%;
+    @include breakpoint($bp--timeline-2col) {
+      display: none;
+    }
   }
 
   @include breakpoint($bp--timeline-2col) {
     position: relative;
-    top: em(14px);
-    width: em(360px);
     height: auto;
+    opacity: 1;
+    overflow: visible;
   }
 
   &.open {
@@ -42,6 +65,14 @@
     opacity: 1;
     overflow: visible;
   }
+}
+
+.timeline-widget-dropdown--item-date {
+  @include list--item-date();
+}
+
+.timeline-widget-dropdown--item-desc {
+  clear: both;
 }
 
 .timeline-widget--dropdown-heading {
@@ -55,7 +86,16 @@
   text-transform: uppercase;
 
   @include breakpoint($bp--timeline-2col) {
+    display:none;
     width: auto;
+  }
+
+
+  .button-arrow {
+    @include arrow($color--purple, down);
+    @include margin-sides(right);
+    display: inline-block;
+    position: relative;
   }
 }
 
@@ -74,84 +114,69 @@
     background: url('../../images/close.svg');
     background-size: em(15px);
     cursor: pointer;
+    @include breakpoint($bp--timeline-2col) {
+      display: none;
+    }
   }
   .form-select {
     @include inline-block;
+  }
+  .form-today {
+    position: relative;
+    top: -11px;
+    height: 36px;
+    margin-left: 0.5em;
+    border: none;
+    background-color: $color--blue;
+    color: $color--white;
+    font-family: $font--futura;
+    line-height: 1.5;
+    &:hover {
+      background-color: $color--purple;
+    }
   }
 }
 
 .timeline-widget--dropdown--container {
   height: 100%;
+  height: calc(100vh - 55px);
   padding: 0 em(15px) 0 em(30px);
   background-image: image-url('diagonal-pinstripes.png');
+  overflow: hidden;
   @include breakpoint($bp--timeline-2col) {
-    height: em(325px);
-    border-bottom: 2px solid $color--blue--dark;
-  }
-
-  ul {
-    padding: em(14px) 0;
-    border-left: em(4px) solid $color--blue--dark;
-  }
-
-  .timeline-widget--dot {
-    position: absolute;
-    top: 20%;
-    left: em(-55px);
-    background: $color--blue;
-    border: em(4px) solid $color--gray--light;
-
-    .timeline-widget--dot--date {
-      width: em(30px);
-      margin: auto;
-      text-align: center;
-      padding-left: em(2px);
-      padding-top: em(4px);
-    }
-  }
-  .active {
-    .timeline-widget--dot {
-      background: $color--blue--dark;
-      border-color: $color--gray--lightish;
-    }
+    height: calc(100vh - 55px - 62px);
   }
 }
 
 .timeline-widget-dropdown--list-item {
-  @include arrow-box(em(10px), $color--white, em(1px), $color--gray--light--mid, left);
+  @include arrow-box(em(10px), $color--white, em(1px), $color--gray--light--mid, left, $arrow: false);
   position: relative;
   margin-bottom: em(14px);
-  margin-left: em(32px);
   padding: 0.5em;
-  text-align: right;
   color: $color--gray;
-
+  text-align: right;
   &.active {
     @include arrow-box(em(10px), $color--white, em(1px), $color--blue--dark, left);
   }
 }
 
-.timeline-widget--dropdown--month {
+
+%timeline-widget--dropdown--month {
+margin: 0.5em;
   border: none;
+  color: $color--gray--light--mid;
   text-align: center;
   text-transform: uppercase;
-  color: $color--gray--light--mid;
-  margin: 0.5em;
+}
+.timeline-widget--dropdown--month {
+  @extend %timeline-widget--dropdown--month;
 }
 
 .timeline-widget--dropdown--end-of-line {
-  @extend .timeline-widget--dropdown--month;
+  @extend %timeline-widget--dropdown--month;
 }
 
-.timeline-widget-frames-wrapper {
-  margin: 0;
-  @include breakpoint($bp--timeline-2col) {
-    margin: 0 em(60px);
-  }
-}
-
-.timeline-widget-frames {
-  width: 100%;
+.timeline-widget--frames {
   ul {
     height: 100%;
     margin: 0;
@@ -179,6 +204,7 @@
   .prev {
     position: absolute;
     top: em(65px);
+    padding: 0;
     border: none;
     background: $color--white;
     z-index: 10;
@@ -190,6 +216,9 @@
     }
 
     &.disabled {
+      display: none;
+    }
+    @include breakpoint($bp--timeline-2col) {
       display: none;
     }
   }
@@ -204,9 +233,7 @@
       right: 0;
 
       @include breakpoint($bp--timeline-2col) {
-        @include arrow($color--purple--dark, right);
-        top: em(16px);
-        right: em(16px);
+        display: none;
       }
     }
   }
@@ -221,9 +248,7 @@
       left: 0;
 
       @include breakpoint($bp--timeline-2col) {
-        @include arrow($color--purple--dark, left);
-        top: em(16px);
-        left: em(16px);
+        display: none;
       }
     }
   }
@@ -253,11 +278,11 @@
 }
 
 .timeline-widget-item--title {
+  @include padding-sides();
   font-family: $font--futura;
   font-size: ms(1);
   font-weight: bold;
   line-height: normal;
-
   @include breakpoint($bp--timeline-2col) {
     font-size: ms(4);
   }
@@ -304,36 +329,26 @@
 }
 
 .timeline-widget-item--content {
-  @media screen and (min-width: 700px) {
-    @include layout($grid--2-3) {
-      .grid--item {
-        &:nth-of-type(2n+1) {
-          @include grid-span(1, 1);
-          clear: both;
-        }
-        &:nth-of-type(2n+2) {
-          @include grid-span(1, 2);
-        }
-      }
-    }
-  }
-
   a {
     font-weight: bold;
     text-transform: none;
   }
 
   .btn {
-    width: 100%;
-    background: $color--purple--dark;
-    font-family: $font--futura;
-    font-size: ms(0);
-    font-weight: normal;
-    text-decoration: none;
+    @include phi-btn();
   }
 
   .timeline-widget-item--image {
+    background: $color--gray--light;
+    overflow: hidden;
     position: relative;
+    text-align: center;
+
+    & > img {
+      margin: 0 auto;
+      max-height: 25rem;
+      width: auto;
+    }
   }
 
   .timeline-widget-item--image--icons {
@@ -345,9 +360,8 @@
     a {
       border: none;
       color: $color--white;
-      text-transform: uppercase;
       text-shadow: none;
-
+      text-transform: uppercase;
       &.timeline-widget-item--image--view-more {
         background: $color--yellow;
       }
@@ -360,21 +374,19 @@
   }
 
   .timeline-widget-item--description {
-    padding-top: em(10px);
+    @include padding-sides();
+    margin-top: $base-line-em;
     color: $color--gray;
     font-family: $font--skolar;
     @include breakpoint($bp--timeline-2col) {
-      padding-top: em(64px);
+      margin-top: $base-line-em * 1.5;
     }
-
     p {
       display: none;
-
       @include breakpoint($bp--timeline-2col) {
         display: block;
       }
     }
-
   }
 }
 
@@ -405,19 +417,18 @@
 
 .timeline-widget-pager--item-content {
   @include arrow-box(em(10px), $color--white, em(1px), $color--gray--lightish, up);
-  color: $color--gray;
   display: none;
   margin: em(15px) em(5px) 0 em(5px);
   padding: em(10px);
   border: em(1px) solid $color--gray--lightish;
+  color: $color--gray;
   text-align: center;
+  @include breakpoint($bp--timeline-2col) {
+    display: block;
+  }
   .active & {
     @include arrow-box(em(10px), $color--white, em(2px), $color--purple--dark, up);
     color: $color--gray;
-  }
-
-  @include breakpoint($bp--timeline-2col) {
-    display: block;
   }
 }
 
@@ -439,17 +450,17 @@
   margin: 0 auto;
   border: em(6px) solid $color--purple--light;
   background: $color--purple;
-  font-weight: bold;
   color: $color--white;
+  font-weight: bold;
   .active & {
-    background: $color--purple--dark;
     border-color: $color--purple;
+    background: $color--purple--dark;
   }
   .timeline-widget--dot--date {
     width: 30px;
     margin: auto;
-    text-align: center;
-    padding-right: 2px;
     padding-top: 2px;
+    padding-right: 2px;
+    text-align: center;
   }
 }

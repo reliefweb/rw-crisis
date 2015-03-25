@@ -1,0 +1,28 @@
+.unsupported-browsers {
+  max-width: 40em;
+  margin: 0 auto;
+  padding: $base-line-em 0.5em;
+  p {
+    text-align: center;
+  }
+  a {
+    font-weight: bold;
+    text-transform: none;
+  }
+  .rw-buttons {
+    @include clearfix();
+    width: 90%;
+    margin: 0 auto;
+    .btn {
+      width: 100%;
+      max-width: 48%;
+      margin: 0 1% $base-line-em;
+      float: left;
+      background: $color--purple--dark;
+      font-family: $font--futura;
+      font-size: ms(0);
+      font-weight: normal;
+      text-decoration: none;
+    }
+  }
+}

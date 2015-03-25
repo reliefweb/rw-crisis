@@ -1,5 +1,24 @@
 .overview-widget {
   @include breakpoint($bp--overview-2col) {
+    @include layout($grid--2) {
+      .overview-widget--description {
+        @include grid-span(1, 1);
+        clear: left;
+      }
+      .overview-widget--map {
+        @include grid-span(1, 2);
+      }
+      .overview-widget--tabs {
+        @include grid-span(1, 2);
+        clear: right;
+      }
+      .overview-widget--sources {
+        @include grid-span(1, 2);
+        clear: right;
+      }
+    }
+  }
+  @include breakpoint($bp--overview-2col-wide) {
     @include layout($grid--golden-left) {
       .overview-widget--description {
         @include grid-span(1, 1);
@@ -54,6 +73,20 @@
   line-height: 1.74;
 }
 
+.widget-title--icon-custom {
+  width: 1.25em;
+  height: 1.73em;
+
+  &:before {
+    position: absolute;
+    top: 16px;
+    left: 7px;
+    width: 30px;
+    height: 30px;
+    content: '';
+  }
+}
+
 .overview-widget--map {
   border: {
     width: 0 0 1px 0;
@@ -66,7 +99,7 @@
   h2 {
     @include fontsize-rem(ms(2));
     margin: 0 0 12px;
-    padding: 6px 0.5em;
+    padding: 6px 0.5em 6px 1em;
     border-top: 1px solid $color--gray--lightish;
     border-bottom: 2px solid $color--purple;
     background-color: $color--gray--light;
@@ -77,9 +110,22 @@
       background-color: transparent;
     }
   }
+  .accordion-set--label {
+    &:before {
+      @include breakpoint($bp--overview-2col) {
+        display: none;
+      }
+    }
+    h2 {
+      padding-left: 1em;
+      @include breakpoint($bp--overview-2col) {
+        padding-left: 0.5rem;
+      }
+    }
+  }
   .accordion-set--content {
     @include column-gap(2em);
-    padding: 0 0.5em;
+    @include padding-sides();
     @include eq('cols2') {
       @include columns(2);
       margin-bottom: $base-line-em;
@@ -91,35 +137,7 @@
 }
 
 // Accordion
-.accordion-set--label {
-  position: relative;
-  &:before {
-    @include single-transition(transform, $default-transition-duration, $default-transition-function);
-    @include transform(rotate(0deg));
-    @include arrow($color--purple);
-    top: 1em;
-    left: 0.5em;
-    @include breakpoint($bp--overview-2col) {
-      display: none;
-    }
-  }
-  h2 {
-    padding-left: 1em;
-    @include breakpoint($bp--overview-2col) {
-      padding-left: 0.5rem;
-    }
-  }
-}
 
-.accordion-set--check {
-  &:checked {
-    + .accordion-set--label {
-      &:before {
-        @include transform(rotate(90deg));
-      }
-    }
-  }
-}
 
 
 // Tabs

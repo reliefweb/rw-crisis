@@ -95,3 +95,14 @@
 @function font-name($font-index, $map: $fonts) {
   @return map-get(map-get($map, #{$font-index}), font-name);
 }
+
+//:::::::::::::::::::::::::::::::::::::::::::::::::://
+//:: Calculating Phi
+//:::::::::::::::::::::::::::::::::::::::::::::::::://
+@function phi-a($number) {
+  @return $number / 1.61803398875;
+}
+//:::::::::::::::::::::::::::::::::::::::::::::::::://
+@function phi-b($number) {
+  @return $number - ($number / 1.61803398875);
+}
