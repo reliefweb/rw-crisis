@@ -15,7 +15,7 @@
     }
   ],
   "environment": {
-    "baseUrl": "http://crisis.rwlabs.org/syria/",
+    "baseUrl": "http://crisis.rwdev.org/",
     "sources": {
       "hdx": "https://data.hdx.rwlabs.org/api",
       "fts": "http://fts.unocha.org/api",
