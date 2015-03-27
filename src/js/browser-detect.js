@@ -1,7 +1,7 @@
 var unsupported = true;
 
 if (
-  ($.browser.name == 'chrome' && $.browser.versionNumber >= 40) ||
+  ($.browser.name == 'chrome') ||
   ($.browser.name == 'mozilla' && $.browser.versionNumber >= 35) ||
   ($.browser.name == 'safari' && $.browser.versionNumber >= 8) ||
   ($.browser.name == 'msie' && $.browser.versionNumber >= 10)
