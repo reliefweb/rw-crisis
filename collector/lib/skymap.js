@@ -131,7 +131,7 @@ module.exports = function(sources) {
       }
 
       // Apply JSONPath selector.
-      if (definition.selector === undefined) definition.content = content;
+      if (definition.selector === undefined || definition.content === {}) definition.content = content;
       else definition.content = jsonpath.query(content, definition.selector);
 
       // Add processing metadata
