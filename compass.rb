@@ -12,7 +12,7 @@ require 'compass-import-once'
 http_path = ""
 css_dir = "dist/css"
 sass_dir = "src/scss"
-images_dir = "src/img"
+images_dir = "dist/img"
 javascripts_dir = "src/js"
 fonts_dir = "src/fonts"
 
