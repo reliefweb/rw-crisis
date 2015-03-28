@@ -25,7 +25,7 @@ This process will also run `bundle install` and `bower install`. Note that `bowe
 
 Generate a release package in `dist/` that can be served by a webserver.
 
-       grunt release
+       grunt
 
 ## Developer Tasks
 
