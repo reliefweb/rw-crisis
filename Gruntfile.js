@@ -80,6 +80,7 @@ module.exports = function (grunt) {
           base: 'dist',
           port: 9001,
           open: true,
+          livereload: true,
           middleware: function (connect, options, middlewares) {
             middlewares.unshift(function(req, res, next) {
               res.setHeader('Access-Control-Allow-Origin', '*');
