@@ -12,9 +12,6 @@ bower_components
 
 # Generated files in src directory.
 index.html
-src/config.json
-src/config
-src/css
 src/js/browserfy.config.js
 
 # Distribtion directory
@@ -26,4 +23,4 @@ gems
 
 # Environment Support
 container/etc/nginx/private/htpasswd
-.log
+*.log
