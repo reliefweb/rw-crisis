@@ -148,33 +148,35 @@ module.exports = function (grunt) {
   });
 
   grunt.registerTask('default', [
-    'compass',
-    'shell:collect',
-    'compile-handlebars:src',
-    'jshint'
-  ]);
-
-  grunt.registerTask('build', [
     'clean:dist',
     'compile-handlebars',
     'copy:dist',
     'compass',
-    'shell:collect',
-    'copy:config',
+    'collector',
     'useminPrepare',
     'concat:generated',
     'cssmin:generated',
     'uglify:generated',
     'usemin'
   ]);
+  grunt.registerTask('build', [ 'default' ]);
+  grunt.registerTask('release', [ 'default' ]);
+
+  grunt.registerTask('validate', [
+    'jshint'
+  ]);
+
+
+  grunt.registerTask('collector', [
+    'shell:collect',
+    'copy:config'
+  ]);
 
   grunt.registerTask('watchSrc', [
-    'build',
+    'default',
     'connect:develop',
     'watch'
   ]);
-
-  grunt.registerTask('release', [ 'build' ]);
 
   grunt.registerTask('serve', [
     'connect:dist'

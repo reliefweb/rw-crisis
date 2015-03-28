@@ -26,7 +26,7 @@ echo "==> Installing npm dependencies"
 npm install --unsafe-perm
 
 echo "==> Build embed assets and run tests"
-grunt release
+grunt
 
 # This functions to keep the container alive as well as rebuilding assets.
 echo "==> Running grunt watch"

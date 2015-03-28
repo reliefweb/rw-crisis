@@ -30,7 +30,7 @@
     "wiredep": "^2.2.2"
   },
   "scripts": {
-    "start": "grunt serve",
+    "start": "grunt start",
     "test": "node collector/test/test.js | node_modules/.bin/bunyan",
     "postinstall": "bundle install --binstubs=gems/bin --path=gems; bower install --allow-root"
   },
