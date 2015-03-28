@@ -33,8 +33,7 @@ module.exports = function (grunt) {
       css: {
         files: [ 'src/scss/**' ],
         tasks: [
-          'compass',
-          'copy:css'
+          'compass'
         ]
       },
       js: {
@@ -54,7 +53,8 @@ module.exports = function (grunt) {
     },
     jshint: {
       all: [
-        'config/config.js'
+        'src/js/iframe-builder.js',
+        'src/js/scrolling-nav.js'
       ]
     },
     connect: {
