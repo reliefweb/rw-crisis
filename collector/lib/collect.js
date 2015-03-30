@@ -67,7 +67,7 @@ module.exports = function(config, opts) {
 
   // Pull any remote referenced widget configuration files.
   module.saveRemoteConfig = function() {
-    var collectRemoteConfig = async.seq(downloadRemoteConfig, signConfig, inlineRequestData, saveConfig);
+    var collectRemoteConfig = async.seq(downloadRemoteConfig, signConfig, inlineRequestData, insertEnvironment, saveConfig);
 
     config.widgets.map(function(widget) {
       // If there is not a URL, assume there is no remote configuration.
@@ -175,6 +175,19 @@ module.exports = function(config, opts) {
       widget: item.name
     }, 'About to begin skymap.');
     skymap.process(item, callback);
+  }
+
+  function insertEnvironment(item, callback) {
+    item.content.environment = {};
+    item.content.environment.sources = config.environment.sources;
+    item.content.environment.content = config.environment.baseUrl;
+    log.debug({
+      type: 'Process',
+      url: item.url,
+      destination: item.filePath,
+      widget: item.name
+    }, 'Added crisis page environment configuration.');
+    callback(null, item);
   }
 
   function saveConfig(item, callback) {
