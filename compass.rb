@@ -10,9 +10,9 @@ require 'compass-import-once'
 
 # Set this to the root of your project when deployed:
 http_path = ""
-css_dir = "src/css"
+css_dir = "dist/css"
 sass_dir = "src/scss"
-images_dir = "src/img"
+images_dir = "dist/img"
 javascripts_dir = "src/js"
 fonts_dir = "src/fonts"
 
