@@ -14,6 +14,19 @@
       "content": "UNOCHA ReliefWeb"
     }
   ],
+  "unsupported": {
+    "searchTerms": "Syria / Iraq",
+    "buttons": [
+      {
+        "uri": "http://reliefweb.int/country/irq",
+        "text": "Iraq page on ReliefWeb"
+      },
+      {
+        "uri": "http://reliefweb.int/country/syr",
+        "text": "Syria page on ReliefWeb"
+      }
+    ]
+  },
   "environment": {
     "baseUrl": "http://crisis.rwdev.org/",
     "sources": {

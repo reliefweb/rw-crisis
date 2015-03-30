@@ -81,12 +81,13 @@
   <!-- end {{title}} Widget -->
 {{/each}}
 
-<div class="unsupported-browsers hidden">
+<div class="unsupported-browsers">
   <p>This site is built to run on Internet Explorer 10 and above, as well as the latest versions of Apple Safari, Google Chrome, and Mozilla&nbsp;Firefox.</p>
-  <p>Please update your browser or search for Syria / Iraq on ReliefWeb:</p>
+  <p>Please update your browser or search for {{unsupported.searchTerms}} on ReliefWeb:</p>
   <div class="rw-buttons">
-    <a class="btn" href="http://reliefweb.int/country/irq">Iraq page on ReliefWeb</a>
-    <a class="btn" href="http://reliefweb.int/country/syr">Syria page on ReliefWeb</a>
+    {{#each unsupported.buttons}}
+      <a class="btn" href="{{uri}}">{{text}}</a>
+    {{/each}}
   </div>
 </div>
 
