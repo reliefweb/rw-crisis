@@ -78,8 +78,17 @@
   <section id="{{slug}}" class="crisis-page--widget-container container content-section text-center"></section>
   <div class="clear-both"></div>
   <!-- end {{title}} Widget -->
-
 {{/each}}
+
+<div class="unsupported-browsers">
+  <p>This site is built to run on Internet Explorer 10 and above, as well as the latest versions of Apple Safari, Google Chrome, and Mozilla&nbsp;Firefox.</p>
+  <p>Please update your browser or search for {{unsupported.searchTerms}} on ReliefWeb:</p>
+  <div class="rw-buttons">
+    {{#each unsupported.buttons}}
+      <a class="btn" href="{{uri}}">{{text}}</a>
+    {{/each}}
+  </div>
+</div>
 
 <!-- build:js js/app.js -->
 <script type="text/javascript" src="bower_components/jquery/dist/jquery.js"></script>
@@ -87,8 +96,10 @@
 <script type="text/javascript" src="bower_components/oembed-client-cors/src/oembed-client-cors.js"></script>
 <script type="text/javascript" src="bower_components/lodash/dist/lodash.js"></script>
 <script type="text/javascript" src="bower_components/pym.js/dist/pym.js"></script>
+<script type="text/javascript" src="bower_components/jquery.browser/dist/jquery.browser.js"></script>
 <script type="text/javascript" src="js/iframe-builder.js"></script>
 <script type="text/javascript" src="js/scrolling-nav.js"></script>
+<script type="text/javascript" src="js/browser-detect.js"></script>
 <!-- endbuild -->
 
 <!-- Typekit -->
