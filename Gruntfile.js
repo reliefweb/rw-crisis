@@ -96,6 +96,9 @@ module.exports = function (grunt) {
     shell: {
       collect: {
         command: 'bin/collect | node_modules/.bin/bunyan'
+      },
+      'collect-local': {
+        command: 'bin/collect --local | node_modules/.bin/bunyan'
       }
     },
     clean: {
