@@ -67,7 +67,9 @@ module.exports = function(config, opts) {
 
   // Pull any remote referenced widget configuration files.
   module.saveRemoteConfig = function() {
-    var collectRemoteConfig = async.seq(downloadRemoteConfig, signConfig, inlineRequestData, insertEnvironment, saveConfig);
+    var loadConfig = opts.local ? loadLocalConfig : downloadRemoteConfig;
+
+    var collectRemoteConfig = async.seq(loadConfig, signConfig, inlineRequestData, insertEnvironment, saveConfig);
 
     config.widgets.map(function(widget) {
       // If there is not a URL, assume there is no remote configuration.
@@ -107,6 +109,11 @@ module.exports = function(config, opts) {
       return widget;
     });
   };
+
+  function loadLocalConfig(item, callback) {
+    item.content = require(path.join('../../config/config', item.name));
+    callback(null, item);
+  }
 
   function downloadRemoteConfig(item, callback) {
     var request = agent.get(item.url).end(function(err, response) {
