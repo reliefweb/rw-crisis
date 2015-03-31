@@ -9,6 +9,7 @@ node_modules
 bower_components
 .sass-cache
 .tmp
+data/.npm
 
 # Generated files in src directory.
 index.html
