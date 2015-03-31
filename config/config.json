@@ -34,6 +34,9 @@
       "fts": "http://fts.unocha.org/api",
       "reliefweb": "http://api.rwlabs.org",
       "reliefweb-embed": "http://embed.rwdev.org"
+    },
+    "keys": {
+      "google-analytics": "UA-61363709-1"
     }
   },
   "widgets": [
