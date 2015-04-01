@@ -2,19 +2,8 @@
 
 cd /var/www/html
 
-echo "==> Install Ruby >= 1.9.2 and RubyGems"
-rpm -ev ruby
-gpg2 --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
-curl -L get.rvm.io | bash -s stable
-source /etc/profile.d/rvm.sh
-rvm install 1.9.3
-cd /tmp
-wget http://production.cf.rubygems.org/rubygems/rubygems-2.4.5.tgz
-tar xfvz rubygems-2.4.5.tgz
-cd rubygems-2.4.5
-ruby setup.rb
-
-cd /var/www/html
+echo "==> Enable Ruby 1.9.3 and RubyGems"
+. /opt/rh/ruby193/enable
 
 echo "==> Install Bundler"
 gem install bundler
