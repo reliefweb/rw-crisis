@@ -1,15 +1,16 @@
-var unsupported = true;
+var unsupported = false;
 
 if (
-  ($.browser.name == 'chrome') ||
-  ($.browser.name == 'mozilla' && $.browser.versionNumber >= 35) ||
-  ($.browser.name == 'safari' && $.browser.versionNumber >= 8) ||
-  ($.browser.name == 'msie' && $.browser.versionNumber >= 10)
+  ($.browser.name == 'chrome'  && $.browser.versionNumber < 40) ||
+  ($.browser.name == 'mozilla' && $.browser.versionNumber < 34) ||
+  ($.browser.name == 'safari' && $.browser.versionNumber < 7) ||
+  ($.browser.name == 'msie' && $.browser.versionNumber < 10) ||
+  ($.browser.blackberry)
 ) {
-  unsupported = false;
+  unsupported = true;
 }
 
-// Display the unsupported browswer
+// Display the unsupported browser div.
 if (unsupported === true) {
   $('.crisis-page--widget-container').hide();
   $('#menu-button').hide();
