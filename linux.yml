@@ -3,9 +3,10 @@ crisis:
   volumes:
     - .:/var/www/html
     - ./container/etc/nginx/conf.d/localhost.conf:/etc/nginx/conf.d/localhost.conf
-    - ./container/etc/nginx/private:/etc/nginx/private
     - ./container/opt/app/node.sh:/opt/app/node.sh
     - ./data/.npm:/root/.npm
+  ports:
+    - "8085:8085"
   environment:
     DNSDOCK_NAME: crisis
     DNSDOCK_IMAGE: crisis

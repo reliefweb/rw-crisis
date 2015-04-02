@@ -20,6 +20,6 @@ npm install --unsafe-perm
 echo "==> Build embed assets and run tests"
 grunt
 
-# This functions to keep the container alive as well as rebuilding assets.
-echo "==> Running grunt watch"
-grunt watch
+if [ $(hostname) == 'crisis.vm' ]; then
+  grunt watch
+fi
