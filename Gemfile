@@ -14,5 +14,6 @@ gem 'terminal-notifier'
 gem 'compass-normalize', '~>1.4.3'
 gem 'compass-import-once'
 gem 'scss-lint'
+gem 'json'
 
 # Now that you're using Bundler, you need to run `bundle exec compass watch` instead of simply `compass watch`.
