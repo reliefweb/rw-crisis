@@ -146,6 +146,16 @@ module.exports = function (grunt) {
         'dest': 'dist'
       }
     },
+    cacheBust: {
+      assets: {
+        options: {
+          rename: false
+        },
+        files: [{
+          src: ['dist/index.html']
+        }]
+      }
+    },
     usemin: {
       html: ['dist/*.html']
     }
@@ -161,7 +171,8 @@ module.exports = function (grunt) {
     'concat:generated',
     'cssmin:generated',
     'uglify:generated',
-    'usemin'
+    'usemin',
+    'cacheBust'
   ]);
   grunt.registerTask('build', [ 'default' ]);
   grunt.registerTask('release', [ 'default' ]);
@@ -169,7 +180,6 @@ module.exports = function (grunt) {
   grunt.registerTask('validate', [
     'jshint'
   ]);
-
 
   grunt.registerTask('collector', [
     'shell:collect',
