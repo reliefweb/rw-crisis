@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Manually active ruby193.
 export PATH="/opt/rh/ruby193/root/usr/bin:${PATH}"
@@ -20,6 +20,4 @@ npm install --unsafe-perm
 echo "==> Build embed assets and run tests"
 grunt
 
-if [ $(hostname) == 'crisis.vm' ]; then
-  grunt watch
-fi
+grunt watch
