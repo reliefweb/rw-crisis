@@ -2,9 +2,8 @@ crisis:
   image: unocha/nginx16-nodejs
   volumes:
     - .:/var/www/html
-    - ./container/etc/nginx/conf.d/localhost.conf:/etc/nginx/conf.d/localhost.conf
-    - ./container/etc/nginx/private:/etc/nginx/private
-    - ./container/opt/app/node.sh:/opt/app/node.sh
+    - ./env/dev/etc/nginx/conf.d/localhost.conf:/etc/nginx/conf.d/localhost.conf
+    - ./env/dev/opt/app/node.sh:/opt/app/node.sh
     - ./data/.npm:/root/.npm
   environment:
     DNSDOCK_NAME: crisis
