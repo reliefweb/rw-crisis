@@ -1,7 +1,10 @@
 .unsupported-browsers {
   max-width: 40em;
-  margin: 68px auto 0 auto;
   padding: $base-line-em 0.5em;
+  margin: 108px auto 0 auto;
+  @include breakpoint($bp--global--inline-title) {
+    margin: 68px auto 0 auto;
+  }
   p {
     text-align: center;
   }
