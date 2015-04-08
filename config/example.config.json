@@ -20,7 +20,9 @@
       "hdx": "http://data.hdx.rwlabs.org/api",
       "fts": "http://fts.unocha.org/api",
       "reliefweb": "http://api.rwlabs.org",
-      "reliefweb-embed": "http://embed.rwdev.org"
+      "reliefweb-embed": "http://embed.rwlabs.org"
+    },
+    "keys": {
     }
   },
   "widgets": [
@@ -28,28 +30,28 @@
       "slug": "crisis-overview",
       "title": "Crisis Overview",
       "config": {
-        "url": "https://gist.githubusercontent.com/jonnadams/70c297bc102eda23820d/raw/028272009344c8c28fa87cb98920c16ceb8f09e0/crisis-overview.json"
+        "url": "https://gist.githubusercontent.com/grayside/6ffb57b9979575f013c2/raw/crisis-overview.json"
       }
     },
     {
       "slug": "timeline",
-      "title": "Timeline",
+      "title": "Crisis Timeline",
       "config": {
-        "url": "https://gist.githubusercontent.com/fillerwriter/cdd51cfb738db4daca38/raw/gistfile1.json"
+        "url": "https://gist.githubusercontent.com/grayside/3cef1077555439ffbf1f/raw/timeline.json"
       }
     },
     {
       "slug": "financial",
-      "title": "Financial",
+      "title": "Financial Support",
       "config": {
-        "url": "https://gist.githubusercontent.com/jonnadams/e762cdae22986b8c0ea0/raw/financial.json"
+        "url": "https://gist.githubusercontent.com/jonnadams/017b8b15a6f57dc01115/raw/financial.json"
       }
     },
     {
       "slug": "river",
-      "title": "River",
+      "title": "More From Reliefweb",
       "config": {
-        "url": "https://gist.githubusercontent.com/fillerwriter/32b1f3a9a492cbab8468/raw/river.json"
+        "url": "https://gist.githubusercontent.com/grayside/187e9d14497a30d35abd/raw/river.json"
       }
     }
   ],
