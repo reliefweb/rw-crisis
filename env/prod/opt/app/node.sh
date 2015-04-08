@@ -19,5 +19,3 @@ npm install --unsafe-perm
 
 echo "==> Build embed assets and run tests"
 grunt
-
-grunt watch
