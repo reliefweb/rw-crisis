@@ -1,0 +1,11 @@
+##
+# robots.txt
+##
+
+# Deny all robots.
+User-agent: *
+Disallow: /
+
+# Allow redbot utility.
+User-agent: RED
+Allow: /
