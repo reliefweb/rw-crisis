@@ -44,14 +44,14 @@
       "slug": "crisis-overview",
       "title": "Crisis Overview",
       "config": {
-        "url": "https://gist.githubusercontent.com/grayside/6ffb57b9979575f013c2/raw/crisis-overview.json"
+        "url": "https://gist.githubusercontent.com/jonnadams/ccc60aa78e6d3025f1c8/raw/crisis-overview.json"
       }
     },
     {
       "slug": "timeline",
       "title": "Crisis Timeline",
       "config": {
-        "url": "https://gist.githubusercontent.com/grayside/3cef1077555439ffbf1f/raw/timeline.json"
+        "url": "https://gist.githubusercontent.com/jonnadams/281e3903bf3abfd70ae7/raw/timeline.json"
       }
     },
     {
