@@ -7,6 +7,9 @@ module.exports = function (grunt) {
   // Time how long tasks take. Can help when optimizing build times
   require('time-grunt')(grunt);
 
+  var environmentId = process.env.NODE_ENV || 'dev';
+  grunt.verbose.writeln('Running grunt for environment "' + environmentId + '"');
+
   grunt.initConfig({
     compass: {
       build: {
@@ -112,6 +115,10 @@ module.exports = function (grunt) {
             src: [ 'bower_components/**', 'img/**', 'fonts/**', 'js/**' ],
             dest: 'dist',
             cwd: 'src'
+          },
+          {
+            src: 'env/' + environmentId + '/robots.txt',
+            dest: 'dist/robots.txt',
           }
         ]
       },
