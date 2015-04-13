@@ -102,6 +102,12 @@ module.exports = function (grunt) {
       },
       'collect-local': {
         command: 'bin/collect --local | node_modules/.bin/bunyan'
+      },
+      'load-stage': {
+        command: 'bin/load http://crisis.rwdev.org/ http://embed.rwdev.org/'
+      },
+      'load-prod': {
+        command: 'bin/load http://crisis.rwlabs.org/syria/ http://embed.rwlabs.org/'
       }
     },
     clean: {
@@ -165,6 +171,35 @@ module.exports = function (grunt) {
     },
     usemin: {
       html: ['dist/*.html']
+    },
+    pagespeed: {
+      options: {
+        nokey: true
+      },
+      'prod-desktop': {
+        url: 'http://crisis.rwlabs.org/syria',
+        locale: 'en_US',
+        strategy: 'desktop',
+        threshold: 90
+      },
+      'prod-mobile': {
+        url: 'http://crisis.rwlabs.org/syria',
+        locale: 'en_US',
+        strategy: 'mobile',
+        threshold: 75
+      },
+      'stage-desktop': {
+        url: 'http://crisis.rwdev.org',
+        locale: 'en_US',
+        strategy: 'desktop',
+        threshold: 90
+      },
+      'stage-mobile': {
+        url: 'http://crisis.rwdev.org',
+        locale: 'en_US',
+        strategy: 'mobile',
+        threshold: 75
+      }
     }
   });
 
@@ -207,4 +242,13 @@ module.exports = function (grunt) {
     'release',
     'serve'
   ]);
+
+  grunt.registerTask('test-perf', 'Test the Crisis Page performance.', function(env) {
+    grunt.task.run([
+      'pagespeed:' + env + '-desktop',
+      'pagespeed:' + env + '-mobile',
+      'shell:load-' + env
+    ]);
+  });
+
 };

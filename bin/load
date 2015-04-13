@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+##
+# Simple helper for Apache Bench load testing.
+#
+# $1 Crisis Page Base URL with trailing slash
+# $2 Embed Server Base URL with trailing slash
+##
+
+echo "Running Apache Bench for $1"
+echo "This tests time-to-download."
+
+echo "Concurrency 2, Requests 100"
+ab -c 2 -n 100 $1 > ab.c2n100.log
+sleep 5
+echo "Concurrency 3, Requests 100"
+ab -c 3 -n 100 $1 > ab.c3n100.log
+sleep 5
+echo "Concurrency 4, Requests 100"
+ab -c 4 -n 100 $1 > ab.c4n100.log
+echo "Embed Service: Concurrency 8, Requests 200"
+# The reference to rwdev.org in the querystring does not affect backend behavior
+# at this time, so it does not need to be adaptive to test environment.
+ab -c 8 -n 200 -r $2"v0/widgets/crisis-overview?config=http%3A%2F%2Fcrisis.rwdev.org%2Fconfig%2Fcrisis-overview.json&initialWidth=1265&childId=crisis-overview > ab.embed-c8n200.log"
+
+echo "Apache Bench testing complete."
+echo "View the results in the repository root as ab.*.log"
