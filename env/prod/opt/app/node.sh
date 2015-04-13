@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 if [ $@ ]; then
-  curl $@ > /var/www/html/config/test.json
+  curl $@ > /var/www/html/config/config.json
 fi
 
 # Manually active ruby193.
