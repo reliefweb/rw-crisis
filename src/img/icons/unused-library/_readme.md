@@ -1,1 +1,0 @@
-Here's the whole [Font Awesome](http://fortawesome.github.io/Font-Awesome/) library! To add them to the site, move individual icons into `../src/`.
