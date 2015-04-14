@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+if [ $@ ]; then
+  curl $@ > /var/www/html/config/config.json
+fi
+
 # Manually active ruby193.
 export PATH="/opt/rh/ruby193/root/usr/bin:${PATH}"
 export PKG_CONFIG_PATH="/opt/rh/ruby193/root/usr/lib64/pkgconfig"
