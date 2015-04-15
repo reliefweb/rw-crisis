@@ -112,6 +112,22 @@ module.exports = function(config, opts) {
 
   function loadLocalConfig(item, callback) {
     item.content = require(path.join('../../config/config', item.name));
+    if (item.content) {
+      log.info({
+        type: 'Process',
+        url: item.url,
+        destination: item.filePath,
+        widget: item.name
+      }, 'Loaded local configuration.');
+    }
+    else {
+      log.error({
+        type: 'Process',
+        url: item.url,
+        destination: item.filePath,
+        widget: item.name
+      }, 'No local configuration available.');
+    }
     callback(null, item);
   }
 
