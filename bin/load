@@ -21,7 +21,7 @@ ab -c 4 -n 100 $1 > ab.c4n100.log
 echo "Embed Service: Concurrency 8, Requests 200"
 # The reference to rwdev.org in the querystring does not affect backend behavior
 # at this time, so it does not need to be adaptive to test environment.
-ab -c 8 -n 200 -r $2"v0/widgets/crisis-overview?config=http%3A%2F%2Fcrisis.rwdev.org%2Fconfig%2Fcrisis-overview.json&initialWidth=1265&childId=crisis-overview > ab.embed-c8n200.log"
+ab -c 8 -n 200 -r $2"v0/widgets/crisis-overview?config=http%3A%2F%2Fcrisis.rwdev.org%2Fconfig%2Fcrisis-overview.json&initialWidth=1265&childId=crisis-overview" > ab.embed-c8n200.log
 
 echo "Apache Bench testing complete."
 echo "View the results in the repository root as ab.*.log"
