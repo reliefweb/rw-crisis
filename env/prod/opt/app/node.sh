@@ -1,7 +1,26 @@
 #!/usr/bin/env bash
+##
+# Set up node application inside docker container.
+#
+# Takes 2 arguments.
+# * If one argument --local or a URL to download as main config.
+# * If two arguments, the first is a flag and the second is a URL.
+##
 
-if [ $@ ]; then
-  curl $@ > /var/www/html/config/config.json
+URL=''
+LOCAL=''
+args=("$@")
+if [ $# -gt 0 ] && [ ${args[0]} == '--local' ]
+  then LOCAL='--local'
+fi
+if [ $# -eq 1 ] && [ ${args[0]} != '--local' ]
+  then URL=${args[0]}
+elif [ $# -eq 2 ]
+  then URL=${args[1]}
+fi
+
+if [ -n "$URL" ]; then
+  curl $URL > /var/www/html/config/config.json
 fi
 
 # Manually active ruby193.
@@ -22,4 +41,4 @@ echo "==> Installing npm dependencies"
 npm install --unsafe-perm
 
 echo "==> Build embed assets and run tests"
-grunt
+grunt $LOCAL

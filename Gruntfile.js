@@ -223,10 +223,16 @@ module.exports = function (grunt) {
     'jshint'
   ]);
 
-  grunt.registerTask('collector', [
-    'shell:collect',
-    'copy:config'
-  ]);
+  grunt.registerTask('collector', 'Collect remote data via API calls and position resulting files in dist.', function() {
+    var collect = 'shell:collect';
+    if (grunt.option('local'))
+      collect = collect + '-local';
+
+    grunt.task.run([
+      collect,
+      'copy:config'
+    ]);
+  });
 
   grunt.registerTask('watchSrc', [
     'default',
