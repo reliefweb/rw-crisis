@@ -209,11 +209,11 @@ module.exports = function (grunt) {
     'copy:dist',
     'compass',
     'collector',
-    'useminPrepare',
-    'concat:generated',
-    'cssmin:generated',
-    'uglify:generated',
-    'usemin',
+//    'useminPrepare',
+//    'concat:generated',
+//    'cssmin:generated',
+//    'uglify:generated',
+//    'usemin',
     'cacheBust'
   ]);
   grunt.registerTask('build', [ 'default' ]);
