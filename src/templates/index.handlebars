@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 
 <head>
 
@@ -90,16 +90,19 @@
   </div>
 </div>
 
-<!-- build:js js/app.js -->
+<!-- build:js js/init.js -->
 <script type="text/javascript" src="bower_components/jquery/dist/jquery.js"></script>
+<script type="text/javascript" src="bower_components/jquery.browser/dist/jquery.browser.js"></script>
+<script type="text/javascript" src="js/browser-detect.js"></script>
+<!-- endbuild -->
+<!-- build:js js/app.js -->
+<script type="text/javascript" src="bower_components/modernizr/modernizr.js"></script>
 <script type="text/javascript" src="bower_components/jquery-easing/jquery.easing.js"></script>
 <script type="text/javascript" src="bower_components/oembed-client-cors/src/oembed-client-cors.js"></script>
 <script type="text/javascript" src="bower_components/lodash/dist/lodash.js"></script>
 <script type="text/javascript" src="bower_components/pym.js/dist/pym.js"></script>
-<script type="text/javascript" src="bower_components/jquery.browser/dist/jquery.browser.js"></script>
 <script type="text/javascript" src="js/iframe-builder.js"></script>
 <script type="text/javascript" src="js/scrolling-nav.js"></script>
-<script type="text/javascript" src="js/browser-detect.js"></script>
 <!-- endbuild -->
 
 <!-- Typekit -->

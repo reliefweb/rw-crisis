@@ -29,7 +29,7 @@
 
 .crisis-page--header {
   padding: 0 0.5rem;
-  background: $color--gray--light image-url('diagonal-pinstripes.png') repeat;
+  background: url(../img/diagonal-pinstripes.png) $color--gray--light repeat;
   color: $color--gray;
   font-family: $font--futura;
   @include breakpoint($bp--global--wide-nav) {
@@ -45,9 +45,14 @@
   width: 125px;
   margin: 0 0.5rem 0 0;
   float: left;
+  background-size: 125px auto;
   background-size: contain;
   line-height: unitless-convert(68px);
+  .no-svg & {
+    background: url(../img/rw-logo.png) no-repeat 1px 12px;
+  }
 }
+
 .crisis-page--title {
   @include fontsize-rem(ms(1));
   margin: 0;
