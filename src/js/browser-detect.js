@@ -14,5 +14,6 @@ if (
 if (unsupported === true) {
   $('.crisis-page--widget-container').hide();
   $('#menu-button').hide();
+  $('.crisis-page--navigation--trigger').hide();
   $('.unsupported-browsers').removeClass('hidden');
 }

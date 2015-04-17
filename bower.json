@@ -28,7 +28,8 @@
     "mocha": "~2.1.0",
     "jquery-easing": "*",
     "pym.js": "~0.4.1",
-    "jquery.browser": "~0.0.7"
+    "jquery.browser": "~0.0.7",
+    "modernizr": "~2.8.3"
   },
   "devDependencies": {
     "oembed-client-cors": "fillerwriter/oembed-client"
