@@ -44,42 +44,30 @@
       "slug": "crisis-overview",
       "title": "Crisis Overview",
       "config": {
-        "url": "http://crisis.rwdev.org/config/crisis-overview.json",
-        "sourceUrl": "https://gist.githubusercontent.com/jonnadams/a06e76f3c575edaa2627/raw/crisis-overview.json"
+        "url": "https://gist.githubusercontent.com/jonnadams/a06e76f3c575edaa2627/raw/crisis-overview.json"
       }
     },
     {
       "slug": "timeline",
       "title": "Crisis Timeline",
       "config": {
-        "url": "http://crisis.rwdev.org/config/timeline.json",
-        "sourceUrl": "https://gist.githubusercontent.com/jonnadams/281e3903bf3abfd70ae7/raw/timeline.json"
+        "url": "https://gist.githubusercontent.com/jonnadams/281e3903bf3abfd70ae7/raw/timeline.json"
       }
     },
     {
       "slug": "financial",
       "title": "Financial Support",
       "config": {
-        "url": "http://crisis.rwdev.org/config/financial.json",
-        "sourceUrl": "https://gist.githubusercontent.com/jonnadams/017b8b15a6f57dc01115/raw/financial.json"
+        "url": "https://gist.githubusercontent.com/jonnadams/017b8b15a6f57dc01115/raw/financial.json"
       }
     },
     {
       "slug": "river",
       "title": "More From Reliefweb",
       "config": {
-        "url": "http://crisis.rwdev.org/config/river.json",
-        "sourceUrl": "https://gist.githubusercontent.com/grayside/187e9d14497a30d35abd/raw/river.json"
+        "url": "https://gist.githubusercontent.com/grayside/187e9d14497a30d35abd/raw/river.json"
       }
     }
   ],
-  "version": "1.0",
-  "processed": {
-    "generator": "collector",
-    "version": "0.2.0",
-    "date": {
-      "updated": "2015-04-21T16:03:05.310Z"
-    },
-    "name": "Main Config"
-  }
+  "version": "1.0"
 }
