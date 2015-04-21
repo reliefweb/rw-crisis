@@ -18,4 +18,5 @@ if (unsupported === true) {
   $('.crisis-page--navigation').hide();
   $('.unsupported-browsers').removeClass('hidden');
   $('.rw--name-logo').css('background', 'url(../img/rw-logo.png) 50% 50% no-repeat');
+  $('.crisis-page--header').css('background', 'url(../img/diagonal-pinstripes.jpg) repeat center center');
 }
