@@ -18,14 +18,17 @@ provide a high-level overview of a complex, often multi-country crisis.
 
 Apache or nginx. Should serve configuration files (at least) with CORS support.
 
+The `env/` directory has per-environment breakdown of nginx configuration and Docker startup processes. These files are used as-is on Local-Docker, Dev/Stage and Production.
+
 ## Dependencies
+The dependencies below are only needed to build the static site. Operation of the site only depends on a webserver.
 
 * **bower**: Manages frontend dependencies. `npm install -g bower@1.3.2`
 * **bundler**: Manages Ruby dependencies for the build process, such as compass. `gem install bundler`
 * **npm** Node.js and the npm package manage for node dependencies.
 * **grunt-cli**: The grunt command-line tool. Drives the build process. `npm install -g grunt-cli`
 
-## Operations Tasks
+## Operational Tasks
 
 ### Install
 
@@ -82,6 +85,7 @@ Your browser will open to the page `http://0.0.0.0:9001`
 * `fig up`
 * Direct your browser to `http://crisis.vm`.
 
+
 ## Configuration
 
 The Crisis Page is baked from configuration the build process expects to find in
@@ -110,9 +114,10 @@ In this section we'll explore the main configuration schema.
 * **widgets**: An array of widgets, each defined as an object with the following keys:
   * **slug**: A unique ID for the widget on the page. This is used as an HTML
     attribute, filename, and URL.
-  * **title**: Title of the widget for display in navigation menu and as the widget title.
+  * **title**: Title of the widget for display in navigation menu. It is not used
+    as the widget title as that comes from the widget itself.
   * **config**: Contains widget-specific JSON configuration. In our examples you
-    see a `url` key, if present this queues the Beat-Blocks library to use the
+    see a `url` key, if present this cues the Beat-Blocks library to use the
     contents of that URL for the widget configuration. A mix of both may be used.
 
 ### More Configuration Examples
@@ -125,15 +130,17 @@ In this section we'll explore the main configuration schema.
 In order to create a new Crisis Page, you will need the following:
 
 * Create a new configuration file. We maintain the canonical config files as gists.
-* Adjust the order or selection of widgets by how the `widgets` configuraiton is set up.
+* Adjust the order or selection of widgets by how the `widgets` configuration is set up.
 * The slug is used to select the widget by assembling the Embed Service URL for the iframe source.
-* Check out the [Embed Service](https://github.com/reliefweb/rw-embed) for details on adding new widgets.
+* Check out [rw-widget.js](https://github.com/reliefweb/rw-widget.js) for details
+  on creating new widget types, and [Embed Service](https://github.com/reliefweb/rw-embed)
+  for details on making them available for use.
 * In order to customize the page beyond configuration, it is necessary to create
   a branch in the repo to track code changes.
 
 ## Collector/Baking Process
 
-The configuration for each widget is processed via a "baking" process by the
+The configuration & data for each widget is assembled via a "baking" process by the
 collector script. The collector script could easily live in it's own repository,
 but for convenience it is built into the Crisis Page. In practice we expect to
 evolve the Embed Service to handle collection and caching of data, rather than
