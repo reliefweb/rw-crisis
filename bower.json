@@ -29,7 +29,8 @@
     "jquery-easing": "*",
     "pym.js": "~0.4.1",
     "jquery.browser": "~0.0.7",
-    "modernizr": "~2.8.3"
+    "modernizr": "~2.8.3",
+    "jquery-scrolldepth": "https://github.com/robflaherty/jquery-scrolldepth.git#~0.7.1"
   },
   "devDependencies": {
     "oembed-client-cors": "fillerwriter/oembed-client"

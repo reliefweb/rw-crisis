@@ -92,6 +92,7 @@
 
 <!-- build:js js/init.js -->
 <script type="text/javascript" src="bower_components/jquery/dist/jquery.js"></script>
+<script type="text/javascript" src="bower_components/jquery-scrolldepth/jquery.scrolldepth.js"></script>
 <script type="text/javascript" src="bower_components/jquery.browser/dist/jquery.browser.js"></script>
 <script type="text/javascript" src="js/browser-detect.js"></script>
 <!-- endbuild -->
@@ -119,6 +120,57 @@
 
   ga('create', '{{environment.keys.google-analytics}}', 'auto');
   ga('send', 'pageview');
+</script>
+<!-- Event tracking -->
+<script>
+  (function () {
+    // Helpers.
+    function track(category, type, label) {
+      ga('send', 'event', category, type, label);
+    }
+    function getInnerText(element) {
+      return element ? (element.textContent || element.innerText || '').replace(/^\s+|\s+$/, '') : '';
+    }
+
+    // Menu click events.
+    document.querySelector('.crisis-page--widget-nav').addEventListener('mousedown', function (event) {
+      var target = event.target;
+      if (target.tagName === 'A') {
+        track('Crisis - Menu', 'click', getInnerText(target));
+      }
+    });
+
+    // Scroll event tracking.
+    var sections = $('section');
+    var interval = setInterval(function () {
+      // Ugly hack to check if the iframes are loaded
+      // in order to start tracking scroll events.
+      // We assume the widgets are supposed to have at least a 200px height.
+      if ($.grep(sections, function(s) { return $(s).height() > 200; }).length === sections.length) {
+        clearInterval(interval);
+
+        jQuery.scrollDepth({
+          pixelDepth: false,
+          elements: sections.map(function () { return '#' + this.id; }),
+          eventHandler: function(data) {
+            var action = data.eventAction;
+            var label = data.eventLabel;
+            if (action === 'Elements') {
+              action = 'Element';
+              label = $('a[href=' + label + ']').text();
+            }
+
+            if (data.event === 'ScrollDistance') {
+              ga('send', 'event', 'Crisis - Scroll', 'Scroll - ' + action, label);
+            }
+            else if (data.event === 'ScrollTiming') {
+              ga('send', 'timing', 'Crisis - Scroll', 'Scroll - ' + action, data.eventTiming, label);
+            }
+          }
+        });
+      }
+    }, 100);
+  })();
 </script>
 {{/if}}
 </body>
