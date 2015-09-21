@@ -32,7 +32,7 @@
   },
   "scripts": {
     "start": "grunt start",
-    "test": "node collector/test/test.js | node_modules/.bin/bunyan",
+    "test": "node collector/test/test.js | node_modules/bunyan/bin/bunyan",
     "postinstall": "bundle install --binstubs=gems/bin --path=gems; bower install --allow-root"
   },
   "dependencies": {
