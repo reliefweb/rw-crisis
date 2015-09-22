@@ -1,0 +1,12 @@
+crisis:
+  image: unocha/nginx16-nodejs
+  volumes:
+    - .:/var/www/html
+    - ./env/dev/etc/nginx/conf.d/localhost.conf:/etc/nginx/conf.d/localhost.conf
+    - ./env/dev/opt/app/node.sh:/opt/app/node.sh
+    - /data/rw-crisis/.npm:/root/.npm
+  environment:
+    DNSDOCK_NAME: crisis
+    DNSDOCK_IMAGE: crisis
+  hostname:
+    crisis.vm
